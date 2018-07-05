@@ -13,6 +13,7 @@ var lang = {
   otherSettingsBT: '其它选项',
   pleaseWait: '正在应用，请稍后……',
   successToApply: '成功应用',
+  returnToContinue: '返回',
   exitProgram: '退出',
 
   edit: '编辑',

@@ -14,6 +14,7 @@ var lang = {
   otherSettingsBT: 'Andere Einstellungen',
   pleaseWait: 'Es wird bewerbet, bitte warten',
   successToApply: 'Es ist bewerbet',
+  returnToContinue: 'Rückkehr',
   exitProgram: 'Beenden',
 
   edit: 'Bearbeiten',

@@ -13,6 +13,7 @@
   otherSettingsBT: '其他選項',
   pleaseWait: '套用中，請稍後……',
   successToApply: '套用成功',
+  returnToContinue: '返回',
   exitProgram: '退出',
 
   edit: '編輯',

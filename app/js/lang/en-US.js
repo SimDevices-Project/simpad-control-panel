@@ -13,6 +13,7 @@ var lang = {
   otherSettingsBT: 'Others',
   pleaseWait: 'Please wait...',
   successToApply: 'Success!',
+  returnToContinue: 'Return',
   exitProgram: 'Exit',
 
   edit: 'Edit',

@@ -780,44 +780,6 @@ input[type='text'] {
   }
 }
 
-/*颜色选择器*/
-/* .colorCircle {
-  width: 144px;
-  height: 144px;
-  background: conic-gradient(
-    #ff0000,
-    #ffff00,
-    #00ff00,
-    #00ffff,
-    #0000ff,
-    #ff00ff,
-    #ff0000
-  );
-  border-radius: 50%;
-  position: fixed;
-  z-index: 50;
-  top: 20px;
-  left: 20px;
-  border: #fff 2px solid;
-  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
-} */
-/* .colorCircleWhite {
-  background: radial-gradient(#ffffff 22%, rgba(255, 255, 255, 0) 68%);
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-.colorCirleInner {
-  --size: 48px;
-  position: absolute;
-  top: calc(50% - var(--size) / 2);
-  left: calc(50% - var(--size) / 2);
-  width: var(--size);
-  height: var(--size);
-  border: #fff 2px solid;
-  background-color: rgb(0, 132, 255);
-  border-radius: 50%;
-} */
 .selecterBox {
   width: 100%;
   height: 100%;
@@ -835,6 +797,11 @@ input[type='text'] {
   border: 1px rgba(0, 0, 0, 0.3) solid;
 }
 
+#exitProgram{
+  margin-left: 16px;
+}
+
+/*Color-Picker*/
 .color-picker {
   width: 192px;
   height: 192px;
