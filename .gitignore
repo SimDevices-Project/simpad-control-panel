@@ -1,0 +1,13 @@
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node:
+package-lock.json
+/node_modules/
+
+# My configurations:
+*.bat
+/OutApp/
+/AsarFile/

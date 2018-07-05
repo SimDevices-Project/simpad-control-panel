@@ -1,0 +1,8 @@
+{
+    "name": "SimPad_Settings",
+    "version": "0.1.0",
+    "main": "main.js",
+    "dependencies": {
+        "electron": "^2.0.0"
+    }
+}
