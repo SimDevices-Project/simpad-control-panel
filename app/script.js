@@ -70,6 +70,9 @@ if (ipc) {
     })
   })
 }
+document.getElementById('returnToContinue').addEventListener('click', () => {
+  jumpPage(2)
+})
 
 /**获取数据格式
  * BYTE 0x00 获取值
