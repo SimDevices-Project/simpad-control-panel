@@ -58,6 +58,7 @@ var lang = {
   resetDevice: 'Reset Device',
   resetDeviceInfo: 'Device can be reset to default settings',
   resetDeviceBtn: 'Reset',
+  resetAllDevicesBtn: 'Reset All',
 
   about: 'About SimPad',
   checkUpdate: 'Check Update',

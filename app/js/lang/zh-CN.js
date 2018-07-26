@@ -55,6 +55,7 @@ var lang = {
   resetDevice: '重置设备',
   resetDeviceInfo: '您可以将您的设备重置，将所有设置恢复为默认',
   resetDeviceBtn: '重置',
+  resetAllDevicesBtn: '重置全部',
 
   about: '关于',
   checkUpdate: '检查更新',

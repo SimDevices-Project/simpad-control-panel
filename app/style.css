@@ -797,7 +797,7 @@ input[type='text'] {
   border: 1px rgba(0, 0, 0, 0.3) solid;
 }
 
-#exitProgram{
+#exitProgram {
   margin-left: 16px;
 }
 
@@ -938,4 +938,11 @@ input[type='text'] {
 .keyboard .key.select:hover {
   background-color: #3871d4;
   color: #fff;
+}
+
+#sendAllNewDev {
+  display: none;
+}
+#sendAllNewDev.show {
+  display: inline-block;
 }

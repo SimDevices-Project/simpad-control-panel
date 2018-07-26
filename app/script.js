@@ -738,6 +738,12 @@ function freshDevices(autoNext = true) {
       sel.appendChild(temp)
       return e
     })
+
+  if(devices && devices.length > 1){
+    addClassName(document.getElementById('sendAllNewDev'),'show')
+  }else{
+    removeClassName(document.getElementById('sendAllNewDev'),'show')
+  }
   if (autoNext && devices.length === 1) {
     document.getElementById('selBtn').click()
   }
@@ -922,7 +928,7 @@ templeData = [
   [0x06, 0x00, 0xff, 0x00, 0x04], //#00FF00 100%(4)
   [0x07, 0x00, 0x00, 0xff, 0x04], //#0000FF 100%(4)
   [0x08, 0x00, 0x00, 0x00, 0x00], //Mode 0
-  [0x09, 0x00, 0x00, 0x00, 0x40], //0x100 => 64 (MAX 16^6-1)
+  [0x09, 0x00, 0x00, 0x00, 0x40], //0x40 => 64 (MAX 16^6-1)
   [0x0a, 0x00, 0x00, 0x00, 0x40] //0x00 极速模式处于关闭
 ]
 document.getElementById('sendNewDev').addEventListener('click', e => {
@@ -937,11 +943,38 @@ document.getElementById('sendNewDev').addEventListener('click', e => {
         promiseObj = sendData(data)
       }
     })
-    getAllSettings().then(() => {
-      initSettings()
-      setTimeout(page4Fin, 300)
-      //countChanges()
+    promiseObj.then(() =>
+      getAllSettings().then(() => {
+        initSettings()
+        setTimeout(page4Fin, 300)
+        //countChanges()
+      })
+    )
+  }
+})
+
+document.getElementById('sendAllNewDev').addEventListener('click', e => {
+  var promiseObj
+  if (devices && devices.length && devices.length > 0) {
+    page4Init()
+    jumpPage(3)
+    devices.forEach(d => {
+      let deviceToSend = new HID.HID(d.path)
+      templeData.forEach(data => {
+        if (promiseObj) {
+          promiseObj.then(() => sendData(data, deviceToSend))
+        } else {
+          promiseObj = sendData(data, deviceToSend)
+        }
+      })
     })
+    promiseObj.then(() =>
+      getAllSettings().then(() => {
+        initSettings()
+        setTimeout(page4Fin, 300)
+        //countChanges()
+      })
+    )
   }
 })
 

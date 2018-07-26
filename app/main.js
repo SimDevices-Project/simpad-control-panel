@@ -70,7 +70,7 @@ app.on('ready', function() {
 
   // 打开开发工具
 
-  //guiWindows[0].openDevTools()
+  guiWindows[0].openDevTools()
 
   // 当 window 被关闭，这个事件会被发出
   guiWindows[0].on('closed', function() {
