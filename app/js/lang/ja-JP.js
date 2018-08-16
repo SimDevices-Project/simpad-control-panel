@@ -71,7 +71,7 @@ var lang = {
   <p>日本語の翻訳協力</p>
   <p class="nameBefore">ルビー</p>
   <p></p>
-  <a href="https://www.bysb.net">
+  <a href="https://www.bysb.net/3363.html">
     <p class="canBeSeleted">まことにありがとうございました！</p>
   </a>
   <a href="https://www.bysb.net">

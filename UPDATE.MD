@@ -5,3 +5,7 @@
 #### Translation
 - de-DE, en-US, ja-JP, zh-CN, zh-SG, zh-TW
  - add "Return" translation
+- zh-CN
+ - add "Reset All" translation
+ #### About Texts
+ - add a link to SimPad page

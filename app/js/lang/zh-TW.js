@@ -72,7 +72,7 @@
   <p>中文（臺灣）翻譯</p>
   <p class="nameBefore">Spy</p>
   <p></p>
-  <a href="https://www.bysb.net">
+  <a href="https://www.bysb.net/3363.html">
     <p class="canBeSeleted">訪問鍵盤發佈頁面</p>
   </a>
   <a href="https://www.bysb.net">

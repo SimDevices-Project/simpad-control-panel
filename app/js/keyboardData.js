@@ -19,7 +19,7 @@ const data = {
   '115': [0, 0x47, 'keyN_scrLk'],
   '116': [0, 0x48, 'keyN_pauseBreak'],
 
-  '201': [0, 0x32, 'keyN_waveLine'],
+  '201': [0, 0x35, 'keyN_waveLine'],
   '202': [0, 0x1e, 'keyN_1'],
   '203': [0, 0x1f, 'keyN_2'],
   '204': [0, 0x20, 'keyN_3'],

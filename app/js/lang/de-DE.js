@@ -75,7 +75,7 @@ var lang = {
   <p></p>
   <p class="nameBefore">Mn2O7</p>
   <p></p>
-  <a href="https://www.bysb.net">
+  <a href="https://www.bysb.net/3363.html">
     <p class="canBeSeleted">Besuchen Sie die Seite des Tastur</p>
   </a>
   <a href="https://www.bysb.net">

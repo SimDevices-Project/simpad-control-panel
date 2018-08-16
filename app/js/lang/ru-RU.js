@@ -68,7 +68,7 @@ var lang = {
   <p class="nameBefore">Jeff - Source Localization Team</p>
   <p class="nameBefore">HDY</p>
   <p></p>
-  <a href="https://www.bysb.net">
+  <a href="https://www.bysb.net/3363.html">
     <p class="canBeSeleted">访问键盘发布页</p>
   </a>
   <a href="https://www.bysb.net">
