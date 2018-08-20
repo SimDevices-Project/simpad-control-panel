@@ -753,9 +753,11 @@ function freshDevices(autoNext = true) {
   var deviceCount = {}
   devices = HID.devices()
     .filter(
-      e => e.vendorId === 0x8088 && deviceIdList.indexOf(e.productId) > -1
+      e =>
+        e.vendorId === 0x8088 &&
+        deviceIdList.indexOf(e.productId) > -1 &&
+        e.path.indexOf('&mi_01') > -1
     )
-    .filter(e => e.path.indexOf('&mi_01') > -1)
     .map(e => {
       var temp = document.createElement('option')
       if (!deviceCount[e.productId]) {
