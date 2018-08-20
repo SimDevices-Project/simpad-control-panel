@@ -412,7 +412,7 @@ const updateKeyCodeText = () => {
     if (settingChanged[index + 1][2] > 0) {
       Object.values(KeyData).forEach(arr => {
         if (arr[0] === 2) {
-          if (arr[1] === settingChanged[index + 1][2]) {
+          if ((arr[1] & settingChanged[index + 1][2]) > 0) {
             keyStrSet.push(getLang(arr[2]))
           }
         }
