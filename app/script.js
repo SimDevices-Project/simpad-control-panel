@@ -788,11 +788,6 @@ function freshDevices(autoNext = true) {
       return e
     })
 
-  if (devices && devices.length > 1) {
-    addClassName(document.getElementById('sendAllNewDev'), 'show')
-  } else {
-    removeClassName(document.getElementById('sendAllNewDev'), 'show')
-  }
   if (autoNext && devices.length === 1) {
     document.getElementById('selBtn').click()
   }
@@ -827,7 +822,7 @@ document.getElementById('page1Btn').addEventListener('click', e => {
 )
 
 document.getElementById('selBtn').addEventListener('click', e => {
-  if (devices.length > 0) {
+  if (devices && devices.length > 0) {
     if (device) device.close()
     clearTimeout(timeOutSet)
     device = new HID.HID(sel.value)
@@ -836,6 +831,11 @@ document.getElementById('selBtn').addEventListener('click', e => {
     nowDevice.innerText = sel.options[sel.selectedIndex].text
     addClassName(reselectDevice, 'easeInInfo')
     jumpPage(1)
+  }
+  if (devices && devices.length > 1) {
+    addClassName(document.getElementById('sendAllNewDev'), 'show')
+  } else {
+    removeClassName(document.getElementById('sendAllNewDev'), 'show')
   }
 })
 
