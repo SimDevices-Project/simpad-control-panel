@@ -273,6 +273,31 @@ const getSettings = (pointer, dev = device) =>
     autoGetDataTimer = setTimeout(() => doIt(r, e), 30)
   })
 
+const getVersion = (dev = device) =>
+  new Promise(function doIt(r, e) {
+    getDataFunction = data => {
+      document.getElementById('firmwareVersionNum').innerHTML = ''
+      ;[...data]
+        .slice(0, 4)
+        .forEach(
+          d =>
+            (document.getElementById(
+              'firmwareVersionNum'
+            ).innerHTML += d.toString().padStart(2, '0'))
+        )
+      clearTimeout(autoGetDataTimer)
+      r()
+    }
+    if (dev) {
+      var dat = [0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]
+      sendData(dat).catch(err => clearTimeout(autoGetDataTimer))
+    } else {
+      e()
+      return
+    }
+    autoGetDataTimer = setTimeout(() => doIt(r, e), 30)
+  })
+
 var settingsAlready = false
 
 const getAllSettings = (dev = device) => {
@@ -384,6 +409,15 @@ const updateKeyCodeText = () => {
         }
       })
     }
+    if (settingChanged[index + 1][2] > 0) {
+      Object.values(KeyData).forEach(arr => {
+        if (arr[0] === 2) {
+          if (arr[1] === settingChanged[index + 1][2]) {
+            keyStrSet.push(getLang(arr[2]))
+          }
+        }
+      })
+    }
     if (keyStrSet.length > 0) {
       nodeElement.innerHTML = keyStrSet.join(' + ')
     } else {
@@ -438,6 +472,7 @@ const initSettings = () => {
     settingsSet[9][1] * 0x010000 +
     settingsSet[9][2] * 0x0100 +
     settingsSet[9][3]
+  getVersion()
   updateKeyCodeText()
   countChanges()
 }
@@ -488,7 +523,7 @@ const initSettingsFunction = () => {
       .getElementById('btnSettingsList')
       .getElementsByClassName('rightP')
   ]
-  let oneKeyCode // = [0x00, 0x00]
+  let oneKeyCode = [0x00, 0x00, 0x00]
   const keyboardPannel = document.getElementById('keyboardPannel')
   keyboardPannel.addEventListener('click', e => e.stopPropagation())
   const updateKeyBoard = () => {
@@ -508,6 +543,16 @@ const initSettingsFunction = () => {
         let arr = KeyData[k]
         if (arr[0] === 0) {
           if (arr[1] === oneKeyCode[1]) {
+            keyPosSet.push(k)
+          }
+        }
+      }
+    }
+    if (oneKeyCode[2] > 0) {
+      for (let k in KeyData) {
+        let arr = KeyData[k]
+        if (arr[0] === 2) {
+          if ((arr[1] & oneKeyCode[2]) > 0) {
             keyPosSet.push(k)
           }
         }
@@ -559,6 +604,8 @@ const initSettingsFunction = () => {
     nodeEle.addEventListener('click', event => {
       if (KeyData[nodeEle.dataset.keyKey][0] === 1) {
         oneKeyCode[0] ^= KeyData[nodeEle.dataset.keyKey][1]
+      } else if (KeyData[nodeEle.dataset.keyKey][0] === 2) {
+        oneKeyCode[2] ^= KeyData[nodeEle.dataset.keyKey][1]
       } else if (oneKeyCode[1] === KeyData[nodeEle.dataset.keyKey][1]) {
         oneKeyCode[1] = 0x00
       } else {
@@ -739,10 +786,10 @@ function freshDevices(autoNext = true) {
       return e
     })
 
-  if(devices && devices.length > 1){
-    addClassName(document.getElementById('sendAllNewDev'),'show')
-  }else{
-    removeClassName(document.getElementById('sendAllNewDev'),'show')
+  if (devices && devices.length > 1) {
+    addClassName(document.getElementById('sendAllNewDev'), 'show')
+  } else {
+    removeClassName(document.getElementById('sendAllNewDev'), 'show')
   }
   if (autoNext && devices.length === 1) {
     document.getElementById('selBtn').click()

@@ -113,7 +113,7 @@ var lang = {
   key_f10: 'F10',
   key_f11: 'F11',
   key_f12: 'F12',
-  key_prtSc: 'Print Screen',
+  key_prtSc: 'Print Src',
   key_scrLk: 'Sroll Lock',
   key_pauseBreak: 'Pause Break',
   key_waveLine: '~ `',
@@ -205,6 +205,9 @@ var lang = {
   key_numPad_0: '0 Ins',
   key_numPad_period: 'Del .',
 
+  key_mouseLeft:'MouseLeft',
+  key_mouseMiddle:'MouseMid',
+  key_mouseRight:'MouseRight',
   //ForKeyboard TextInfo
   keyN_null: 'Null',
 
@@ -311,7 +314,14 @@ var lang = {
   keyN_downArrow: '↓',
   keyN_rightArrow: '→',
   keyN_numPad_0: 'NumPad 0',
-  keyN_numPad_period: 'NumPad .'
+  keyN_numPad_period: 'NumPad .',
+
+  
+  keyN_mouseLeft:'Mouse Left',
+  keyN_mouseMiddle:'Mouse Middle',
+  keyN_mouseRight:'Mouse Right',
+
+  firmwareVersion:'Firmware Version'
 }
 
 exports.lang = lang

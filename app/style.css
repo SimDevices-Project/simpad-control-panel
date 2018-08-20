@@ -858,7 +858,8 @@ input[type='text'] {
 .keyboard-line3,
 .keyboard-line4,
 .keyboard-line5,
-.keyboard-line6 {
+.keyboard-line6,
+.keyboard-line7 {
   margin-bottom: 2px;
 }
 .keyboard .key {
@@ -872,6 +873,7 @@ input[type='text'] {
   overflow: visible;
   float: left;
   cursor: pointer;
+  transition: 0.18s background-color;
 }
 .keyboard .key.mid {
   text-align: center;
@@ -934,6 +936,7 @@ input[type='text'] {
 }
 .keyboard .key:hover {
   background-color: #dae7fc;
+  transition: 0s background-color;
 }
 .keyboard .key.select:hover {
   background-color: #3871d4;

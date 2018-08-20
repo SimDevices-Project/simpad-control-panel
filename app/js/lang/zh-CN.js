@@ -196,6 +196,12 @@ var lang = {
   keyN_downArrow: '↓',
   keyN_rightArrow: '→',
   keyN_numPad_0: '小键盘0',
-  keyN_numPad_period: '小键盘.'
+  keyN_numPad_period: '小键盘.',
+    
+  keyN_mouseLeft:'鼠标左键',
+  keyN_mouseMiddle:'鼠标中键',
+  keyN_mouseRight:'鼠标右键',
+
+  firmwareVersion:'固件版本'
 }
 exports.lang = lang

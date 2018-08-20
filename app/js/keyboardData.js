@@ -1,4 +1,4 @@
-//数组下标0，按键类型，1取 & 运算 0互斥
+//数组下标0，按键类型，1取 & 运算 0互斥，2为鼠标
 //下标1为键值
 //下标2为语言文件key
 const data = {
@@ -110,6 +110,10 @@ const data = {
   '610': [0, 0x51, 'keyN_downArrow'],
   '611': [0, 0x4f, 'keyN_rightArrow'],
   '612': [0, 0x62, 'keyN_numPad_0'],
-  '613': [0, 0x63, 'keyN_numPad_period']
+  '613': [0, 0x63, 'keyN_numPad_period'],
+
+  '701': [2, 0b00000001, 'keyN_mouseLeft'],
+  '702': [2, 0b00000100, 'keyN_mouseMiddle'],
+  '703': [2, 0b00000010, 'keyN_mouseRight']
 }
 exports.data = data
