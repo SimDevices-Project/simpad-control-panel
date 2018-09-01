@@ -6,8 +6,11 @@ Desktop.ini
 # Node:
 package-lock.json
 /node_modules/
+/.vscode/
 
 # My configurations:
 *.bat
 /OutApp/
 /AsarFile/
+
+/.gitignore
