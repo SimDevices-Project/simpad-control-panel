@@ -182,9 +182,9 @@ langList.forEach(e => {
   setLangList.appendChild(newNode)
 })
 
-var HID = require('node-hid')
-var sel = document.getElementById('select')
-var os = require('os')
+//var HID = require('node-hid')
+//var sel = document.getElementById('select')
+//var os = require('os')
 
 var devices
 
@@ -743,8 +743,6 @@ const jumpPage = to => {
   }, 200)
 }
 
-var reselectDevice = document.getElementById('reselectDevice')
-
 function freshDevices(autoNext = true) {
   clearTimeout(timeOutSet)
   removeClassName(reselectDevice, 'easeInInfo')
@@ -796,15 +794,11 @@ function freshDevices(autoNext = true) {
   }
 }
 
-reselectDevice.addEventListener('click', e => {
-  freshDevices(false)
-})
-
 document.getElementById('refreshDev').addEventListener('click', e => {
   freshDevices(false)
 })
 
-document.getElementById('reselectDevice').addEventListener('click', e => {
+reselectDevice.addEventListener('click', e => {
   jumpPage(0)
   freshDevices(false)
 })
@@ -1040,3 +1034,13 @@ freshDevices(false) //刷新列表
 initSettingsFunction() //初始化设置和设置统计
 
 ipc.send('window0-ready')
+
+process.on('uncaughtException',e=>{
+  if(e.message === 'could not read from HID device'){
+    console.warn('Discon.')
+    jumpPage(0)
+    freshDevices(false)
+  }else{
+    throw e
+  }
+})

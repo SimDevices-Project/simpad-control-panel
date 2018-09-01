@@ -14,6 +14,9 @@ const { BrowserWindow } = electron
 // window 会被自动地关闭
 var guiWindows = null
 
+//Debug mode
+var debug = process.argv.indexOf('--debug')>=0
+
 // 当所有窗口被关闭了，退出。
 app.on('window-all-closed', function() {
   // 在 OS X 上，通常用户在明确地按下 Cmd + Q 之前
@@ -70,7 +73,7 @@ app.on('ready', function() {
 
   // 打开开发工具
 
-  guiWindows[0].openDevTools()
+  if(debug)guiWindows[0].openDevTools()
 
   // 当 window 被关闭，这个事件会被发出
   guiWindows[0].on('closed', function() {
