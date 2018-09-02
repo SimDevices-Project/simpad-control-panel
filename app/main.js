@@ -73,7 +73,7 @@ app.on('ready', function() {
 
   // 打开开发工具
 
-  if(debug)guiWindows[0].openDevTools()
+  if(debug)guiWindows[0].openDevTools({mode:'detach'})
 
   // 当 window 被关闭，这个事件会被发出
   guiWindows[0].on('closed', function() {
