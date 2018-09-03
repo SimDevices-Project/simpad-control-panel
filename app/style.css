@@ -944,10 +944,10 @@ input[type='text'] {
 }
 
 #sendAllNewDev,
-#sendAllNewDev {
+#lightTest {
   display: none;
 }
 #sendAllNewDev.show,
-#sendAllNewDev.show {
+#lightTest.show {
   display: inline-block;
 }
