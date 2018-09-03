@@ -943,9 +943,11 @@ input[type='text'] {
   color: #fff;
 }
 
+#sendAllNewDev,
 #sendAllNewDev {
   display: none;
 }
+#sendAllNewDev.show,
 #sendAllNewDev.show {
   display: inline-block;
 }

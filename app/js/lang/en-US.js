@@ -321,7 +321,8 @@ var lang = {
   keyN_mouseMiddle:'Mouse Middle',
   keyN_mouseRight:'Mouse Right',
 
-  firmwareVersion:'Firmware Version'
+  firmwareVersion:'Firmware Version',
+  lightTest:'Lights Test'
 }
 
 exports.lang = lang

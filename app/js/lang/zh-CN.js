@@ -202,6 +202,7 @@ var lang = {
   keyN_mouseMiddle:'鼠标中键',
   keyN_mouseRight:'鼠标右键',
 
-  firmwareVersion:'固件版本'
+  firmwareVersion:'固件版本',
+  lightTest:'灯光测试'
 }
 exports.lang = lang
