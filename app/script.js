@@ -757,7 +757,7 @@ function freshDevices(autoNext = true) {
           (boolvar |=
             e.vendorId === d.vendorId &&
             e.productId === d.productId &&
-            e.path.indexOf('&mi_'+d.path) > -1)
+            e.path.indexOf('&mi_'+d.endpoint) > -1)
       )
       return boolvar
     })
