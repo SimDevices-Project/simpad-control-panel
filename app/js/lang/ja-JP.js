@@ -53,8 +53,8 @@ var lang = {
 
   about: 'につき',
   checkUpdate: '検査更新',
-  aboutText: `<p>感谢您使用SimPad！</p>
-  <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用。</p>
+  aboutText: `<p>SimPadご使用ありがとうございます</p>
+  <p>SimPedは、C51の単片機に基づいて実現されたカスタムキーボードであり、SimpleとPadから名をつけて、簡単で実用的な設備を示している。</p>
   <p>SSimPadの開発過程で、以下通りの皆様からのご協力を頂いて、</p>
   <p>まことにありがとうございました！</p>
   <p></p>

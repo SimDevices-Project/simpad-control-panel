@@ -88,7 +88,9 @@ var lang = {
   noDevice: '等待选中',
   reselectDevice: '重新选择设备',
 
+  //设备列表
   simpadv2: 'SimPad 版本2',
+  sayoo2c:'小夜のosu装备 O2C',
 
   //ForKeyboard TextInfo
   keyN_null: '空',

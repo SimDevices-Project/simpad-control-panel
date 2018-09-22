@@ -98,6 +98,7 @@ var lang = {
 
   //DevicesNames
   simpadv2: 'SimPad v2',
+  sayoo2c:'Sayobot KeyPad O2C',
 
   //ForKeyboard
   key_esc: 'Esc',

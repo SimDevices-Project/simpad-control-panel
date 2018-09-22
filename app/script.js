@@ -750,12 +750,17 @@ function freshDevices(autoNext = true) {
   sel.innerHTML = ''
   var deviceCount = {}
   devices = HID.devices()
-    .filter(
-      e =>
-        e.vendorId === 0x8088 &&
-        deviceIdList.indexOf(e.productId) > -1 &&
-        e.path.indexOf('&mi_01') > -1
-    )
+    .filter(e => {
+      let boolvar = false
+      deviceList.forEach(
+        d =>
+          (boolvar |=
+            e.vendorId === d.vendorId &&
+            e.productId === d.productId &&
+            e.path.indexOf('&mi_'+d.path) > -1)
+      )
+      return boolvar
+    })
     .map(e => {
       var temp = document.createElement('option')
       if (!deviceCount[e.productId]) {
@@ -979,7 +984,7 @@ const templeData = [
 const lightTestData = [
   [0x06, 0xff, 0xff, 0xff, 0x04], //#00FF00 100%(4)
   [0x07, 0xff, 0xff, 0xff, 0x04], //#0000FF 100%(4)
-  [0x08, 0x02, 0x00, 0x00, 0x00], //Mode 0
+  [0x08, 0x02, 0x00, 0x00, 0x00] //Mode 0
 ]
 document.getElementById('sendNewDev').addEventListener('click', e => {
   var promiseObj
@@ -1052,7 +1057,6 @@ document.getElementById('lightTest').addEventListener('click', e => {
   }
 })
 
-
 Array.prototype.forEach.call(
   document.querySelectorAll("input[type='color']"),
   e => {
@@ -1067,12 +1071,12 @@ initSettingsFunction() //初始化设置和设置统计
 
 ipc.send('window0-ready')
 
-process.on('uncaughtException',e=>{
-  if(e.message === 'could not read from HID device'){
+process.on('uncaughtException', e => {
+  if (e.message === 'could not read from HID device') {
     console.warn('Discon.')
     jumpPage(0)
     freshDevices(false)
-  }else{
+  } else {
     throw e
   }
 })
