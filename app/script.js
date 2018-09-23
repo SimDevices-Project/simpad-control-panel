@@ -252,7 +252,10 @@ var settingChanged
 
 var getDataFunction
 
-const getData = data => getDataFunction(data)
+const getData = data => {
+  console.log(data)
+  getDataFunction(data)
+}
 
 var autoGetDataTimer
 
@@ -370,16 +373,26 @@ cpG2.addEventListener('change', event => {
 })
 
 const cpArr = [cpG1.getDOM(), cpG2.getDOM()]
+let upFlag = false
 cpG1.getDOM().addEventListener('mousedown', () => {
   cpG1.getDOM().style.display = 'block'
   cpG1.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+  upFlag = false
 })
 cpG2.getDOM().addEventListener('mousedown', () => {
   cpG2.getDOM().style.display = 'block'
   cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+  upFlag = false
 })
-window.addEventListener('mouseup', () => {
-  cpArr.forEach(e => e.removeAttribute('style'))
+//cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
+document.addEventListener('mouseup', () => {
+  setTimeout(() => (upFlag = true), 0)
+})
+document.addEventListener('click', () => {
+  if (upFlag) {
+    cpArr.forEach(e => e.removeAttribute('style'))
+  }
+  //document.removeEventListener('click', clickFun)
 })
 
 const updateKeyCodeText = () => {
@@ -757,7 +770,7 @@ function freshDevices(autoNext = true) {
           (boolvar |=
             e.vendorId === d.vendorId &&
             e.productId === d.productId &&
-            e.path.indexOf('&mi_'+d.endpoint) > -1)
+            e.path.indexOf('&mi_' + d.endpoint) > -1)
       )
       return boolvar
     })
