@@ -1,0 +1,210 @@
+:root {
+  --color-01: #ba5378;
+  --color-02: #d86f95;
+  --color-03: #dd6994;
+  --color-04: #e0799e;
+  --color-05: #f9e3eb;
+  --color-06: #cc5c85;
+  --color-07: #ca6982;
+  --color-08: #e1afc1;
+  --color-09: #c86086;
+  --color-10: #e17e97;
+  --color-11: #cc648a;
+}
+
+input:focus {
+  box-shadow: 0 0 3px var(--color-01);
+}
+html,
+body {
+  /* background-color: #ffffff; */
+  background: linear-gradient(-45deg, var(--color-01) 0%, var(--color-02) 100%);
+  overflow: hidden;
+}
+select,
+button {
+  color: var(--color-03);
+  background-color: #ffffff;
+  border: 1px solid var(--color-04);
+}
+button:hover {
+  background-color: var(--color-05);
+}
+button.blue {
+  background-color: var(--color-04);
+  color: #ffffff;
+}
+button.blue:hover {
+  background-color: var(--color-06);
+}
+.dragAble {
+  color: #ffffff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.whiteBG {
+  background-color: #ffffff;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+}
+.whiteBannerBG {
+  background-color: #ffffff;
+}
+.whiteBannerLiner {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+.info {
+  color: var(--color-03);
+}
+#selBtn {
+  margin: 0 auto;
+}
+.deviceInfo {
+  color: #c0c0c0;
+}
+.buttomText {
+  color: #c0c0c0;
+}
+.bigBtnTextBox {
+  color: var(--color-03);
+}
+#changeKeyCode {
+  background-image: url('../imgs/colorful/pink/set0.png');
+}
+#changeKeyCode:hover {
+  background-image: url('../imgs/colorful/pink/set0_1.png');
+}
+#changeLights {
+  background-image: url('../imgs/colorful/pink/set1.png');
+}
+#changeLights:hover {
+  background-image: url('../imgs/colorful/pink/set1_1.png');
+}
+#otherSettings {
+  background-image: url('../imgs/colorful/pink/set2.png');
+}
+#otherSettings:hover {
+  background-image: url('../imgs/colorful/pink/set2_1.png');
+}
+.progressBtn {
+  background-color: var(--color-07);
+  border: var(--color-08) 2px solid;
+  color: var(--color-08);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.progressBtn.compleBtn {
+  border: #ffffff 2px solid;
+  color: #ffffff;
+}
+.prgressLine {
+  background-color: var(--color-08);
+}
+.prgressLine.compleLine {
+  background-color: #ffffff;
+}
+.progressText {
+  color: var(--color-08);
+  position: fixed;
+}
+.progressText.compleText {
+  color: #ffffff;
+}
+#page3 {
+  color: #202020;
+}
+.leftPannel {
+  color: #707070;
+}
+#useSettings {
+  color: #303030;
+}
+.activeTitle {
+  color: var(--color-09);
+}
+.rightPannel h4 {
+  color: #000;
+}
+.rightPannel p,
+.rightPannel div.p {
+  color: #808080;
+}
+.rightPannel button {
+  border: 1px solid #909090;
+  color: #808080;
+}
+.rightPannel .titleP {
+  color: #303030;
+}
+input[type='radio'] + label::before {
+  border: 1px solid #909090;
+}
+input[type='radio']:checked + label::before {
+  background-color: var(--color-04);
+}
+input[type='number'],
+input[type='text'] {
+  color: #808080;
+  border: 1px solid #909090;
+}
+#theBtnDefInner {
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s;
+  background-color: #ffffff;
+}
+#deviceKeyMapTitle {
+  color: #404040;
+}
+#theLightDefInner {
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s;
+  background-color: #ffffff;
+}
+#deviceLightTitle {
+  color: #404040;
+}
+/*
+对勾动画基于以下修改
+艺灵设计 http://www.yilingsj.com/d/file/css3/2017-04-07/css3-animation-duigou.html
+*/
+.m-box {
+  /*background: #404040;*/
+  background: var(--color-10);
+}
+.page4Icon {
+  color: var(--color-10);
+}
+.m-duigou:before,
+.m-duigou:after {
+  background: #ffffff;
+}
+.selecter {
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+}
+/*Color-Picker*/
+.color-picker {
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+}
+/*键盘部分css*/
+.keyboard {
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  background-color: #ffffff;
+  color: #000;
+}
+.keyboard .key {
+  border: 1px solid #909090;
+  background-color: #ffffff;
+}
+.keyboard .key.select {
+  background-color: var(--color-04);
+  color: #ffffff;
+}
+.keyboard .key:hover {
+  background-color: var(--color-05);
+  transition: 0s background-color;
+}
+.keyboard .key.select:hover {
+  background-color: var(--color-11);
+  color: #ffffff;
+}

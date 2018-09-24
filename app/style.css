@@ -279,25 +279,25 @@ h1 {
   cursor: pointer;
 }
 #changeKeyCode {
-  background-image: url('./imgs/set0.png');
+  background-image: url('./imgs/colorful/blue/set0.png');
   left: 132px;
 }
 #changeKeyCode:hover {
-  background-image: url('./imgs/set0_1.png');
+  background-image: url('./imgs/colorful/blue/set0_1.png');
 }
 #changeLights {
-  background-image: url('./imgs/set1.png');
+  background-image: url('./imgs/colorful/blue/set1.png');
   left: 384px;
 }
 #changeLights:hover {
-  background-image: url('./imgs/set1_1.png');
+  background-image: url('./imgs/colorful/blue/set1_1.png');
 }
 #otherSettings {
-  background-image: url('./imgs/set2.png');
+  background-image: url('./imgs/colorful/blue/set2.png');
   left: 636px;
 }
 #otherSettings:hover {
-  background-image: url('./imgs/set2_1.png');
+  background-image: url('./imgs/colorful/blue/set2_1.png');
 }
 
 .progressBtn {
