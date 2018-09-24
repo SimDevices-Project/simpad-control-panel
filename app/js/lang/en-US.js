@@ -62,6 +62,7 @@ var lang = {
 
   about: 'About SimPad',
   checkUpdate: 'Check Update',
+  jumpToBootMode: 'Enter Boot Mode',
   aboutText: `<p>Thank you for using SimPad!</p>
   <p>SimPad is a custom keyboard based on C51 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
   <p> Thank you very much.</p>
@@ -98,7 +99,7 @@ var lang = {
 
   //DevicesNames
   simpadv2: 'SimPad v2',
-  sayoo2c:'Sayobot KeyPad O2C',
+  sayoo2c: 'Sayobot KeyPad O2C',
 
   //ForKeyboard
   key_esc: 'Esc',
@@ -206,9 +207,9 @@ var lang = {
   key_numPad_0: '0 Ins',
   key_numPad_period: 'Del .',
 
-  key_mouseLeft:'MouseLeft',
-  key_mouseMiddle:'MouseMid',
-  key_mouseRight:'MouseRight',
+  key_mouseLeft: 'MouseLeft',
+  key_mouseMiddle: 'MouseMid',
+  key_mouseRight: 'MouseRight',
   //ForKeyboard TextInfo
   keyN_null: 'Null',
 
@@ -317,13 +318,12 @@ var lang = {
   keyN_numPad_0: 'NumPad 0',
   keyN_numPad_period: 'NumPad .',
 
-  
-  keyN_mouseLeft:'Mouse Left',
-  keyN_mouseMiddle:'Mouse Middle',
-  keyN_mouseRight:'Mouse Right',
+  keyN_mouseLeft: 'Mouse Left',
+  keyN_mouseMiddle: 'Mouse Middle',
+  keyN_mouseRight: 'Mouse Right',
 
-  firmwareVersion:'Firmware Version',
-  lightTest:'Lights Test'
+  firmwareVersion: 'Firmware Version',
+  lightTest: 'Lights Test'
 }
 
 exports.lang = lang

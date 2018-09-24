@@ -293,6 +293,12 @@ const getVersion = (dev = device) =>
               'firmwareVersionNum'
             ).innerHTML += d.toString().padStart(2, '0'))
         )
+      let versionGet = parseInt(
+        document.getElementById('firmwareVersionNum').innerHTML
+      )
+      if (!versionGet > 20180920) {
+        document.getElementById('jumpToBootMode').style.display = 'none'
+      }
       clearTimeout(autoGetDataTimer)
       r()
     }
@@ -873,6 +879,14 @@ document.getElementById('sendBtn').addEventListener('click', e => {
     }
     device.write(buffer)
   }
+})
+
+document.getElementById('jumpToBootMode').addEventListener('click', e => {
+  sendData([0x00, 0x0B, 0x00, 0x00, 0x00]).then(() => {
+    page4Init()
+    jumpPage(3)
+    setTimeout(page4Fin, 300)
+  })
 })
 
 document.getElementById('superSpeedOn').addEventListener('click', e => {

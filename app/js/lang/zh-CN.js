@@ -59,6 +59,7 @@ var lang = {
 
   about: '关于',
   checkUpdate: '检查更新',
+  jumpToBootMode: '进入升级模式',
   aboutText: `<p>感谢您使用SimPad！</p>
   <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
   <p>特此感谢！</p>
@@ -90,7 +91,11 @@ var lang = {
 
   //设备列表
   simpadv2: 'SimPad 版本2',
-  sayoo2c:'小夜のosu装备 O2C',
+  sayoo2c: '小夜のosu装备 O2C',
+
+  key_mouseLeft: '鼠标左键',
+  key_mouseMiddle: '鼠标中键',
+  key_mouseRight: '鼠标右键',
 
   //ForKeyboard TextInfo
   keyN_null: '空',
@@ -199,12 +204,12 @@ var lang = {
   keyN_rightArrow: '→',
   keyN_numPad_0: '小键盘0',
   keyN_numPad_period: '小键盘.',
-    
-  keyN_mouseLeft:'鼠标左键',
-  keyN_mouseMiddle:'鼠标中键',
-  keyN_mouseRight:'鼠标右键',
 
-  firmwareVersion:'固件版本',
-  lightTest:'灯光测试'
+  keyN_mouseLeft: '鼠标左键',
+  keyN_mouseMiddle: '鼠标中键',
+  keyN_mouseRight: '鼠标右键',
+
+  firmwareVersion: '固件版本',
+  lightTest: '灯光测试'
 }
 exports.lang = lang
