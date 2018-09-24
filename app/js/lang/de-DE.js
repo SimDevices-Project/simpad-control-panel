@@ -203,7 +203,7 @@ var lang = {
   key_numPad_period: 'Del .',
 
   //ForKeyboard TextInfo
-  keyN_esc: '^',
+  keyN_esc: 'Esc',
   keyN_f1: 'F1',
   keyN_f2: 'F2',
   keyN_f3: 'F3',
@@ -219,7 +219,7 @@ var lang = {
   keyN_prtSc: 'Print Screen',
   keyN_scrLk: 'Sroll Lock',
   keyN_pauseBreak: 'Pause Break',
-  keyN_waveLine: '~',
+  keyN_waveLine: '^',
   keyN_1: '1',
   keyN_2: '2',
   keyN_3: '3',
