@@ -15,7 +15,7 @@ const { BrowserWindow } = electron
 var guiWindows = null
 
 //Debug mode
-var debug = process.argv.indexOf('--debug')>=0
+var debug = process.argv.indexOf('--debug') >= 0
 
 // 当所有窗口被关闭了，退出。
 app.on('window-all-closed', function() {
@@ -46,6 +46,7 @@ ipc.on('window-close', function(e, index) {
 ipc.on('window0-ready', function(e) {
   guiWindows[0].webContents.send('winId', 0)
   guiWindows[0].webContents.send('lang', app.getLocale())
+  guiWindows[0].webContents.send('debug', debug ? 1 : 0)
   guiWindows[0].show()
 })
 
@@ -73,7 +74,7 @@ app.on('ready', function() {
 
   // 打开开发工具
 
-  if(debug)guiWindows[0].openDevTools({mode:'detach'})
+  if (debug) guiWindows[0].openDevTools({ mode: 'detach' })
 
   // 当 window 被关闭，这个事件会被发出
   guiWindows[0].on('closed', function() {

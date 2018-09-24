@@ -132,6 +132,11 @@ if (ipc) {
     //Apply
     resetLang()
   })
+  ipc.on('debug', (e, debug) => {
+    if (debug === 0) {
+      document.getElementById('sendDataPackGroup').style.display = 'none'
+    }
+  })
 }
 
 //应用当前语言
