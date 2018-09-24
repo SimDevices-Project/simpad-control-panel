@@ -875,6 +875,7 @@ input[type='text'] {
   float: left;
   cursor: pointer;
   transition: 0.18s background-color;
+  background-color: #fff;
 }
 .keyboard .key.mid {
   text-align: center;
