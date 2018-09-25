@@ -7,6 +7,7 @@ SimPad is a custom keyboard based on C51 realize, gets its name from the Simple 
 ## Devices Support
 
 - SimPad v2
+- Sayo's Keypad O2C
 
 ## Features
 
