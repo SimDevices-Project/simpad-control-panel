@@ -298,6 +298,8 @@ const getVersion = (dev = device) =>
       )
       if (!versionGet > 20180920) {
         document.getElementById('jumpToBootMode').style.display = 'none'
+      } else {
+        document.getElementById('jumpToBootMode').removeAttribute('style')
       }
       clearTimeout(autoGetDataTimer)
       r()
