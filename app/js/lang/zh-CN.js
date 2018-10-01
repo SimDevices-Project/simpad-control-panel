@@ -31,6 +31,8 @@ var lang = {
   keepOn: '一直常亮',
   keepOff: '关闭',
   keyPress: '按下时亮起',
+  rainbowColor: '彩虹',
+
   colorAndBrightness: '颜色', //与亮度
   setBrightness: '设置亮度',
 

@@ -4,6 +4,7 @@
   "main": "app/main.js",
   "package": "electron-packager ./app SimPad_Settings --all --out ./OutApp --version 0.9.0 --overwrite ",
   "dependencies": {
+    "h5-color-picker": "^1.0.1",
     "node-hid": "^0.7.2"
   },
   "devDependencies": {

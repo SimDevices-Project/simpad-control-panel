@@ -3,7 +3,7 @@ var sel = document.getElementById('select')
 var os = require('os')
 var app = require('electron').app
 //取色器
-const ColorPicker = require(`./lib/color-picker.js`).ColorPicker
+const ColorPicker = require(`h5-color-picker`).ColorPicker
 //按键键值关系表
 const KeyData = require(`./js/keyboardData`).data
 
@@ -294,9 +294,10 @@ const getVersion = (dev = device) =>
             ).innerHTML += d.toString().padStart(2, '0'))
         )
       let versionGet = parseInt(
-        document.getElementById('firmwareVersionNum').innerHTML
+        document.getElementById('firmwareVersionNum').innerHTML,
+        10
       )
-      if (!versionGet > 20180920) {
+      if (versionGet <= 20180926) {
         document.getElementById('jumpToBootMode').style.display = 'none'
       } else {
         document.getElementById('jumpToBootMode').removeAttribute('style')

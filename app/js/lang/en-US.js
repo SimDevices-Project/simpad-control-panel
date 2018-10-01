@@ -33,6 +33,8 @@ var lang = {
   keepOn: 'Always on',
   keepOff: 'Off',
   keyPress: 'Key Press',
+  rainbowColor: 'Rainbow',
+
   colorAndBrightness: 'Color', // & Brightness
   setBrightness: 'Set brightness',
 
@@ -323,7 +325,9 @@ var lang = {
   keyN_mouseRight: 'Mouse Right',
 
   firmwareVersion: 'Firmware Version',
-  lightTest: 'Lights Test'
+  lightTest: 'Lights Test',
+
+  egg_1:'Good morning, and in case I don\'t see ya, good afternoon, good evening, and good night!'
 }
 
 exports.lang = lang
