@@ -885,6 +885,11 @@ document.getElementById('sendBtn').addEventListener('click', e => {
 })
 
 document.getElementById('jumpToBootMode').addEventListener('click', e => {
+  sendData([0x00, 0x0b, 0x00, 0x00, 0x00]).then(() => {
+    page4Init()
+    jumpPage(3)
+    setTimeout(page4Fin, 300)
+  })
   const execFile = require('child_process').execFile
   const cmd = execFile(__dirname + '\\DRIVER\\SETUP.EXE', ['/S'], {
     // detached: true,
@@ -892,12 +897,6 @@ document.getElementById('jumpToBootMode').addEventListener('click', e => {
     //shell: true,
     cwd: __dirname + '\\DRIVER',
     windowsHide: false
-  })
-  window.cmd = cmd
-  sendData([0x00, 0x0b, 0x00, 0x00, 0x00]).then(() => {
-    page4Init()
-    jumpPage(3)
-    setTimeout(page4Fin, 300)
   })
 })
 
