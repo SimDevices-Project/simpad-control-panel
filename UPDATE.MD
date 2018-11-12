@@ -1,3 +1,6 @@
+### New Functions
+#### Lights Settings
+- For ROMs after 20181001, added rainbow loghts mode
 ### Improvements
 #### UI
 - Send data packs will only show when the app run with "--dubug"
