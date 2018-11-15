@@ -326,6 +326,7 @@ var lang = {
 
   firmwareVersion: 'Firmware Version',
   lightTest: 'Lights Test',
+  checkUpdateFailed: 'Check Update Failed',
 
   egg_1:'Good morning, and in case I don\'t see ya, good afternoon, good evening, and good night!'
 }

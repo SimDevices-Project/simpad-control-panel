@@ -788,13 +788,13 @@ function freshDevices(autoNext = true) {
       )
       return boolvar
     })
-    .map(e => {
+    .map((value, index) => {
       var temp = document.createElement('option')
-      if (!deviceCount[e.productId]) {
-        deviceCount[e.productId] = 0
+      if (!deviceCount[value.productId]) {
+        deviceCount[value.productId] = 0
       }
-      deviceCount[e.productId]++
-      deviceInfo = deviceList[deviceIdList.indexOf(e.productId)]
+      deviceCount[value.productId]++
+      deviceInfo = deviceList[deviceIdList.indexOf(value.productId)]
       document.getElementById(
         'theBtnDefInner'
       ).style.background = `url(./imgs/deviceKeyInfo/${
@@ -812,10 +812,13 @@ function freshDevices(autoNext = true) {
         deviceInfo.description
       )
       temp.innerText =
-        getLang(deviceInfo.description) + ' - ' + deviceCount[e.productId]
-      temp.value = e.path
+        getLang(deviceInfo.description) + ' - ' + deviceCount[value.productId]
+      temp.value = JSON.stringify({
+        path: value.path,
+        index: deviceIdList.indexOf(value.productId)
+      })
       sel.appendChild(temp)
-      return e
+      return value
     })
 
   if (autoNext && devices.length === 1) {
@@ -851,11 +854,24 @@ document.getElementById('selBtn').addEventListener('click', e => {
   if (devices && devices.length > 0) {
     if (device) device.close()
     clearTimeout(timeOutSet)
-    device = new HID.HID(sel.value)
+    const selectObject = JSON.parse(sel.value)
+    deviceInfo = deviceList[selectObject.index]
+    device = new HID.HID(selectObject.path)
     device.on('data', data => getData(data))
     getAllSettings().then(() => initSettings())
     nowDevice.innerText = sel.options[sel.selectedIndex].text
     addClassName(reselectDevice, 'easeInInfo')
+
+    // 临时逻辑，日后删除
+    if (deviceInfo.description === 'sayoo2c') {
+      document.getElementById('lightsSettings').style.display = 'none'
+      document.getElementById('delaySettings').style.display = 'none'
+    } else {
+      document.getElementById('lightsSettings').removeAttribute('style')
+      document.getElementById('delaySettings').removeAttribute('style')
+    }
+    // TODO DELETE
+
     jumpPage(1)
   }
   if (devices && devices.length > 1) {
@@ -1097,6 +1113,50 @@ document.getElementById('lightTest').addEventListener('click', e => {
         //countChanges()
       })
     )
+  }
+})
+
+let checkROMUpdateBoolean = false
+document.getElementById('checkROMUpdate').addEventListener('click', e => {
+  if (!checkROMUpdateBoolean) {
+    checkROMUpdateBoolean = true
+    document.getElementById('checkROMUpdate').innerText = getLang('pleaseWait')
+    const xhr = new XMLHttpRequest()
+    xhr.open(
+      'GET',
+      encodeURI(
+        'http://182.254.136.143:8117/check-roms/' +
+          deviceInfo.description +
+          '.json'
+      )
+    )
+    xhr.addEventListener('loadend', e => {
+      let succ = false
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200 || xhr.status === 304) {
+          if (xhr.responseText) {
+            succ = true
+            // DO something
+            document.getElementById('checkROMUpdate').innerText = getLang(
+              document.getElementById('checkROMUpdate').dataset.langKey
+            )
+            const obj = JSON.parse(xhr.responseText)
+            alert(
+              `${getLang(deviceInfo.description)}\nversion ${
+                obj.version
+              }\nfron ${obj.url}\nwith ${obj.description}`
+            )
+          }
+        }
+      }
+      if (!succ) {
+        document.getElementById('checkROMUpdate').innerText = getLang(
+          'checkUpdateFailed'
+        )
+      }
+      setTimeout(() => (checkROMUpdateBoolean = false), 5000)
+    })
+    xhr.send()
   }
 })
 

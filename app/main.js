@@ -64,7 +64,8 @@ app.on('ready', function() {
     //alwaysOnTop: true,
     resizable: false,
     webPreferences: {
-      minimumFontSize: 8
+      minimumFontSize: 8,
+      webSecurity: false
     }
   })
   guiWindows[0].hide()
