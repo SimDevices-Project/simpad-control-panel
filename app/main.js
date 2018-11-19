@@ -16,6 +16,7 @@ var guiWindows = null
 
 //Debug mode
 var debug = process.argv.indexOf('--debug') >= 0
+var spThx = process.argv.indexOf('--thank_you') >= 0
 
 // 当所有窗口被关闭了，退出。
 app.on('window-all-closed', function() {
@@ -59,7 +60,7 @@ app.on('ready', function() {
   guiWindows[0] = new BrowserWindow({
     width: 960,
     height: 540,
-    frame: false,
+    frame: spThx,
     //transparent: true,
     //alwaysOnTop: true,
     resizable: false,
@@ -68,14 +69,22 @@ app.on('ready', function() {
       webSecurity: false
     }
   })
+  electron.Menu.setApplicationMenu(null)
   guiWindows[0].hide()
   // 加载应用的 index.html
-  guiWindows[0].loadURL('file://' + __dirname + '/index.html')
+  if (!spThx) {
+    guiWindows[0].loadURL('file://' + __dirname + '/index.html')
+  } else {
+    guiWindows[0].loadURL('file://' + __dirname + '/spThx.html')
+    guiWindows[0].show()
+  }
   //guiWindows[0].loadURL('file://' + __dirname + '/keyboard.html')
 
   // 打开开发工具
 
-  if (debug) guiWindows[0].openDevTools({ mode: 'detach' })
+  if (debug) {
+    guiWindows[0].openDevTools({ mode: 'detach' })
+  }
 
   // 当 window 被关闭，这个事件会被发出
   guiWindows[0].on('closed', function() {
