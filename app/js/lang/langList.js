@@ -4,7 +4,7 @@ var langList = [
   { description: 'zh-TW', title: '中文繁體（臺灣）' },
   { description: 'en-US', title: 'English' },
   { description: 'ja-JP', title: '日本語' },
-  { description: 'de-DE', title: 'Deutsch' },
- //{ description: 'ru-RU', title: 'русский язык' }
+  { description: 'de-DE', title: 'Deutsch (Deutschland)' },
+  // { description: 'ru-RU', title: 'русский язык' }
 ]
 exports.langList = langList

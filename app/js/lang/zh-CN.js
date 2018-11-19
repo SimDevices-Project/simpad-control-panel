@@ -1,5 +1,5 @@
 var lang = {
-  title: 'SimPad Control Panel',
+  title: 'SimPad 配置工具',
   selectDevice: '选择设备',
   selectOperation: '选定操作',
   detailedSettings: '具体配置',

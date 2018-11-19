@@ -31,6 +31,8 @@
   keepOn: '一直常亮',
   keepOff: '關閉',
   keyPress:'按下亮起',
+  rainbowColor: '彩虹',
+
   colorAndBrightness: '顏色', //與亮度
   setBrightness: '設置亮度',
 

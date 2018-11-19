@@ -30,7 +30,9 @@ var lang = {
   easeIn: '按下立即熄灭，然后逐渐亮起',
   keepOn: '一直常亮',
   keepOff: '关闭',
-  keyPress:'按下时亮起',
+  keyPress: '按下时亮起',
+  rainbowColor: '彩虹',
+
   colorAndBrightness: '颜色', //与亮度
   setBrightness: '设置亮度',
 
@@ -46,11 +48,12 @@ var lang = {
   sendDataPackInfo: `如果您熟悉SimPad数据包格式，您亦可以直接向设备发送数据包，
   <br>您输入的文本将按照空格分开解析为16进制数据`,
   sendDataPackBtn: '发送',
-  superSpeedMode:'极速模式',
-  superSpeedModeInfo:'您可以使用极速模式来彻底关闭所有的灯光效果来获得最急速的体验，重启设备生效',
-  superSpeedModeeBtnOn:'开启',
-  superSpeedModeeBtnOff:'关闭',
-  
+  superSpeedMode: '极速模式',
+  superSpeedModeInfo:
+    '您可以使用极速模式来彻底关闭所有的灯光效果来获得最急速的体验，重启设备生效',
+  superSpeedModeeBtnOn: '开启',
+  superSpeedModeeBtnOff: '关闭',
+
   resetDevice: '重置设备',
   resetDeviceInfo: '您可以将您的设备重置，将所有设置恢复为默认',
   resetDeviceBtn: '重置',
@@ -88,7 +91,6 @@ var lang = {
 
   simpadv2: 'SimPad 版本2',
 
-  
   //ForKeyboard TextInfo
   keyN_null: '空',
 
