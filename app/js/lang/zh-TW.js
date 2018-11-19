@@ -78,7 +78,7 @@
     <p class="canBeSeleted">訪問鍵盤發佈頁面</p>
   </a>
   <a href="https://www.bysb.net">
-    <p class="canBeSeleted">訪問手柄君的小閣博客</p>
+    <p class="canBeSeleted">訪問手柄君的小閣部落格</p>
   </a>
   <p></p>
   <p>By Handle</p>
