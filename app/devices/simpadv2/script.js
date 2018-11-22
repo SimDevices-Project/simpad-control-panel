@@ -405,6 +405,9 @@ const templeData = [
   [0x09, 0x00, 0x00, 0x00, 0x40], //0x40 => 64 (MAX 16^6-1)
   [0x0a, 0x00, 0x00, 0x00, 0x40] //0x00 极速模式处于关闭
 ]
+templeData.forEach(arr=>{
+  arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
+})
 // 灯光测试数据
 const lightTestData = [
   [0x06, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
@@ -427,7 +430,7 @@ const useSettings = () => {
             settingChanged[i][1],
             settingChanged[i][2],
             settingChanged[i][3],
-            0x00,
+            settingChanged[i][0] ^ settingChanged[i][1] ^ settingChanged[i][2] ^ settingChanged[i][3],
             0x00,
             0x00
           ])
