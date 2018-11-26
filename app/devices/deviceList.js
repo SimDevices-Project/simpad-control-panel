@@ -10,6 +10,12 @@ var deviceList = [
     productId: 0x0003,
     description: 'sayoo2c',
     endpoint: '01'
+  },
+  {
+    vendorId: 0x8088,
+    productId: 0x0002,
+    description: 'simpadv2ex',
+    endpoint: '01'
   }
 ]
 exports.deviceList = deviceList
