@@ -162,7 +162,7 @@ const updateKeyCodeText = () => {
   ]
   keyInfoArr.forEach((nodeElement, indexTemp) => {
     let index = indexTemp
-    if(index === 5){
+    if (index === 5) {
       index = 10
     }
     nodeElement.innerHTML = ''
@@ -353,7 +353,7 @@ const initSettingsFunction = () => {
   }
   keyInfoArr.forEach((e, indexTmp) => {
     let index = indexTmp
-    if(index === 5){
+    if (index === 5) {
       index = 10
     }
     e.addEventListener('click', event => {
@@ -416,7 +416,7 @@ const templeData = [
 
   [0x0b, 0x00, 0x28, 0x00, 0x00] //0x00 Enter
 ]
-templeData.forEach(arr=>{
+templeData.forEach(arr => {
   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
 })
 // 灯光测试数据
@@ -441,7 +441,10 @@ const useSettings = () => {
             settingChanged[i][1],
             settingChanged[i][2],
             settingChanged[i][3],
-            settingChanged[i][0] ^ settingChanged[i][1] ^ settingChanged[i][2] ^ settingChanged[i][3],
+            settingChanged[i][0] ^
+              settingChanged[i][1] ^
+              settingChanged[i][2] ^
+              settingChanged[i][3],
             0x00,
             0x00
           ])
@@ -539,7 +542,7 @@ const funs = (documentElement, deviceObj, funs) => {
 
   // 跳转到 Boot 模式
   document.getElementById('jumpToBootMode').addEventListener('click', e => {
-    sendData([0x00, 0x0b, 0x00, 0x00, 0x00]).then(() => {
+    sendData([0x00, 0x0b, 0x00, 0x00, 0x00, 0x0b]).then(() => {
       page4Init()
       jumpPage(3)
       setTimeout(page4Fin, 300)

@@ -5,7 +5,7 @@ var fs = require('fs')
 var app = require('electron').app
 const path = require('path')
 
-const APP_VERSION = 'v0.131'
+const APP_VERSION = 'v0.133'
 //取色器
 const ColorPicker = require(`h5-color-picker`).ColorPicker
 //按键键值关系表

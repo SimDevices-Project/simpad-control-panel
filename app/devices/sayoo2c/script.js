@@ -535,14 +535,14 @@ const funs = (documentElement, deviceObj, funs) => {
       jumpPage(3)
       setTimeout(page4Fin, 300)
     })
-    const execFile = require('child_process').execFile
-    const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
-      // detached: true,
-      // stdio: 'ignore',
-      //shell: true,
-      cwd: __dirname + '\\DRIVER',
-      windowsHide: false
-    })
+    // const execFile = require('child_process').execFile
+    // const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
+    //   // detached: true,
+    //   // stdio: 'ignore',
+    //   //shell: true,
+    //   cwd: __dirname + '\\DRIVER',
+    //   windowsHide: false
+    // })
   })
 
   // 重置一台机器按钮
