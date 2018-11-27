@@ -668,7 +668,7 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   document.getElementById('superSpeedOn').addEventListener('click', e => {
-    sendData([0x0a, 0x01, 0x00, 0x00, 0x00]).then(() => {
+    sendData([0x0a, 0x01, 0x00, 0x00, 0x00,0x01]).then(() => {
       page4Init()
       jumpPage(3)
       setTimeout(page4Fin, 300)
@@ -676,7 +676,7 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   document.getElementById('superSpeedOff').addEventListener('click', e => {
-    sendData([0x0a, 0x00, 0x00, 0x00, 0x00]).then(() => {
+    sendData([0x0a, 0x00, 0x00, 0x00, 0x00,0x00]).then(() => {
       page4Init()
       jumpPage(3)
       setTimeout(page4Fin, 300)
