@@ -142,11 +142,11 @@ if (ipc) {
     //Apply
     resetLang()
   })
-  ipc.on('debug', (e, debug) => {
-    if (debug === 0) {
-      document.getElementById('sendDataPackGroup').style.display = 'none'
-    }
-  })
+  // ipc.on('debug', (e, debug) => {
+  //   if (debug === 0) {
+  //     document.getElementById('sendDataPackGroup').style.display = 'none'
+  //   }
+  // })
 }
 
 //应用当前语言
@@ -811,13 +811,23 @@ function freshDevices(autoNext = true) {
   devices = HID.devices()
     .filter(e => {
       let boolvar = false
-      deviceList.forEach(
-        d =>
-          (boolvar |=
-            e.vendorId === d.vendorId &&
-            e.productId === d.productId &&
-            e.path.indexOf('&mi_' + d.endpoint) > -1)
-      )
+      if(os.platform()==="darwin"){
+        deviceList.forEach(
+          d =>
+            (boolvar |=
+              e.vendorId === d.vendorId &&
+              e.productId === d.productId &&
+              e.path.indexOf('IOUSBHostInterface@' + d.endpoint) > -1)
+        )
+      }else{
+        deviceList.forEach(
+          d =>
+            (boolvar |=
+              e.vendorId === d.vendorId &&
+              e.productId === d.productId &&
+              e.path.indexOf('&mi_' + d.endpoint) > -1)
+        )
+      }
       return boolvar
     })
     .map((value, index) => {
