@@ -14,3 +14,5 @@ package-lock.json
 /AsarFile/
 
 /.gitignore
+/.idea
+/dist

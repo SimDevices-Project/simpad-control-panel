@@ -10,12 +10,16 @@
   "devDependencies": {
     "bindings": "^1.3.0",
     "electron": "^2.0.1",
-    "electron-packager": "^12.0.2",
+    "electron-builder": "^20.38.0",
     "electron-rebuild": "^1.7.3",
     "fs-extra": "^6.0.1"
   },
   "scripts": {
     "postinstall": "electron-rebuild --force -v 2.0.0 --force -m . -w node-hid",
-    "start": "electron ."
+    "start": "electron .",
+    "build:win32": "electron-builder build --win --ia32",
+    "build:win64": "electron-builder build --win --x64",
+    "build:linux": "electron-builder build --linux",
+    "build:macos": "electron-builder build --macos"
   }
 }
