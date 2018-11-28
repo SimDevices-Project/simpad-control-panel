@@ -811,15 +811,15 @@ function freshDevices(autoNext = true) {
   devices = HID.devices()
     .filter(e => {
       let boolvar = false
-      if(os.platform()==="darwin"){
+      if (os.platform() === 'darwin') {
         deviceList.forEach(
           d =>
             (boolvar |=
               e.vendorId === d.vendorId &&
               e.productId === d.productId &&
-              e.path.indexOf('IOUSBHostInterface@' + d.endpoint) > -1)
+              e.path.indexOf('IOUSBHostInterface@' + parseInt(d.endpoint)) > -1)
         )
-      }else{
+      } else {
         deviceList.forEach(
           d =>
             (boolvar |=
