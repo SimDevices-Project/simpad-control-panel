@@ -17,9 +17,9 @@
   "scripts": {
     "postinstall": "electron-rebuild --force -v 2.0.0 --force -m . -w node-hid",
     "start": "electron .",
-    "build:win32": "electron-builder build --win --ia32",
-    "build:win64": "electron-builder build --win --x64",
-    "build:linux": "electron-builder build --linux",
-    "build:macos": "electron-builder build --macos"
+    "build:win32": "electron-builder build --win --ia32 --version=false",
+    "build:win64": "electron-builder build --win --x64 --version=false",
+    "build:linux": "electron-builder build --linux --version=false",
+    "build:macos": "electron-builder build --macos --version=false"
   }
 }
