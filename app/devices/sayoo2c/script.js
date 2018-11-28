@@ -521,7 +521,7 @@ const funs = (documentElement, deviceObj, funs) => {
           buffer[no] = parseInt(str, 16)
           return no + 1
         }, 0)
-      if (os.platform() === 'win32') {
+      if (os.platform() === 'win32' || os.platform() === 'darwin') {
         buffer.unshift(0) // prepend throwaway byte
       }
       device.write(buffer)

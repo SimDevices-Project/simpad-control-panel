@@ -405,7 +405,7 @@ const templeData = [
   [0x09, 0x00, 0x00, 0x00, 0x60], //0x60 => 96 (MAX 16^6-1)
   [0x0a, 0x00, 0x00, 0x00, 0x40] //0x00 极速模式处于关闭
 ]
-templeData.forEach(arr=>{
+templeData.forEach(arr => {
   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
 })
 // 灯光测试数据
@@ -430,7 +430,10 @@ const useSettings = () => {
             settingChanged[i][1],
             settingChanged[i][2],
             settingChanged[i][3],
-            settingChanged[i][0] ^ settingChanged[i][1] ^ settingChanged[i][2] ^ settingChanged[i][3],
+            settingChanged[i][0] ^
+              settingChanged[i][1] ^
+              settingChanged[i][2] ^
+              settingChanged[i][3],
             0x00,
             0x00
           ])
@@ -519,7 +522,7 @@ const funs = (documentElement, deviceObj, funs) => {
           buffer[no] = parseInt(str, 16)
           return no + 1
         }, 0)
-      if (os.platform() === 'win32') {
+      if (os.platform() === 'win32' || os.platform() === 'darwin') {
         buffer.unshift(0) // prepend throwaway byte
       }
       device.write(buffer)
@@ -668,7 +671,7 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   document.getElementById('superSpeedOn').addEventListener('click', e => {
-    sendData([0x0a, 0x01, 0x00, 0x00, 0x00,0x01]).then(() => {
+    sendData([0x0a, 0x01, 0x00, 0x00, 0x00, 0x01]).then(() => {
       page4Init()
       jumpPage(3)
       setTimeout(page4Fin, 300)
@@ -676,7 +679,7 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   document.getElementById('superSpeedOff').addEventListener('click', e => {
-    sendData([0x0a, 0x00, 0x00, 0x00, 0x00,0x00]).then(() => {
+    sendData([0x0a, 0x00, 0x00, 0x00, 0x00, 0x00]).then(() => {
       page4Init()
       jumpPage(3)
       setTimeout(page4Fin, 300)
