@@ -1060,7 +1060,7 @@ function sendData(buffer, deviceIn = device) {
       return
     }
     var buff = [...buffer]
-    if (os.platform() === 'win32') {
+    if (os.platform() === 'win32' || os.platform() === 'darwin') {
       buff.unshift(0) // prepend throwaway byte
     }
     deviceIn.write(buff)
