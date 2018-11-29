@@ -5,7 +5,7 @@ var fs = require('fs')
 var app = require('electron').app
 const path = require('path')
 
-const APP_VERSION = 'v0.134'
+const APP_VERSION = 'v0.136'
 //取色器
 const ColorPicker = require(`h5-color-picker`).ColorPicker
 //按键键值关系表
@@ -808,7 +808,52 @@ function freshDevices(autoNext = true) {
   nowDevice.innerText = getLang('noDevice')
   sel.innerHTML = ''
   var deviceCount = {}
-  devices = HID.devices()
+  const devicesHIDs = HID.devices()
+  var linuxInterfaces = []
+  if (os.platform() === 'linux') {
+    devicesHIDs.forEach(dev => {
+      deviceList.forEach(d => {
+        if (dev.vendorId === d.vendorId && dev.productId === d.productId) {
+          linuxInterfaces.push(dev)
+        }
+      })
+    })
+    linuxInterfaces.sort((deviceA, deviceB) => {
+      return (
+        parseInt(deviceA.path.substring(deviceA.path.indexOf('/hidraw') + 7)) -
+        parseInt(deviceB.path.substring(deviceB.path.indexOf('/hidraw') + 7))
+      )
+    })
+    let devicesGetterCount = {}
+    linuxInterfaces = linuxInterfaces.reduce((accumulator, dev) => {
+      deviceList.forEach(d => {
+        if (dev.vendorId === d.vendorId && dev.productId === d.productId) {
+          if (
+            !devicesGetterCount[d.description] ||
+            devicesGetterCount[d.description] === 0
+          ) {
+            devicesGetterCount[d.description] = d.maxEndpoint
+          }
+          devicesGetterCount[d.description]--
+          // if (
+          //   d.maxEndpoint - 1 - devicesGetterCount[d.description] ===
+          //   parseInt(d.endpoint, 16)
+          // ) {
+          //   accumulator.push(dev)
+          // }
+          try {
+            const deviceTemp = new HID.HID(dev.path)
+            deviceTemp.close()
+            accumulator.push(dev)
+          } catch (e) {
+            
+          }
+        }
+      })
+      return accumulator
+    }, [])
+  }
+  devices = devicesHIDs
     .filter(e => {
       let boolvar = false
       if (os.platform() === 'darwin') {
@@ -819,7 +864,7 @@ function freshDevices(autoNext = true) {
               e.productId === d.productId &&
               e.path.indexOf('IOUSBHostInterface@' + parseInt(d.endpoint)) > -1)
         )
-      } else {
+      } else if (os.platform() === 'win32') {
         deviceList.forEach(
           d =>
             (boolvar |=
@@ -827,6 +872,10 @@ function freshDevices(autoNext = true) {
               e.productId === d.productId &&
               e.path.indexOf('&mi_' + d.endpoint) > -1)
         )
+      } else if (os.platform() === 'linux') {
+        linuxInterfaces.forEach(interfaceDevice => {
+          boolvar |= interfaceDevice === e
+        })
       }
       return boolvar
     })
