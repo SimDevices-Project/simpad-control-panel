@@ -792,6 +792,11 @@ const funs = (documentElement, deviceObj, funs) => {
   document.getElementById('checkROMUpdate').addEventListener('click', e => {
     if (!checkROMUpdateBoolean) {
       checkROMUpdateBoolean = true
+      checkROMUpdateTimer = setTimeout(
+        () => (checkROMUpdateBoolean = false),
+        5000
+      )
+
       document.getElementById('checkROMUpdate').innerText = getLang(
         'pleaseWait'
       )
@@ -882,7 +887,7 @@ Update Now?`)
                   sendData([0x00, 0x0b, 0x00, 0x00, 0x00, 0x0b])
                 }
               } else {
-                checkROMUpdateBoolean = false
+                checkROMUpdateBoolean = true
                 clearTimeout(checkROMUpdateTimer)
                 // DO something
                 document.getElementById('checkROMUpdate').innerText = getLang(
@@ -902,10 +907,6 @@ Update Now?`)
             'checkUpdateFailed'
           )
         }
-        checkROMUpdateTimer = setTimeout(
-          () => (checkROMUpdateBoolean = false),
-          5000
-        )
       })
       xhr.send()
     }

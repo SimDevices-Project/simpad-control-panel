@@ -804,7 +804,6 @@ const jumpPage = to => {
 function freshDevices(autoNext = true) {
   clearTimeout(timeOutSet)
   removeClassName(reselectDevice, 'easeInInfo')
-  langDevice = {}
   nowDevice.innerText = getLang('noDevice')
   sel.innerHTML = ''
   var deviceCount = {}
@@ -986,6 +985,7 @@ document.getElementById('selBtn').addEventListener('click', async e => {
     document.getElementById('page3').innerHTML = await page3HTML
 
     // 载入设备语言定义
+    langDevice = {}
     langDevice = require(path.join(
       __dirname,
       '/devices/',
