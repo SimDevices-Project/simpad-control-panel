@@ -65,6 +65,7 @@ module.exports = {
 
     about: "About Sayo's KeyPad",
     checkUpdate: 'Check Update',
+    isLatestVersion: "The latest version",
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using Sayo\'s KeyPad!</p>
     <p>Sayo\'s KeyPad is a custom keyboard based on C51 realize, Based on open-source project "SimPad".</p>`,
@@ -793,6 +794,7 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
+    isLatestVersion: "已是最新版本",
     jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用Sayo\'s KeyPad！</p>
     <p>Sayo\'s KeyPad是一款基于C51单片机实现的自定义键盘，基于开源项目“SimPad”完成。</p>

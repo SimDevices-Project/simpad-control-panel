@@ -119,7 +119,7 @@ const getAllSettings = (dev = device) => {
     return new Promise((r, e) => e())
   }
 }
-
+let nowVersion
 const getVersion = (dev = device) =>
   new Promise(function doIt(r, e) {
     getDataFunction.fun = data => {
@@ -136,6 +136,7 @@ const getVersion = (dev = device) =>
         document.getElementById('firmwareVersionNum').innerHTML,
         10
       )
+      nowVersion = versionGet
       if (versionGet <= 20180926) {
         document.getElementById('jumpToBootMode').style.display = 'none'
       } else {
@@ -775,21 +776,20 @@ const funs = (documentElement, deviceObj, funs) => {
   }
 
   let checkROMUpdateBoolean = false
+  let checkROMUpdateTimer
   document.getElementById('checkROMUpdate').addEventListener('click', e => {
     if (!checkROMUpdateBoolean) {
       checkROMUpdateBoolean = true
+      checkROMUpdateTimer = setTimeout(
+        () => (checkROMUpdateBoolean = false),
+        5000
+      )
+
       document.getElementById('checkROMUpdate').innerText = getLang(
         'pleaseWait'
       )
       const xhr = new XMLHttpRequest()
-      xhr.open(
-        'GET',
-        encodeURI(
-          'http://182.254.136.143:8117/check-roms/' +
-            deviceInfo.description +
-            '.json'
-        )
-      )
+      xhr.open('GET', 'https://sayo.sayobot.cn/o2c/checkDeviceUpdate.json')
       xhr.addEventListener('loadend', e => {
         let succ = false
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -801,11 +801,86 @@ const funs = (documentElement, deviceObj, funs) => {
                 document.getElementById('checkROMUpdate').dataset.langKey
               )
               const obj = JSON.parse(xhr.responseText)
-              alert(
-                `${getName(deviceInfo.description)}\nversion ${
-                  obj.version
-                }\nfron ${obj.url}\nwith ${obj.description}`
-              )
+              if (obj.version > nowVersion) {
+                if (
+                  confirm(`Find v${obj.version} with
+${getLang('info', obj.description)}
+Update Now?`)
+                ) {
+                  setTimeout(() => {
+                    const execFile = require('child_process').execFile
+                    const cmd = execFile(
+                      path.join(__dirname, '/UPDATER/iap_applition.exe'),
+                      [],
+                      {
+                        // detached: true,
+                        // stdio: 'ignore',
+                        //shell: true,
+                        cwd: __dirname + '\\UPDATER',
+                        windowsHide: false
+                      }
+                    )
+                    let httpObj
+                    if (obj.url.indexOf('https') > -1) {
+                      httpObj = require('https')
+                    } else {
+                      httpObj = require('http')
+                    }
+                    const fs = require('fs')
+                    const crypto = require('crypto')
+                    let filePath
+                    httpObj.get(obj.url, res => {
+                      res.setEncoding('binary')
+                      let fileData = ''
+                      res.on('data', chunk => {
+                        fileData += chunk
+                      })
+                      res.on('end', () => {
+                        filePath = path.join(
+                          os.tmpdir(),
+                          crypto
+                            .createHash('md5')
+                            .update(fileData)
+                            .digest('hex') + '.hex'
+                        )
+                        fs.writeFile(filePath, fileData, 'binary', err => {
+                          if (err) {
+                            console.error(err)
+                          }
+                          cmd.stdin.write(filePath + '\r\n')
+                        })
+                      })
+                    })
+                    cmd.stdout.on('data', data => {
+                      const dataStr = data.toString()
+                      console.log(dataStr)
+                      if (dataStr.indexOf('READY') > -1) {
+                      } else if (dataStr.indexOf('ALL_SUCCESS') > -1) {
+                        alert('SUCCESS')
+                        cmd.kill()
+                      } else if (
+                        dataStr.indexOf('WRONG_FAILED_TO_DOWNLOAD') > -1
+                      ) {
+                        alert('FAILED')
+                        cmd.kill()
+                      }
+                    })
+                  }, 200)
+                  sendData([0x00, 0x0b, 0x00, 0x00, 0x00, 0x0b])
+                }
+              } else {
+                checkROMUpdateBoolean = true
+                clearTimeout(checkROMUpdateTimer)
+                // DO something
+                document.getElementById('checkROMUpdate').innerText = getLang(
+                  'isLatestVersion'
+                )
+              }
+              // alert(
+              //   `${getName(deviceInfo.description)}\nversion ${
+              //     obj.version
+              //   }\nfron ${obj.url}\nwith ${getLang('info',obj.description)}`
+              // )
             }
           }
         }
@@ -814,18 +889,17 @@ const funs = (documentElement, deviceObj, funs) => {
             'checkUpdateFailed'
           )
         }
-        setTimeout(() => (checkROMUpdateBoolean = false), 5000)
       })
       xhr.send()
     }
   })
 
-  Array.prototype.forEach.call(
-    document.querySelectorAll("input[type='color']"),
-    e => {
-      e.addEventListener('click', e => e.preventDefault())
-    }
-  )
+  // Array.prototype.forEach.call(
+  //   document.querySelectorAll("input[type='color']"),
+  //   e => {
+  //     e.addEventListener('click', e => e.preventDefault())
+  //   }
+  // )
   document.getElementById(
     'theBtnDefInner'
   ).style.background = `url(${__dirname.replace(/\\/g, '/') +
