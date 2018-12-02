@@ -837,7 +837,7 @@ Update Now?`)
                         // detached: true,
                         // stdio: 'ignore',
                         //shell: true,
-                        cwd: __dirname + '\\DRIVER',
+                        cwd: __dirname + '\\UPDATER',
                         windowsHide: false
                       }
                     )
@@ -868,21 +868,21 @@ Update Now?`)
                           if (err) {
                             console.error(err)
                           }
+                          cmd.stdin.write(filePath + '\r\n')
                         })
                       })
                     })
                     cmd.stdout.on('data', data => {
                       const dataStr = data.toString()
                       if (dataStr.indexOf('READY') > -1) {
-                        setTimeout(() => {
-                          cmd.stdin.write(filePath + '\r\n')
-                        }, 1000)
                       } else if (dataStr.indexOf('ALL_SUCCESS') > -1) {
                         alert('SUCCESS')
+                        cmd.kill()
                       } else if (
                         dataStr.indexOf('WRONG_FAILED_TO_DOWNLOAD') > -1
                       ) {
                         alert('FAILED')
+                        cmd.kill()
                       }
                     })
                   }, 200)
