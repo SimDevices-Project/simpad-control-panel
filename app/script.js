@@ -4,6 +4,7 @@ var os = require('os')
 var fs = require('fs')
 var app = require('electron').app
 const path = require('path')
+var AdmZip = require('adm-zip')
 
 const APP_VERSION = 'v0.144'
 
@@ -75,7 +76,8 @@ document.getElementById('returnToContinue').addEventListener('click', () => {
 
 //硬件列表
 // var deviceList = require('./devices/deviceList.js').deviceList
-var deviceList = [](() => {
+var deviceList = []
+;(() => {
   let files = fs.readdirSync(path.join(__dirname, '/devices'))
   files.forEach(val => {
     let filePath = path.join(__dirname, '/devices', val)
@@ -84,6 +86,11 @@ var deviceList = [](() => {
       deviceList.push(require(path.join(filePath, '/device.js')))
     }
     if (stats.isFile()) {
+      if (filePath.indexOf('.ssz') === filePath.length - 4) {
+        const zip = new AdmZip(filePath)
+        zip.extractAllTo(filePath.substring(0, filePath.length - 4), true)
+        fs.unlinkSync(filePath)
+      }
     }
   })
 })()
