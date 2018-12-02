@@ -101,7 +101,7 @@ var deviceList = []
   })
 })()
 
-var deviceIdList = deviceList.map(e => e.productId)
+var deviceIdList = () => deviceList.map(e => `${e.vendorId}&${e.productId}`)
 
 var devices
 
@@ -170,7 +170,7 @@ const getLang = (key, langObject = langDevice) => {
   return 'Missing No.'
 }
 
-const resetLang = () => {
+const resetLang = (fresh = true) => {
   window.localStorage.setItem('lang', langLocal)
   if (langDesList.indexOf(langLocal) > -1) {
     console.log(langLocal + ' is OK')
@@ -184,7 +184,9 @@ const resetLang = () => {
   })
   ahrefSafeFun()
   keyboardSpaceReplace()
-  freshDevices(false)
+  if (fresh) {
+    freshDevices(false)
+  }
 }
 
 const getName = deviceName => {
@@ -418,17 +420,22 @@ function freshDevices(autoNext = true) {
     })
     .map((value, index) => {
       var temp = document.createElement('option')
-      if (!deviceCount[value.productId]) {
-        deviceCount[value.productId] = 0
+      if (!deviceCount[`${value.vendorId}&${value.productId}`]) {
+        deviceCount[`${value.vendorId}&${value.productId}`] = 0
       }
-      deviceCount[value.productId]++
-      deviceInfo = deviceList[deviceIdList.indexOf(value.productId)]
+      deviceCount[`${value.vendorId}&${value.productId}`]++
+      deviceInfo =
+        deviceList[
+          deviceIdList().indexOf(`${value.vendorId}&${value.productId}`)
+        ]
 
       temp.innerText =
-        getName(deviceInfo.description) + ' - ' + deviceCount[value.productId]
+        getName(deviceInfo.description) +
+        ' - ' +
+        deviceCount[`${value.vendorId}&${value.productId}`]
       temp.value = JSON.stringify({
         path: value.path,
-        index: deviceIdList.indexOf(value.productId)
+        index: deviceIdList().indexOf(`${value.vendorId}&${value.productId}`)
       })
       sel.appendChild(temp)
       return value
@@ -468,7 +475,7 @@ document.getElementById('selBtn').addEventListener('click', async e => {
     if (device) device.close()
     clearTimeout(timeOutSet)
     const selectObject = JSON.parse(sel.value)
-    deviceInfo = deviceList[selectObject.index]
+    const deviceInfoBlock = deviceList[selectObject.index]
     device = new HID.HID(selectObject.path)
     device.on('data', data => getDataFunction(data))
     // getAllSettings().then(() => initSettings())
@@ -479,7 +486,7 @@ document.getElementById('selBtn').addEventListener('click', async e => {
         path.join(
           __dirname,
           '/devices/',
-          deviceInfo.description,
+          deviceInfoBlock.description,
           '/page2.html'
         ),
         (err, data) => {
@@ -495,7 +502,7 @@ document.getElementById('selBtn').addEventListener('click', async e => {
         path.join(
           __dirname,
           '/devices/',
-          deviceInfo.description,
+          deviceInfoBlock.description,
           '/page3.html'
         ),
         (err, data) => {
@@ -514,34 +521,34 @@ document.getElementById('selBtn').addEventListener('click', async e => {
     langDevice = require(path.join(
       __dirname,
       '/devices/',
-      deviceInfo.description,
+      deviceInfoBlock.description,
       '/lang.js'
     ))
 
     // 读取语言
-    resetLang()
+    resetLang(false)
 
     document.getElementById('deviceCss').href = path.join(
       __dirname,
       '/devices/',
-      deviceInfo.description,
+      deviceInfoBlock.description,
       '/style.css'
     )
     const deciveFun = require(path.join(
       __dirname,
       '/devices/',
-      deviceInfo.description,
+      deviceInfoBlock.description,
       '/script.js'
     ))
     deciveFun(
       document,
       {
         connect: device,
-        info: deviceInfo,
+        info: deviceInfoBlock,
         devices: devices.filter(
           ele =>
-            ele.productId === deviceInfo.productId &&
-            ele.vendorId === deviceInfo.vendorId
+            ele.productId === deviceInfoBlock.productId &&
+            ele.vendorId === deviceInfoBlock.vendorId
         )
       },
       {
@@ -560,7 +567,7 @@ document.getElementById('selBtn').addEventListener('click', async e => {
       }
     )
 
-    nowDevice.innerText = getName(deviceInfo.description)
+    nowDevice.innerText = getName(deviceInfoBlock.description)
     addClassName(reselectDevice, 'easeInInfo')
 
     jumpPage(1)
@@ -595,6 +602,8 @@ process.on('uncaughtException', e => {
     jumpPage(0)
     freshDevices(false)
   } else {
-    throw e
+    console.error(e.stack)
+    jumpPage(0)
+    freshDevices(false)
   }
 })
