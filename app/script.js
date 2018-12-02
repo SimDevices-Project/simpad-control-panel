@@ -90,7 +90,12 @@ var deviceList = []
         const zip = new AdmZip(filePath)
         zip.extractAllTo(filePath.substring(0, filePath.length - 4), true)
         fs.unlinkSync(filePath)
-        deviceList.push(require(path.join(filePath, '/device.js')))
+        deviceList.push(
+          require(path.join(
+            filePath.substring(0, filePath.length - 4),
+            '/device.js'
+          ))
+        )
       }
     }
   })
