@@ -6,7 +6,7 @@ var app = require('electron').app
 const path = require('path')
 var AdmZip = require('adm-zip')
 
-const APP_VERSION = 'v0.145'
+const APP_VERSION = 'v0.146'
 
 var clearAllTimeout = () => {
   for (var i = setTimeout(() => {}, 0); i; i--) {
@@ -90,6 +90,7 @@ var deviceList = []
         const zip = new AdmZip(filePath)
         zip.extractAllTo(filePath.substring(0, filePath.length - 4), true)
         fs.unlinkSync(filePath)
+        deviceList.push(require(path.join(filePath, '/device.js')))
       }
     }
   })
