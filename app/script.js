@@ -5,9 +5,9 @@ var fs = require('fs')
 var app = require('electron').app
 const path = require('path')
 
-const APP_VERSION = 'v0.138'
+const APP_VERSION = 'v0.140'
 //取色器
-const ColorPicker = require(`h5-color-picker`).ColorPicker
+// const ColorPicker = require(`h5-color-picker`).ColorPicker
 //按键键值关系表
 // const KeyData = require(`./devices/simpadv2/keyboardData`).data
 

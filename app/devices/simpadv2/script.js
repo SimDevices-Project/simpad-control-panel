@@ -423,7 +423,9 @@ const lightTestData = [
   [0x07, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
   [0x08, 0x02, 0x00, 0x00, 0x00] //Mode 0
 ]
-
+lightTestData.forEach(arr => {
+  arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
+})
 const useSettings = () => {
   if (changesBool.filter(e => e).length > 0) {
     var promiseObj = new Promise(r => {
