@@ -5,7 +5,7 @@ const os = require('os')
 const path = require('path')
 
 //取色器
-const ColorPicker = require(`h5-color-picker`).ColorPicker
+const ColorPicker = require('./rg-color-picker/color-picker.js').ColorPicker
 
 //按键键值关系表
 const KeyData = require(`./keyboardData`).data
@@ -216,18 +216,14 @@ const initSettings = () => {
     }
   })
   //灯光颜色
-  // document.getElementById('G1Color').value = `#${settingsSet[6][0]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[6][1]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[6][2].toString(16).padEnd(2, '0')}`
-  // cpG1.value = document.getElementById('G1Color').value
-  // document.getElementById('G2Color').value = `#${settingsSet[7][0]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[7][1]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
-  // cpG2.value = document.getElementById('G2Color').value
+  document.getElementById('G1Color').value = `#${settingsSet[7][0]
+    .toString(16)
+    .padEnd(2, '0')}00${settingsSet[7][1].toString(16).padEnd(2, '0')}`
+  cpG1.value = document.getElementById('G1Color').value
+  document.getElementById('G2Color').value = `#${settingsSet[7][2]
+    .toString(16)
+    .padEnd(2, '0')}00${settingsSet[7][3].toString(16).padEnd(2, '0')}`
+  cpG2.value = document.getElementById('G2Color').value
   //灯光亮度
   // var G1Brightness = document.getElementById('G1Brightness')
   // var G2Brightness = document.getElementById('G2Brightness')
@@ -263,11 +259,11 @@ const initSettingsFunction = () => {
       countChanges()
     })
   })
-  // var colorGroupsCount = 2
-  // var colorOffset = 6
-  // for (let i = 0; i < colorGroupsCount; i++) {
+  var RB_colorGroupsCount = 2
+  var RB_colorOffset = 7
+  // for (let i = 0; i < RB_colorGroupsCount; i++) {
   //   document.getElementById(`G${i + 1}Color`).addEventListener('change', e => {
-  //     const target = settingChanged[colorOffset + i]
+  //     const target = settingChanged[RB_colorOffset + i]
   //     target[0] = parseInt(
   //       document.getElementById(`G${i + 1}Color`).value.substr(1, 2),
   //       16
@@ -283,7 +279,25 @@ const initSettingsFunction = () => {
   //     //target[3] =
   //     countChanges()
   //   })
-  // }
+  for (let i = 0; i < RB_colorGroupsCount; i++) {
+    document.getElementById(`G${i + 1}Color`).addEventListener('change', e => {
+      const target = settingChanged[RB_colorOffset]
+      target[0 + i * 2] = parseInt(
+        document.getElementById(`G${i + 1}Color`).value.substr(1, 2),
+        16
+      )
+      // target[1] = parseInt(
+      //   document.getElementById(`G${i + 1}Color`).value.substr(3, 2),
+      //   16
+      // )
+      target[1 + i * 2] = parseInt(
+        document.getElementById(`G${i + 1}Color`).value.substr(5, 2),
+        16
+      )
+      //target[3] =
+      countChanges()
+    })
+  }
   // document.getElementById('delayInput').addEventListener('change', e => {
   //   var value = parseInt(document.getElementById('delayInput').value)
   //     .toString(16)
@@ -405,10 +419,10 @@ const templeData = [
   [0x04, 0x00, 0x29, 0x00, 0x00], //ESC
   [0x05, 0x00, 0x3b, 0x00, 0x00], //F3
   [0x06, 0x00, 0xff, 0x00, 0x04], //#00FF00 100%(4)
-  [0x07, 0x00, 0x00, 0xff, 0x04], //#0000FF 100%(4)
+  [0x07, 0xff, 0xff, 0xff, 0xff], //#FF00FF #FF00FF
   [0x08, 0x00, 0x00, 0x00, 0x00], //Mode 0
-  [0x09, 0x00, 0x00, 0x00, 0x40], //0x40 => 64 (MAX 16^6-1)
-  [0x0a, 0x00, 0x00, 0x00, 0x40] //0x00 极速模式处于关闭
+  [0x09, 0x00, 0x00, 0x00, 0x40] //0x40 => 64 (MAX 16^6-1)
+  // [0x0a, 0x00, 0x00, 0x00, 0x40] //0x00 极速模式处于关闭
 ]
 templeData.forEach(arr => {
   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
@@ -416,7 +430,7 @@ templeData.forEach(arr => {
 // 灯光测试数据
 const lightTestData = [
   [0x06, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
-  [0x07, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
+  [0x07, 0xff, 0xff, 0xff, 0xff], //#FFFFFF 100%(4)
   [0x08, 0x02, 0x00, 0x00, 0x00] //Mode 0
 ]
 lightTestData.forEach(arr => {
@@ -628,46 +642,46 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   //初始化两个取色器
-  // cpG1 = new ColorPicker({
-  //   dom: document.getElementById('setG1ColorPicker'),
-  //   value: document.getElementById('G1Color').value
-  // })
-  // cpG1.addEventListener('change', event => {
-  //   document.getElementById('G1Color').value = cpG1.value
-  //   document.getElementById('G1Color').dispatchEvent(new Event('change'))
-  // })
+  cpG1 = new ColorPicker({
+    dom: document.getElementById('setG1ColorPicker'),
+    value: document.getElementById('G1Color').value
+  })
+  cpG1.addEventListener('change', event => {
+    document.getElementById('G1Color').value = cpG1.value
+    document.getElementById('G1Color').dispatchEvent(new Event('change'))
+  })
 
-  // cpG2 = new ColorPicker({
-  //   dom: document.getElementById('setG2ColorPicker'),
-  //   value: document.getElementById('G2Color').value
-  // })
-  // cpG2.addEventListener('change', event => {
-  //   document.getElementById('G2Color').value = cpG2.value
-  //   document.getElementById('G2Color').dispatchEvent(new Event('change'))
-  // })
+  cpG2 = new ColorPicker({
+    dom: document.getElementById('setG2ColorPicker'),
+    value: document.getElementById('G2Color').value
+  })
+  cpG2.addEventListener('change', event => {
+    document.getElementById('G2Color').value = cpG2.value
+    document.getElementById('G2Color').dispatchEvent(new Event('change'))
+  })
 
-  // const cpArr = [cpG1.getDOM(), cpG2.getDOM()]
-  // let upFlag = false
-  // cpG1.getDOM().addEventListener('mousedown', () => {
-  //   cpG1.getDOM().style.display = 'block'
-  //   cpG1.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
-  //   upFlag = false
-  // })
-  // cpG2.getDOM().addEventListener('mousedown', () => {
-  //   cpG2.getDOM().style.display = 'block'
-  //   cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
-  //   upFlag = false
-  // })
-  // //cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
-  // document.addEventListener('mouseup', () => {
-  //   setTimeout(() => (upFlag = true), 0)
-  // })
-  // document.addEventListener('click', () => {
-  //   if (upFlag) {
-  //     cpArr.forEach(e => e.removeAttribute('style'))
-  //   }
-  //   //document.removeEventListener('click', clickFun)
-  // })
+  const cpArr = [cpG1.getDOM(), cpG2.getDOM()]
+  let upFlag = false
+  cpG1.getDOM().addEventListener('mousedown', () => {
+    cpG1.getDOM().style.display = 'block'
+    cpG1.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+    upFlag = false
+  })
+  cpG2.getDOM().addEventListener('mousedown', () => {
+    cpG2.getDOM().style.display = 'block'
+    cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+    upFlag = false
+  })
+  //cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
+  document.addEventListener('mouseup', () => {
+    setTimeout(() => (upFlag = true), 0)
+  })
+  document.addEventListener('click', () => {
+    if (upFlag) {
+      cpArr.forEach(e => e.removeAttribute('style'))
+    }
+    //document.removeEventListener('click', clickFun)
+  })
 
   document
     .getElementById('useSettings')
@@ -894,26 +908,26 @@ Update Now?`)
     }
   })
 
-  // Array.prototype.forEach.call(
-  //   document.querySelectorAll("input[type='color']"),
-  //   e => {
-  //     e.addEventListener('click', e => e.preventDefault())
-  //   }
-  // )
+  Array.prototype.forEach.call(
+    document.querySelectorAll("input[type='color']"),
+    e => {
+      e.addEventListener('click', e => e.preventDefault())
+    }
+  )
   document.getElementById(
     'theBtnDefInner'
   ).style.background = `url(${__dirname.replace(/\\/g, '/') +
     '/imgs/deviceKeyInfo.png'})`
-  // document.getElementById(
-  //   'theLightDefInner'
-  // ).style.background = `url(${__dirname.replace(/\\/g, '/') +
-  //   '/imgs/deviceLightInfo.png'})`
+  document.getElementById(
+    'theLightDefInner'
+  ).style.background = `url(${__dirname.replace(/\\/g, '/') +
+    '/imgs/deviceLightInfo.png'})`
   document.getElementById('deviceKeyMapTitle').innerText = getName(
     deviceInfo.description
   )
-  // document.getElementById('deviceLightTitle').innerText = getLang(
-  //   deviceInfo.description
-  // )
+  document.getElementById('deviceLightTitle').innerText = getLang(
+    deviceInfo.description
+  )
   document.getElementById('resetBlock').style.display = 'none'
   document.getElementById('jumpToBootMode').style.display = 'none'
 

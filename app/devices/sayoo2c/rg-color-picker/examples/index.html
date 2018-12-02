@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Example</title>
+
+  <!-- Import stylesheet -->
+  <link rel="stylesheet" href="./color-picker.css">
+
+  <style>
+    #picker1 {
+      width: 512px;
+      height: 512px;
+    }
+
+    #picker2 {
+      width: 256px;
+      height: 256px;
+    }
+
+    #picker3 {
+      width: 128px;
+      height: 128px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="picker1"></div>
+  <div id="picker2"></div>
+  <div id="picker3"></div>
+
+  <!-- Import script -->
+  <script src="./color-picker.js"></script>
+
+  <script>
+    const pickers = [
+      new ColorPicker({
+        dom: document.getElementById('picker1'),
+        value: '#0F0'
+      }),
+      new ColorPicker({
+        dom: document.getElementById('picker2'),
+        value: { r: 0, g: 0, b: 255 }
+      }),
+      new ColorPicker({
+        dom: document.getElementById('picker3')
+      })
+    ]
+
+    pickers.forEach(function (colorP) {
+      return colorP.addEventListener('change', function (event) {
+        pickers.forEach(function (colorPs) {
+          if (colorP !== colorPs) colorPs.value = colorP.value;
+        });
+      });
+    });
+
+    // You can get values as "hex", "rgb", "hsb" or just hex color
+    // Sample
+    const valueGetSample =
+      new ColorPicker({ value: '#ABC' }); // Same as "#AABBCC"
+    const hex = valueGetSample.getValue('hex') // "AABBCC"
+    const rgb = valueGetSample.getValue('rgb') // {r: 170, g: 187, b: 204}
+    const hsb = valueGetSample.getValue('hsb') // {h: 210, s: 0.16666666666666663, b: 0.8}
+    const value = valueGetSample.getValue('value') // Same as valueGetSample.value
+  </script>
+</body>
+
+</html>

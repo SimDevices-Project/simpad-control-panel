@@ -1,0 +1,26 @@
+{
+  "name": "h5-color-picker",
+  "version": "1.0.1",
+  "description": "A simple color picker without dependencies",
+  "main": "color-picker.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamapig120/simple-color-picker.git"
+  },
+  "keywords": [
+    "color-picker",
+    "javascript"
+  ],
+  "author": "Handle",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iamapig120/simple-color-picker/issues"
+  },
+  "homepage": "https://github.com/iamapig120/simple-color-picker#readme"
+}

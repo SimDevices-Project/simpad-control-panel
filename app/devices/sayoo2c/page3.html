@@ -6,14 +6,13 @@
         >changeKeyCode</span
       >
     </p>
-    <!--
+    
       <p>
         <span class="pointer" data-lang-key="changeLights"
           >changeLights</span
         >
       </p>
-      <p><span class="pointer" data-lang-key="keyDelay">keyDelay</span></p>
-    -->
+      <!-- <p><span class="pointer" data-lang-key="keyDelay">keyDelay</span></p> -->
     <p>
       <span class="pointer" data-lang-key="advancedOptions"
         >advancedOptions</span
@@ -249,121 +248,81 @@
         </div>
       </div>
     </section>
-    <!--
-      <section id="lightsSettings">
-        <h4 data-lang-key="changeLights">changeLights</h4>
-        <p data-lang-key="changeLightsInfo">changeLightsInfo</p>
-        <p
-          class="canBeSeleted"
-          id="checkLightDef"
-          data-lang-key="viewLightsMap"
-        >
-          viewLightsMap
-        </p>
-        <div id="theLightDef">
-          <div id="theLightDefInner"><p id="deviceLightTitle"></p></div>
-        </div>
-        <div id="lightsSettingsList">
+    <section id="lightsSettings">
+      <h4 data-lang-key="changeLights">changeLights</h4>
+      <p data-lang-key="changeLightsInfo">changeLightsInfo</p>
+      <p class="canBeSeleted" id="checkLightDef" data-lang-key="viewLightsMap">
+        viewLightsMap
+      </p>
+      <div id="theLightDef">
+        <div id="theLightDefInner"><p id="deviceLightTitle"></p></div>
+      </div>
+      <div id="lightsSettingsList">
+        <!--
           <div>
             <p>
-              <span class="titleP" data-lang-key="lightsMode"
-                >lightsMode</span
-              >
+              <span class="titleP" data-lang-key="lightsMode">lightsMode</span>
             </p>
             <p>
-              <input
-                type="radio"
-                name="lightsType"
-                id="lightsType0"
-                value="0"
-              />
-              <label for="lightsType0" data-lang-key="easeOut"
-                >easeOut</label
-              >
+              <input type="radio" name="lightsType" id="lightsType0" value="0" />
+              <label for="lightsType0" data-lang-key="easeOut">easeOut</label>
             </p>
             <p>
-              <input
-                type="radio"
-                name="lightsType"
-                id="lightsType1"
-                value="1"
-              />
+              <input type="radio" name="lightsType" id="lightsType1" value="1" />
               <label for="lightsType1" data-lang-key="easeIn">easeIn</label>
             </p>
             <p>
-              <input
-                type="radio"
-                name="lightsType"
-                id="lightsType2"
-                value="2"
-              />
+              <input type="radio" name="lightsType" id="lightsType2" value="2" />
               <label for="lightsType2" data-lang-key="keepOn">keepOn</label>
             </p>
             <p>
-              <input
-                type="radio"
-                name="lightsType"
-                id="lightsType5"
-                value="5"
-              />
-              <label for="lightsType5" data-lang-key="keyPress"
-                >keyPress</label
-              >
+              <input type="radio" name="lightsType" id="lightsType5" value="5" />
+              <label for="lightsType5" data-lang-key="keyPress">keyPress</label>
             </p>
             <p>
-              <input
-                type="radio"
-                name="lightsType"
-                id="lightsType3"
-                value="3"
-              />
-              <label for="lightsType3" data-lang-key="keepOff"
-                >keepOff</label
-              >
+              <input type="radio" name="lightsType" id="lightsType3" value="3" />
+              <label for="lightsType3" data-lang-key="keepOff">keepOff</label>
             </p>
             <p>
-              <input
-                type="radio"
-                name="lightsType"
-                id="lightsType6"
-                value="6"
-              />
+              <input type="radio" name="lightsType" id="lightsType6" value="6" />
               <label for="lightsType6" data-lang-key="rainbowColor"
                 >rainbowColor</label
               >
             </p>
           </div>
-          <div>
-            <p>
-              <span class="titleP" data-lang-key="colorAndBrightness"
-                >colorAndBrightness</span
-              >
-            </p>
-            <div class="p">
-              <span class="titleP withAfter">G1</span>
-              <span class="midP">
-                <div class="colorBox" id="setG1ColorBox">
-                  <span id="setG1Color" class="pointer">
-                    <input type="color" value="" id="G1Color" />
-                  </span>
-                  <span id="setG1ColorPicker"></span>
-                </div>
-              </span>
-            </div>
-            <div class="p">
-              <span class="titleP withAfter">G2</span>
-              <span class="midP">
-                <div class="colorBox" id="setG2ColorBox">
-                  <span id="setG2Color" class="pointer">
-                    <input type="color" value="" id="G2Color" />
-                  </span>
-                  <span id="setG2ColorPicker"></span>
-                </div>
-              </span>
-            </div>
+        -->
+        <div>
+          <p>
+            <span class="titleP" data-lang-key="colorAndBrightness"
+              >colorAndBrightness</span
+            >
+          </p>
+          <div class="p">
+            <span class="titleP withAfter">BT1</span>
+            <span class="midP">
+              <div class="colorBox" id="setG1ColorBox">
+                <span id="setG1Color" class="pointer">
+                  <input type="color" value="" id="G1Color" />
+                </span>
+                <span id="setG1ColorPicker"></span>
+              </div>
+            </span>
+          </div>
+          <div class="p">
+            <span class="titleP withAfter">BT2</span>
+            <span class="midP">
+              <div class="colorBox" id="setG2ColorBox">
+                <span id="setG2Color" class="pointer">
+                  <input type="color" value="" id="G2Color" />
+                </span>
+                <span id="setG2ColorPicker"></span>
+              </div>
+            </span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+    <!--
       <section id="delaySettings">
         <h4 data-lang-key="keyDelay">keyDelay</h4>
         <p data-lang-key="keyDelayInfo">keyDelayInfo</p>

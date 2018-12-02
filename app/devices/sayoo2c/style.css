@@ -281,7 +281,7 @@ h1 {
 }
 #changeKeyCode {
   background-image: url('./imgs/set0.png');
-  left: 232px;
+  left: 132px;
 }
 #changeKeyCode:hover {
   background-image: url('./imgs/set0_1.png');
@@ -295,7 +295,7 @@ h1 {
 }
 #otherSettings {
   background-image: url('./imgs/set2.png');
-  left: 536px;
+  left: 636px;
 }
 #otherSettings:hover {
   background-image: url('./imgs/set2_1.png');
@@ -953,4 +953,19 @@ input[type='text'] {
 #sendAllNewDev.show,
 #lightTest.show {
   display: inline-block;
+}
+
+/* RG-color-picker */
+.color-picker > .color-picker-right-bar {
+  background: linear-gradient(
+    #ff0000,
+    #ff00ff,
+    #0000ff /* #00ffff,
+    #00ff00,
+    #ffff00,
+    #ff0000 */
+  );
+}
+.color-picker > .color-picker-color-block {
+  background: #ff00ff;
 }
