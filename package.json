@@ -17,10 +17,11 @@
   "scripts": {
     "postinstall": "electron-rebuild --force -v 2.0.0 --force -m . -w node-hid",
     "start": "electron .",
+    "debug": "electron . --debug",
     "build:win32": "electron-builder build --win --ia32 --version=false",
     "build:win64": "electron-builder build --win --x64 --version=false",
     "build:linux": "electron-builder build --linux --version=false",
     "build:macos": "electron-builder build --macos --version=false",
-    "package": "electron-packager ./ SimPad_Settings --all --out ./OutApp --version 2.0.0 --overwrite"
+    "package": "electron-packager ./ SimPad_Settings --all --out ../WTF_packer/OutApp --version 2.0.0 --overwrite"
   }
 }
