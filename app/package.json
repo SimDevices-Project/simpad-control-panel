@@ -1,4 +1,4 @@
 {
   "name": "SimPad_Settings",
-  "main": "main.js"
+  "main": "../main.js"
 }

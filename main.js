@@ -73,9 +73,9 @@ app.on('ready', function() {
   guiWindows[0].hide()
   // 加载应用的 index.html
   if (!spThx) {
-    guiWindows[0].loadURL('file://' + __dirname + '/index.html')
+    guiWindows[0].loadURL('file://' + __dirname + '/app/index.html')
   } else {
-    guiWindows[0].loadURL('file://' + __dirname + '/spThx.html')
+    guiWindows[0].loadURL('file://' + __dirname + '/app/spThx.html')
     guiWindows[0].show()
   }
   //guiWindows[0].loadURL('file://' + __dirname + '/keyboard.html')
