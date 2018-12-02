@@ -101,6 +101,20 @@ document.getElementById('returnToContinue').addEventListener('click', () => {
  */
 var noAnything
 
+const getDevicesList = () => {
+  const devicesDirs = []
+  let files = fs.readdirSync('./devices')
+  files.forEach(val => {
+    let fPath = path.join('./devices', val)
+    let stats = fs.statSync(fPath)
+    if (stats.isDirectory()) {
+      devicesDirs.push(fPath)
+    }
+    if (stats.isFile()) {
+    }
+  })
+}
+
 //硬件列表
 var deviceList = require('./devices/deviceList.js').deviceList
 var deviceIdList = deviceList.map(e => e.productId)
