@@ -55,8 +55,8 @@ module.exports = {
     superSpeedMode: 'Full Speed Mode',
     superSpeedModeInfo:
       'You can enable "full speed mode" to disable all lights to get the fastest speed, reboot device to apply.',
-    superSpeedModeeBtnOn: 'On',
-    superSpeedModeeBtnOff: 'Off',
+    superSpeedModeeBtnOn: 'Trun On',
+    superSpeedModeeBtnOff: 'Trun Off',
 
     resetDevice: 'Reset Device',
     resetDeviceInfo: 'Device can be reset to default settings',
@@ -65,6 +65,7 @@ module.exports = {
 
     about: 'About SimPad',
     checkUpdate: 'Check Update',
+    isLatestVersion: "The latest version",
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using SimPad!</p>
     <p>SimPad is a custom keyboard based on C51 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
@@ -90,7 +91,7 @@ module.exports = {
     </a>
     <p></p>
     <p>By Handle</p>
-    <p>Last Update At 2018.7.4</p>`,
+    <p>2018.7.4</p>`,
 
     changesCount: 'Changes to apply',
     abandonsChanges: 'Discard all changes',
@@ -417,7 +418,7 @@ module.exports = {
     </a>
     <p></p>
     <p>By Handle</p>
-    <p>Last Update At 2018.7.4</p>`,
+    <p>2018.7.4</p>`,
 
     changesCount: 'Effektive Änderungen',
     abandonsChanges: 'Verwerfen Sie die Änderungen',
@@ -726,7 +727,7 @@ module.exports = {
     </a>
     <p></p>
     <p>By Handle</p>
-    <p>Last Update At 2018.7.4</p>`,
+    <p>2018.7.4</p>`,
 
     changesCount: '項発効の変更',
     abandonsChanges: 'すべての変更を諦める',
@@ -816,7 +817,7 @@ module.exports = {
     </a>
     <p></p>
     <p>By Handle</p>
-    <p>Last Update At 2018.7.4</p>`,
+    <p>2018.7.4</p>`,
 
     changesCount: 'Changes to apply',
     abandonsChanges: 'Discard all changes',
@@ -892,6 +893,7 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
+    isLatestVersion:'已经是最新版本',
     jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
     <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
@@ -912,7 +914,7 @@ module.exports = {
     </a>
     <p></p>
     <p>By Handle</p>
-    <p>Last Update At 2018.7.4</p>`,
+    <p>2018.7.4</p>`,
 
     changesCount: '项生效的更改',
     abandonsChanges: '丢弃所有更改',
@@ -1128,7 +1130,7 @@ module.exports = {
     </a>
     <p></p>
     <p>By Handle</p>
-    <p>Last Update At 2018.7.4</p>`,
+    <p>2018.7.4</p>`,
 
     changesCount: '项生效的更改',
     abandonsChanges: '丢弃所有更改',
@@ -1332,7 +1334,7 @@ module.exports = {
     </a>
     <p></p>
     <p>By Handle</p>
-    <p>Last Update At 2018.7.4</p>`,
+    <p>2018.7.4</p>`,
 
     changesCount: '項生效的更變',
     abandonsChanges: '放棄所有更變',

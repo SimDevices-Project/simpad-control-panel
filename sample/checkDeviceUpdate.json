@@ -1,6 +1,13 @@
 {
   "name": "simpadv2",
-  "version": 20181115,
-  "url": "http://182.154.136.143:8117/simpadv2.hex",
-  "description": "Check Update Tester"
+  "version": 20181201,
+  "url": "https://bysb.net/study/simpad-roms/simpadv2_20181201.hex",
+  "description": {
+    "en-US": {
+      "info": "Check Update Tester"
+    },
+    "zh-CN": {
+      "info": "检查更新功能测试"
+    }
+  }
 }

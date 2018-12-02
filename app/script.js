@@ -5,7 +5,7 @@ var fs = require('fs')
 var app = require('electron').app
 const path = require('path')
 
-const APP_VERSION = 'v0.136'
+const APP_VERSION = 'v0.138'
 //取色器
 const ColorPicker = require(`h5-color-picker`).ColorPicker
 //按键键值关系表
@@ -161,15 +161,15 @@ let langDevice = {}
  * @param {string} key
  * @returns {string}
  */
-const getLang = key => {
-  if (langDevice[langLocal] && langDevice[langLocal][key]) {
-    return langDevice[langLocal][key]
+const getLang = (key, langObject = langDevice) => {
+  if (langObject[langLocal] && langObject[langLocal][key]) {
+    return langObject[langLocal][key]
   }
   if (lang && lang[key]) {
     return lang[key]
   }
-  if (langDevice['en-US'] && langDevice['en-US'][key]) {
-    return langDevice['en-US'][key]
+  if (langObject['en-US'] && langObject['en-US'][key]) {
+    return langObject['en-US'][key]
   }
   if (defLang[key]) {
     return defLang[key]
@@ -845,9 +845,7 @@ function freshDevices(autoNext = true) {
             const deviceTemp = new HID.HID(dev.path)
             deviceTemp.close()
             accumulator.push(dev)
-          } catch (e) {
-            
-          }
+          } catch (e) {}
         }
       })
       return accumulator

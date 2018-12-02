@@ -118,7 +118,7 @@ const getAllSettings = (dev = device) => {
     return new Promise((r, e) => e())
   }
 }
-
+let nowVersion
 const getVersion = (dev = device) =>
   new Promise(function doIt(r, e) {
     getDataFunction.fun = data => {
@@ -135,6 +135,7 @@ const getVersion = (dev = device) =>
         document.getElementById('firmwareVersionNum').innerHTML,
         10
       )
+      nowVersion = versionGet
       if (versionGet <= 20180926) {
         document.getElementById('jumpToBootMode').style.display = 'none'
       } else {
@@ -248,6 +249,14 @@ const initSettings = () => {
     settingsSet[9][3]
   getVersion()
   updateKeyCodeText()
+  //极速模式
+  if (settingsSet[10][1]) {
+    document.getElementById('superSpeedOn').style.display = 'none'
+    document.getElementById('superSpeedOff').removeAttribute('style')
+  } else {
+    document.getElementById('superSpeedOff').removeAttribute('style')
+    document.getElementById('superSpeedOff').style.display = 'none'
+  }
   countChanges()
 }
 
@@ -532,18 +541,25 @@ const funs = (documentElement, deviceObj, funs) => {
   // 跳转到 Boot 模式
   document.getElementById('jumpToBootMode').addEventListener('click', e => {
     sendData([0x00, 0x0b, 0x00, 0x00, 0x00, 0x0b]).then(() => {
-      page4Init()
-      jumpPage(3)
-      setTimeout(page4Fin, 300)
+      // page4Init()
+      // jumpPage(3)
+      // setTimeout(page4Fin, 300)
+      // const execFile = require('child_process').execFile
+      // const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
+      //   // detached: true,
+      //   // stdio: 'ignore',
+      //   //shell: true,
+      //   cwd: __dirname + '\\DRIVER',
+      //   windowsHide: false
+      // })
     })
-    const execFile = require('child_process').execFile
-    const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
-      // detached: true,
-      // stdio: 'ignore',
-      //shell: true,
-      cwd: __dirname + '\\DRIVER',
-      windowsHide: false
-    })
+    // const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
+    //   // detached: true,
+    //   // stdio: 'ignore',
+    //   //shell: true,
+    //   cwd: __dirname + '\\DRIVER',
+    //   windowsHide: false
+    // })
   })
 
   // 重置一台机器按钮
@@ -671,19 +687,23 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   document.getElementById('superSpeedOn').addEventListener('click', e => {
-    sendData([0x0a, 0x01, 0x00, 0x00, 0x00, 0x01]).then(() => {
-      page4Init()
-      jumpPage(3)
-      setTimeout(page4Fin, 300)
-    })
+    settingChanged[0x0a][1] = 0x01
+    countChanges()
+    // sendData([0x0a, 0x01, 0x00, 0x00, 0x00, 0x01]).then(() => {
+    //   page4Init()
+    //   jumpPage(3)
+    //   setTimeout(page4Fin, 300)
+    // })
   })
 
   document.getElementById('superSpeedOff').addEventListener('click', e => {
-    sendData([0x0a, 0x00, 0x00, 0x00, 0x00, 0x00]).then(() => {
-      page4Init()
-      jumpPage(3)
-      setTimeout(page4Fin, 300)
-    })
+    settingChanged[0x0a][1] = 0x01
+    countChanges()
+    // sendData([0x0a, 0x00, 0x00, 0x00, 0x00, 0x00]).then(() => {
+    //   page4Init()
+    //   jumpPage(3)
+    //   setTimeout(page4Fin, 300)
+    // })
   })
 
   var rightPannel = document.getElementById('rightPannel')
@@ -768,6 +788,7 @@ const funs = (documentElement, deviceObj, funs) => {
   }
 
   let checkROMUpdateBoolean = false
+  let checkROMUpdateTimer
   document.getElementById('checkROMUpdate').addEventListener('click', e => {
     if (!checkROMUpdateBoolean) {
       checkROMUpdateBoolean = true
@@ -794,11 +815,85 @@ const funs = (documentElement, deviceObj, funs) => {
                 document.getElementById('checkROMUpdate').dataset.langKey
               )
               const obj = JSON.parse(xhr.responseText)
-              alert(
-                `${getName(deviceInfo.description)}\nversion ${
-                  obj.version
-                }\nfron ${obj.url}\nwith ${obj.description}`
-              )
+              if (obj.version > nowVersion) {
+                if (
+                  confirm(`Find v${obj.version} with
+${getLang('info', obj.description)}
+Update Now?`)
+                ) {
+                  setTimeout(() => {
+                    const execFile = require('child_process').execFile
+                    const cmd = execFile(
+                      path.join(__dirname, '/UPDATER/iap_applition.exe'),
+                      [],
+                      {
+                        // detached: true,
+                        // stdio: 'ignore',
+                        //shell: true,
+                        cwd: __dirname + '\\DRIVER',
+                        windowsHide: false
+                      }
+                    )
+                    let httpObj
+                    if (obj.url.indexOf('https') > -1) {
+                      httpObj = require('https')
+                    } else {
+                      httpObj = require('http')
+                    }
+                    const fs = require('fs')
+                    const crypto = require('crypto')
+                    let filePath
+                    httpObj.get(obj.url, res => {
+                      res.setEncoding('binary')
+                      let fileData = ''
+                      res.on('data', chunk => {
+                        fileData += chunk
+                      })
+                      res.on('end', () => {
+                        filePath = path.join(
+                          os.tmpdir(),
+                          crypto
+                            .createHash('md5')
+                            .update(fileData)
+                            .digest('hex') + '.hex'
+                        )
+                        fs.writeFile(filePath, fileData, 'binary', err => {
+                          if (err) {
+                            console.error(err)
+                          }
+                        })
+                      })
+                    })
+                    cmd.stdout.on('data', data => {
+                      const dataStr = data.toString()
+                      if (dataStr.indexOf('READY') > -1) {
+                        setTimeout(() => {
+                          cmd.stdin.write(filePath + '\r\n')
+                        }, 1000)
+                      } else if (dataStr.indexOf('ALL_SUCCESS') > -1) {
+                        alert('SUCCESS')
+                      } else if (
+                        dataStr.indexOf('WRONG_FAILED_TO_DOWNLOAD') > -1
+                      ) {
+                        alert('FAILED')
+                      }
+                    })
+                  }, 200)
+                  sendData([0x00, 0x0b, 0x00, 0x00, 0x00, 0x0b])
+                }
+              } else {
+                checkROMUpdateBoolean = false
+                clearTimeout(checkROMUpdateTimer)
+                // DO something
+                document.getElementById('checkROMUpdate').innerText = getLang(
+                  'isLatestVersion'
+                )
+              }
+              // alert(
+              //   `${getName(deviceInfo.description)}\nversion ${
+              //     obj.version
+              //   }\nfron ${obj.url}\nwith ${getLang('info',obj.description)}`
+              // )
             }
           }
         }
@@ -807,7 +902,10 @@ const funs = (documentElement, deviceObj, funs) => {
             'checkUpdateFailed'
           )
         }
-        setTimeout(() => (checkROMUpdateBoolean = false), 5000)
+        checkROMUpdateTimer = setTimeout(
+          () => (checkROMUpdateBoolean = false),
+          5000
+        )
       })
       xhr.send()
     }
