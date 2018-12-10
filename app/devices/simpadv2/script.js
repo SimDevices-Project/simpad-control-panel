@@ -877,12 +877,12 @@ Update Now?`)
                       if (dataStr.indexOf('READY') > -1) {
                       } else if (dataStr.indexOf('ALL_SUCCESS') > -1) {
                         alert('SUCCESS')
-                        cmd.kill()
+                        cmd.kill(cmd.pid)
                       } else if (
                         dataStr.indexOf('WRONG_FAILED_TO_DOWNLOAD') > -1
                       ) {
                         alert('FAILED')
-                        cmd.kill()
+                        cmd.kill(cmd.pid)
                       }
                     })
                   }, 200)
