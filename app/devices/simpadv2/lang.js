@@ -875,7 +875,7 @@ module.exports = {
 
     advancedOptions: '高级',
     advancedOptionsInfo: `高级选单提供了一些高级操作，这些操作不建议用户去使用，
-    <br>在高级选单的所有操作都将跳过确认而直接应用`,
+    <br>在高级选单的大多数操作都将跳过确认而直接应用`,
     sendDataPack: '发送数据包',
     sendDataPackInfo: `如果您熟悉SimPad数据包格式，您亦可以直接向设备发送数据包，
     <br>您输入的文本将按照空格分开解析为16进制数据`,
@@ -1094,7 +1094,7 @@ module.exports = {
 
     advancedOptions: '高级',
     advancedOptionsInfo: `高级选单提供了一些高级操作，这些操作不建议用户去使用，
-    <br>在高级选单的所有操作都将跳过确认而直接应用`,
+    <br>在高级选单的大多数操作都将跳过确认而直接应用`,
     sendDataPack: '发送数据包',
     sendDataPackInfo: `如果您熟悉SimPad数据包格式，您亦可以直接向设备发送数据包，
     <br>您输入的文本将按照空格分开解析为16进制数据`,
@@ -1295,7 +1295,7 @@ module.exports = {
 
     advancedOptions: '進階',
     advancedOptionsInfo: `進階選單提供一些進階操作，這些操作不建議使用者去使用，
-    <br>在進階選單的所有操作都將跳過確認而直接套用`,
+    <br>在進階選單的多數操作都將跳過確認而直接套用`,
     sendDataPack: '傳送數據包',
     sendDataPackInfo: `如果您熟悉SimPad數據包格式，您亦可以直接向設備傳送數據包，
     <br>您輸入的文字將按照空格分開解析為16進位數據`,
