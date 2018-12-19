@@ -44,6 +44,9 @@ let device
 let deviceInfo
 let devices
 
+/**
+ * @type {Document}
+ */
 let document
 let getLang
 
@@ -105,6 +108,7 @@ const getAllSettings = (dev = device) => {
       .then(() => getSettings(7, dev))
       .then(() => getSettings(8, dev))
       .then(() => getSettings(9, dev))
+      .then(() => getSettings(10, dev))
       .then(
         () =>
           new Promise(r => {
@@ -250,12 +254,12 @@ const initSettings = () => {
   getVersion()
   updateKeyCodeText()
   //极速模式
-  if (settingsSet[10][1]) {
+  if (settingsSet[10][0]) {
     document.getElementById('superSpeedOn').style.display = 'none'
     document.getElementById('superSpeedOff').removeAttribute('style')
   } else {
-    document.getElementById('superSpeedOff').removeAttribute('style')
     document.getElementById('superSpeedOff').style.display = 'none'
+    document.getElementById('superSpeedOn').removeAttribute('style')
   }
   countChanges()
 }
@@ -430,6 +434,7 @@ const useSettings = () => {
   if (changesBool.filter(e => e).length > 0) {
     var promiseObj = new Promise(r => {
       page4Init()
+      jumpPage(3)
       r()
     })
     for (let i = 0; i < changesBool.length; i++) {
@@ -460,7 +465,6 @@ const useSettings = () => {
         }, 300)
       })
     })
-    jumpPage(3)
   }
 }
 
@@ -689,7 +693,7 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   document.getElementById('superSpeedOn').addEventListener('click', e => {
-    settingChanged[0x0a][1] = 0x01
+    settingChanged[10][0] = 0x01
     countChanges()
     // sendData([0x0a, 0x01, 0x00, 0x00, 0x00, 0x01]).then(() => {
     //   page4Init()
@@ -699,7 +703,7 @@ const funs = (documentElement, deviceObj, funs) => {
   })
 
   document.getElementById('superSpeedOff').addEventListener('click', e => {
-    settingChanged[0x0a][1] = 0x01
+    settingChanged[10][0] = 0x00
     countChanges()
     // sendData([0x0a, 0x00, 0x00, 0x00, 0x00, 0x00]).then(() => {
     //   page4Init()
