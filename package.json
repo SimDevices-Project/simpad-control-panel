@@ -1,6 +1,6 @@
 {
   "name": "SimPad_Settings",
-  "version": "0.148.0",
+  "version": "0.149.0",
   "main": "main.js",
   "package": "electron-packager ./ SimPad_Settings --all --out ./OutApp --version 2.0.0 --overwrite",
   "dependencies": {
@@ -19,10 +19,11 @@
     "postinstall": "electron-rebuild --force -v 2.0.0 --force -m . -w node-hid",
     "start": "electron .",
     "debug": "electron . --debug",
+    "thanks": "electron . --thank_you",
     "build:win32": "electron-builder build --win --ia32 --version=false",
     "build:win64": "electron-builder build --win --x64 --version=false",
     "build:linux": "electron-builder build --linux --version=false",
     "build:macos": "electron-builder build --macos --version=false",
-    "package": "electron-packager ./ SimPad_Settings --all --out ../WTF_packer/OutApp --version 2.0.0 --overwrite"
+    "package": "electron-packager ./ SimPad_Settings --all --out ../WTF_packer/OutApp --electron-version 2.0.0 --overwrite"
   }
 }

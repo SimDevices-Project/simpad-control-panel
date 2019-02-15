@@ -1,0 +1,956 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', sans-serif, caption;
+  font-weight: 400;
+  user-select: none;
+  cursor: default;
+  outline: 0;
+}
+*:focus {
+  outline: 0;
+}
+input:focus {
+  box-shadow: 0 0 3px #245dbf;
+}
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+.pointer {
+  cursor: pointer;
+}
+html,
+body {
+  /* background-color: #ffffff; */
+  width: 960px;
+  height: 540px;
+  background: linear-gradient(-45deg, #245dbf 0%, #457fe3 100%);
+  overflow: hidden;
+}
+select,
+button {
+  color: #2f68cb;
+  background-color: #ffffff;
+  border: 1px solid #508aed;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 16px;
+  line-height: 16px;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  font-weight: 300;
+}
+button {
+  text-align: center;
+}
+button:hover {
+  background-color: #dae7fc;
+}
+button.wide {
+  padding: 8px 32px;
+}
+button.blue {
+  background-color: #508aed;
+  color: #ffffff;
+}
+button.blue:hover {
+  background-color: #2e6cd6;
+}
+.dragAble {
+  color: #ffffff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  width: 960px;
+  height: 48px;
+  -webkit-app-region: drag;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+h1 {
+  display: block;
+}
+.titleOnTop {
+  transition: all 1s;
+  font-size: 16px;
+  position: fixed;
+  left: 81px;
+  top: 16px;
+}
+#closeApp {
+  display: block;
+  position: fixed;
+  left: 863px;
+  top: 14px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 18px;
+  width: 18px;
+  height: 18px;
+  font-weight: 300;
+  -webkit-app-region: no-drag;
+}
+
+.pages {
+  position: fixed;
+  width: 960px;
+  height: 540px;
+  top: 0;
+}
+.whiteBG {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  top: 140px;
+  left: 80px;
+  background-color: #fff;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.3);
+}
+.whiteBanner {
+  z-index: 4;
+  height: 42px;
+  width: 800px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.whiteBannerBG,
+.whiteBannerLiner {
+  position: absolute;
+  width: 800px;
+  left: 0;
+}
+.whiteBannerBG {
+  background-color: #fff;
+  top: 0;
+  height: 24px;
+}
+.whiteBannerLiner {
+  top: 24px;
+  height: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+}
+.info {
+  text-align: center;
+  display: block;
+  width: 960px;
+  position: absolute;
+  top: 184px;
+  left: 0;
+  color: #2f68cb;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 0 140px;
+}
+#select {
+  position: absolute;
+  top: 279px;
+  left: 273px;
+  width: 320px;
+  height: 32px;
+}
+#refreshDev {
+  position: absolute;
+  left: 629px;
+  top: 279px;
+  text-align: center;
+  min-width: 72px;
+  height: 32px;
+}
+.page1MidBox {
+  position: absolute;
+  top: 403px;
+  width: 960px;
+  text-align: center;
+}
+#selBtn {
+  margin: 0 auto;
+}
+.deviceInfo {
+  position: fixed;
+  top: 152px;
+  left: 100px;
+  width: 760px;
+  height: 14px;
+  font-size: 14px;
+  color: #c0c0c0;
+  z-index: 5;
+}
+.buttomText {
+  position: absolute;
+  bottom: 8px;
+  left: 100px;
+  width: 760px;
+  height: 12px;
+  font-size: 12px;
+  color: #c0c0c0;
+  line-height: 20px;
+}
+.leftInfoText {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  text-align: left;
+}
+#setLangBox {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 20px;
+}
+#setLangBox > #setLangList {
+  display: none;
+  padding-top: 24px;
+}
+#setLangList > p {
+  cursor: pointer;
+}
+#setLangBox:hover {
+  height: auto;
+}
+#setLangBox:hover > #setLangList {
+  display: block;
+}
+.rightInfoText {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  text-align: right;
+}
+.buttomText > * {
+  bottom: 0;
+  top: auto !important;
+}
+
+.pages {
+  transition: linear opacity 0.2s, linear left 0.2s;
+}
+.showingPage {
+  opacity: 1;
+  left: 0;
+  transition: linear opacity 0.6s, cubic-bezier(0.215, 0.61, 0.355, 1) left 0.6s;
+}
+.hiddenPage {
+  opacity: 0;
+  left: -18px;
+}
+.readyToShowPage {
+  opacity: 0;
+  left: 18px;
+}
+.bigBtn {
+  width: 192px;
+  height: 256px;
+  position: absolute;
+  top: 242px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  text-align: center;
+  background-color: transparent;
+}
+.bigBtnTextBox {
+  position: absolute;
+  display: table;
+  height: 120px;
+  line-height: 24px;
+  bottom: 0;
+  width: 192px;
+  font-size: 24px;
+  color: #2f68cb;
+  font-weight: 400;
+  padding: 0 24px;
+  cursor: pointer;
+}
+.bigBtnTextBox > span {
+  display: table-cell;
+  vertical-align: middle;
+  cursor: pointer;
+}
+#changeKeyCode {
+  background-image: url('./imgs/set0.png');
+  left: 222px;
+}
+#changeKeyCode:hover {
+  background-image: url('./imgs/set0_1.png');
+}
+#changeLights {
+  background-image: url('./imgs/set1.png');
+  left: 384px;
+}
+#changeLights:hover {
+  background-image: url('./imgs/set1_1.png');
+}
+#otherSettings {
+  background-image: url('./imgs/set2.png');
+  left: 546px;
+}
+#otherSettings:hover {
+  background-image: url('./imgs/set2_1.png');
+}
+
+.progressBtn {
+  position: fixed;
+  width: 24px;
+  height: 24px;
+  background-color: #3f64d2;
+  border-radius: 50%;
+  border: #9ab5e4 2px solid;
+  color: #9ab5e4;
+  font-size: 11px;
+  line-height: 20px;
+  text-align: center;
+  z-index: 5;
+  top: 82px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+.progressBtn.compleBtn {
+  border: #fff 2px solid;
+  color: #fff;
+  cursor: pointer;
+}
+#page1Btn {
+  left: 240px;
+}
+#page2Btn {
+  left: 392px;
+}
+#page3Btn {
+  left: 544px;
+}
+#page4Btn {
+  left: 696px;
+}
+.prgressLine {
+  background-color: #9ab5e4;
+  width: 144px;
+  height: 2px;
+  position: fixed;
+  top: 93px;
+}
+.prgressLine.compleLine {
+  background-color: #fff;
+}
+#linge1-2 {
+  left: 257px;
+}
+#linge2-3 {
+  left: 412px;
+}
+#linge3-4 {
+  left: 566px;
+}
+.progressText {
+  width: 128px;
+  height: 11px;
+  line-height: 11px;
+  font-size: 11px;
+  color: #9ab5e4;
+  position: fixed;
+  /* top: 63px; */
+  bottom: 466px;
+  text-align: center;
+}
+.progressText.compleText {
+  color: #fff;
+}
+#page1Text {
+  left: 188px;
+}
+#page2Text {
+  left: 340px;
+}
+#page3Text {
+  left: 492px;
+}
+#page4Text {
+  left: 644px;
+}
+
+.page3top {
+  width: 800px;
+  height: 46px;
+  background-color: transparent;
+}
+.page3Box {
+  position: absolute;
+  width: 800px;
+  height: 400px;
+  top: 140px;
+  left: 80px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+#page3 {
+  color: #202020;
+}
+.leftPannel {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 160px;
+  text-align: right;
+  color: #707070;
+  font-size: 12px;
+  line-height: 25px;
+}
+.leftPannel * {
+  background-color: transparent;
+}
+.leftPannel > p {
+  height: 25px;
+  display: block;
+}
+#useSettings {
+  font-weight: 600;
+  color: #303030;
+}
+.activeTitle {
+  color: #336dd0;
+  font-weight: 700;
+}
+.rightPannel {
+  margin-left: 200px;
+  height: 400px;
+  overflow-y: scroll;
+  position: absolute;
+  top: 0;
+  width: 600px;
+  padding-right: 96px;
+  z-index: 3;
+}
+.rightPannel::-webkit-scrollbar {
+  display: none;
+}
+.rightPannel h4 {
+  color: #000;
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 12px;
+  /* margin-top: 36px; */
+}
+.rightPannel .firstTop {
+  margin-top: 46px;
+}
+.rightPannel > section {
+  margin-bottom: 36px;
+}
+.rightPannel p,
+.rightPannel div.p {
+  font-size: 12px;
+  color: #808080;
+  line-height: 23px;
+  min-height: 23px;
+  display: block;
+}
+.rightPannel .canBeSeleted {
+  cursor: pointer;
+}
+.rightPannel .canBeSeleted::before {
+  content: '> ';
+}
+.rightPannel p,
+.rightPannel div.p {
+  padding-left: 4px;
+}
+.rightPannel button {
+  display: inline-block;
+  height: 24px;
+  font-size: 12px;
+  line-height: 22px;
+  text-align: center;
+  border: 1px solid #909090;
+  border-radius: 2px;
+  width: auto;
+  padding: 0 8px;
+  color: #808080;
+}
+.rightPannel .titleP {
+  font-weight: 500;
+  display: inline-block;
+  color: #303030;
+  height: 100%;
+  min-width: 48px;
+}
+.titleP.withAfter::after {
+  content: ': ';
+}
+.rightPannel .midP {
+  display: inline-block;
+  min-width: 154px;
+  height: 100%;
+}
+.rightPannel .rightP {
+  display: inline-block;
+  height: 100%;
+  cursor: pointer;
+}
+input[type='color'] {
+  cursor: pointer;
+  background: transparent;
+  margin: 0;
+  width: auto;
+  height: 12px;
+  margin-right: 13px;
+  outline: none;
+  padding: 0;
+  border: none;
+}
+input[type='color']::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border: none;
+  width: 48px;
+}
+input[type='color']::-webkit-color-swatch {
+  box-sizing: border-box;
+  border: 1px solid #909090;
+  padding: 0;
+  width: 48px;
+  height: 12px;
+  position: relative;
+  top: -1px;
+}
+
+/*radio 部分来自https://www.cnblogs.com/xinjie-just/p/5911086.html*/
+input[type='radio'] + label {
+  cursor: pointer;
+}
+input[type='radio'] + label::before {
+  position: relative;
+  top: -1px;
+  box-sizing: border-box;
+  content: '\a0'; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  width: 12px;
+  height: 12px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #909090;
+  line-height: 12px;
+}
+input[type='radio']:checked + label::before {
+  background-color: #508aed;
+  background-clip: content-box;
+  padding: 2px;
+}
+input[type='radio'] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  display: none;
+}
+/*Number*/
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  display: none;
+}
+input[type='number'],
+input[type='text'] {
+  padding-left: 4px;
+  margin: 0;
+  height: 18px;
+  line-height: 18px;
+  font-size: 12px;
+  cursor: text;
+  color: #808080;
+  border: 1px solid #909090;
+  box-sizing: border-box;
+}
+.aBitM-Top {
+  margin-top: 4px;
+}
+.aLittleM-Top {
+  margin-top: 8px;
+}
+#delayInput {
+  width: 96px;
+}
+#toSend {
+  width: 148px;
+}
+.nameBefore::before {
+  content: '· ';
+}
+#theBtnDef {
+  width: 192px;
+  height: 192px;
+  position: absolute;
+  z-index: 4;
+  top: 124px;
+  left: 48px;
+  display: none;
+  overflow: visible;
+}
+#checkBtnDef:hover + #theBtnDef {
+  display: block;
+}
+#theBtnDefInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 192px;
+  height: 192px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s;
+  background-color: #fff;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+#deviceKeyMapTitle {
+  display: block;
+  font-weight: 500;
+  color: #404040;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  line-height: 12px;
+  font-size: 12px;
+}
+#checkBtnDef:hover + #theBtnDef > #theBtnDefInner {
+  animation: fadeInFromNone 0.2s ease-in;
+}
+
+#theLightDef {
+  width: 192px;
+  height: 192px;
+  position: absolute;
+  z-index: 4;
+  top: 353px;
+  left: 48px;
+  display: none;
+  overflow: visible;
+}
+#checkLightDef:hover + #theLightDef {
+  display: block;
+}
+#theLightDefInner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 192px;
+  height: 192px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s;
+  background-color: #fff;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}
+#deviceLightTitle {
+  display: block;
+  font-weight: 500;
+  color: #404040;
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  line-height: 12px;
+  font-size: 12px;
+}
+#checkLightDef:hover + #theLightDef > #theLightDefInner {
+  animation: fadeInFromNone 0.2s ease-in;
+}
+
+.reselectDevice {
+  opacity: 0;
+  cursor: default;
+  transition: opacity 0.3s ease-in;
+}
+.easeInInfo {
+  opacity: 1;
+  cursor: pointer;
+  transition: opacity 0.3s ease-out;
+}
+.changesCount {
+  opacity: 1;
+  transition: opacity 0.3s ease-out;
+}
+.changesCount.hide {
+  opacity: 0;
+  transition: opacity 0.3s ease-in;
+}
+.changesCount.hide .pointer {
+  cursor: default;
+}
+@keyframes fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+/*
+对勾动画基于以下修改
+艺灵设计 http://www.yilingsj.com/d/file/css3/2017-04-07/css3-animation-duigou.html
+*/
+.m-box {
+  /*background: #404040;*/
+  background: #577fee;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  top: 290px;
+  left: 430px;
+}
+.page4Icon {
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: 260px;
+  left: 400px;
+  /*color: #404040;*/
+  color: #577fee;
+  font-size: 160px;
+  line-height: 160px;
+  text-align: center;
+}
+.m-duigou {
+  width: 100px;
+  height: 60px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -40px 0 0 -50px;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  overflow: hidden;
+}
+.m-duigou:before,
+.m-duigou:after {
+  content: '';
+  position: absolute;
+  background: #fff;
+  border-radius: 2px;
+}
+.m-duigou:before {
+  width: 12px;
+  height: 60px;
+  left: 0;
+  animation: dgLeft 0.2s ease-out 0.3s 1 both;
+}
+.m-duigou:after {
+  width: 100px;
+  height: 12px;
+  bottom: 0;
+  animation: dgRight 0.15s linear 0.55s 1 both;
+}
+#page4 .hide {
+  display: none;
+}
+.page4MidBox {
+  position: absolute;
+  top: 460px;
+  width: 960px;
+  text-align: center;
+  background-color: transparent;
+}
+@keyframes dgLeft {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+@keyframes dgRight {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 0%;
+  }
+}
+
+.selecterBox {
+  width: 100%;
+  height: 100%;
+  left: 0%;
+  top: 0;
+  position: absolute;
+}
+.selecter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 50%;
+  margin-left: calc((100% - 1px) / 2);
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+}
+
+#exitProgram {
+  margin-left: 16px;
+}
+
+/*Color-Picker*/
+.color-picker {
+  width: 192px;
+  height: 192px;
+  position: absolute;
+  z-index: 5;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+}
+.color-picker-input > input[type='text'] {
+  border: 0;
+}
+
+.color-picker {
+  display: none;
+}
+
+.colorBox {
+  display: inline-block;
+  /* width: 192px; */
+}
+
+.colorBox:hover > .color-picker {
+  animation: fadeInFromNone 0.2s ease-in;
+  display: block;
+}
+
+/*键盘部分css*/
+.keyboard {
+  position: absolute;
+
+  animation: fadeInFromNone 0.2s ease-in;
+  width: 560px;
+  height: 174px;
+  z-index: 5;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  background-color: #fff;
+  padding: 16px 12px;
+  color: #000;
+  left: 4px;
+  display: none;
+}
+.keyboard.show {
+  display: block;
+}
+.keyboard-line {
+  width: 536px;
+  height: 22px;
+  position: relative;
+}
+.keyboard-line > *:last-child {
+  margin-right: 0 !important;
+}
+.keyboard-line1,
+.keyboard-line2,
+.keyboard-line3,
+.keyboard-line4,
+.keyboard-line5,
+.keyboard-line6,
+.keyboard-line7 {
+  margin-bottom: 2px;
+}
+.keyboard .key {
+  padding-left: 2px;
+  display: block;
+  border: 1px solid #909090;
+  height: 22px;
+  width: 22px;
+  margin-right: 2px;
+  font-size: 8px;
+  overflow: visible;
+  float: left;
+  cursor: pointer;
+  transition: 0.18s background-color;
+  background-color: #fff;
+}
+.keyboard .key.mid {
+  text-align: center;
+  padding: 0;
+}
+.keyboard .key.right {
+  padding-left: 0;
+  padding-right: 2px;
+  text-align: right;
+}
+.keyboard .key.v-mid {
+  line-height: 20px;
+}
+.keyboard .key.mr-8 {
+  margin-right: 8px;
+}
+.keyboard .key.mr-8-ex1k {
+  margin-right: 32px;
+}
+.keyboard .key.mr-8-ex3k {
+  margin-right: 86px;
+}
+.keyboard .key.mr-16 {
+  margin-right: 16px;
+}
+.keyboard .key.mr-20 {
+  margin-right: 20px;
+}
+.keyboard .key.x125 {
+  width: 28px;
+}
+.keyboard .key.x15 {
+  width: 33px;
+}
+.keyboard .key.x2 {
+  width: 46px;
+}
+.keyboard .key.x25 {
+  width: 57px;
+}
+.keyboard .key.x2-h {
+  height: 46px;
+  line-height: 46px;
+  position: absolute;
+  right: 0;
+}
+.keyboard .key.bsp {
+  width: 44px;
+}
+.keyboard .key.space {
+  width: 146px;
+}
+.key-fa-font {
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: 11px;
+}
+.keyboard .key.select {
+  background-color: #508aed;
+  color: #fff;
+}
+.keyboard .key:hover {
+  background-color: #dae7fc;
+  transition: 0s background-color;
+}
+.keyboard .key.select:hover {
+  background-color: #3871d4;
+  color: #fff;
+}
+
+#sendAllNewDev,
+#lightTest {
+  display: none;
+}
+#sendAllNewDev.show,
+#lightTest.show {
+  display: inline-block;
+}
