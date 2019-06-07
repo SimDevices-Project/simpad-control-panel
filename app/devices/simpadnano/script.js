@@ -122,6 +122,7 @@ const getAllSettings = (dev = device) => {
     return new Promise((r, e) => e())
   }
 }
+// 获取版本号信息
 let nowVersion
 const getVersion = (dev = device) =>
   new Promise(function doIt(r, e) {
@@ -157,6 +158,36 @@ const getVersion = (dev = device) =>
     }
     autoGetDataTimer = setTimeout(() => doIt(r, e), 30)
   })
+
+const getChipID = (dev = device) => {
+  return new Promise((resolve, error) => {
+    /**
+     * @param {[string]} data
+     */
+    getDataFunction.fun = data => {
+      document.getElementById('chipIDNum').innerHTML = ''
+      ;[...data]
+        .slice(0, 4)
+        .forEach(
+          d =>
+            (document.getElementById('chipIDNum').innerHTML += d
+              .toString(16)
+              .toUpperCase()
+              .padStart(2, '0'))
+        )
+      clearTimeout(autoGetDataTimer)
+      resolve()
+    }
+    if (dev) {
+      var dat = [0x00, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00]
+      sendData(dat).catch(err => clearTimeout(autoGetDataTimer))
+    } else {
+      error()
+      return
+    }
+    autoGetDataTimer = setTimeout(() => doIt(r, e), 30)
+  })
+}
 
 const updateKeyCodeText = () => {
   //键值设置
@@ -202,35 +233,35 @@ const updateKeyCodeText = () => {
   })
 }
 
-let cpG1
-let cpG2
+// let cpG1
+// let cpG2
 
 const initSettings = () => {
   //备份机器选项数据
   settingChanged = [...settingsSet.map(arr => [...arr])]
   //灯光模式单选框
-  var radios = [...document.getElementsByName('lightsType')]
-  radios.forEach(node => {
-    node.checked = false
-  })
-  radios.forEach(radio => {
-    if (radio.value === settingsSet[8][0].toString()) {
-      radio.checked = true
-    }
-  })
+  // var radios = [...document.getElementsByName('lightsType')]
+  // radios.forEach(node => {
+  //   node.checked = false
+  // })
+  // radios.forEach(radio => {
+  //   if (radio.value === settingsSet[8][0].toString()) {
+  //     radio.checked = true
+  //   }
+  // })
   //灯光颜色
-  document.getElementById('G1Color').value = `#${settingsSet[6][0]
-    .toString(16)
-    .padEnd(2, '0')}${settingsSet[6][1]
-    .toString(16)
-    .padEnd(2, '0')}${settingsSet[6][2].toString(16).padEnd(2, '0')}`
-  cpG1.value = document.getElementById('G1Color').value
-  document.getElementById('G2Color').value = `#${settingsSet[7][0]
-    .toString(16)
-    .padEnd(2, '0')}${settingsSet[7][1]
-    .toString(16)
-    .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
-  cpG2.value = document.getElementById('G2Color').value
+  // document.getElementById('G1Color').value = `#${settingsSet[6][0]
+  //   .toString(16)
+  //   .padEnd(2, '0')}${settingsSet[6][1]
+  //   .toString(16)
+  //   .padEnd(2, '0')}${settingsSet[6][2].toString(16).padEnd(2, '0')}`
+  // cpG1.value = document.getElementById('G1Color').value
+  // document.getElementById('G2Color').value = `#${settingsSet[7][0]
+  //   .toString(16)
+  //   .padEnd(2, '0')}${settingsSet[7][1]
+  //   .toString(16)
+  //   .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
+  // cpG2.value = document.getElementById('G2Color').value
   //灯光亮度
   // var G1Brightness = document.getElementById('G1Brightness')
   // var G2Brightness = document.getElementById('G2Brightness')
@@ -251,7 +282,7 @@ const initSettings = () => {
     settingsSet[9][1] * 0x010000 +
     settingsSet[9][2] * 0x0100 +
     settingsSet[9][3]
-  getVersion()
+  getVersion().then(getChipID)
   updateKeyCodeText()
   //极速模式
   if (settingsSet[10][0]) {
@@ -272,27 +303,27 @@ const initSettingsFunction = () => {
       countChanges()
     })
   })
-  var colorGroupsCount = 2
-  var colorOffset = 6
-  for (let i = 0; i < colorGroupsCount; i++) {
-    document.getElementById(`G${i + 1}Color`).addEventListener('change', e => {
-      const target = settingChanged[colorOffset + i]
-      target[0] = parseInt(
-        document.getElementById(`G${i + 1}Color`).value.substr(1, 2),
-        16
-      )
-      target[1] = parseInt(
-        document.getElementById(`G${i + 1}Color`).value.substr(3, 2),
-        16
-      )
-      target[2] = parseInt(
-        document.getElementById(`G${i + 1}Color`).value.substr(5, 2),
-        16
-      )
-      //target[3] =
-      countChanges()
-    })
-  }
+  // var colorGroupsCount = 2
+  // var colorOffset = 6
+  // for (let i = 0; i < colorGroupsCount; i++) {
+  //   document.getElementById(`G${i + 1}Color`).addEventListener('change', e => {
+  //     const target = settingChanged[colorOffset + i]
+  //     target[0] = parseInt(
+  //       document.getElementById(`G${i + 1}Color`).value.substr(1, 2),
+  //       16
+  //     )
+  //     target[1] = parseInt(
+  //       document.getElementById(`G${i + 1}Color`).value.substr(3, 2),
+  //       16
+  //     )
+  //     target[2] = parseInt(
+  //       document.getElementById(`G${i + 1}Color`).value.substr(5, 2),
+  //       16
+  //     )
+  //     //target[3] =
+  //     countChanges()
+  //   })
+  // }
   document.getElementById('delayInput').addEventListener('change', e => {
     var value = parseInt(document.getElementById('delayInput').value)
       .toString(16)
@@ -414,7 +445,7 @@ const templeData = [
   [0x05, 0x00, 0x3b, 0x00, 0x00], //F3
   [0x06, 0x00, 0xff, 0x00, 0x04], //#00FF00 100%(4)
   [0x07, 0x00, 0x00, 0xff, 0x04], //#0000FF 100%(4)
-  [0x08, 0x00, 0x00, 0x00, 0x00], //Mode 0
+  [0x08, 0x06, 0x00, 0x00, 0x00], //Mode 6, 彩虹
   [0x09, 0x00, 0x00, 0x00, 0x60], //0x60 => 96 (MAX 16^6-1)
   [0x0a, 0x00, 0x00, 0x00, 0x40] //0x00 极速模式处于关闭
 ]
@@ -422,14 +453,14 @@ templeData.forEach(arr => {
   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
 })
 // 灯光测试数据
-const lightTestData = [
-  [0x06, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
-  [0x07, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
-  [0x08, 0x02, 0x00, 0x00, 0x00] //Mode 0
-]
-lightTestData.forEach(arr => {
-  arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
-})
+// const lightTestData = [
+//   [0x06, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
+//   [0x07, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
+//   [0x08, 0x02, 0x00, 0x00, 0x00] //Mode 0
+// ]
+// lightTestData.forEach(arr => {
+//   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
+// })
 const useSettings = () => {
   if (changesBool.filter(e => e).length > 0) {
     var promiseObj = new Promise(r => {
@@ -513,7 +544,14 @@ const funs = (documentElement, deviceObj, funs) => {
       return funs.getData
     },
     set fun(val) {
-      funs.getData = val
+      funs.getData = data => {
+        let consoleInfo = ''
+        ;[...data].forEach(
+          d => (consoleInfo += d.toString(16).padStart(2, '0'))
+        )
+        console.log('Get Device Data: ' + consoleInfo)
+        return val(data)
+      }
     }
   }
 
@@ -616,72 +654,72 @@ const funs = (documentElement, deviceObj, funs) => {
     }
   })
   // 灯光测试按钮
-  document.getElementById('lightTest').addEventListener('click', e => {
-    var promiseObj
-    if (devices && devices.length && devices.length > 0) {
-      page4Init()
-      jumpPage(3)
-      devices.forEach(d => {
-        let deviceToSend = new HID.HID(d.path)
-        lightTestData.forEach(data => {
-          if (promiseObj) {
-            promiseObj.then(() => sendData(data, deviceToSend))
-          } else {
-            promiseObj = sendData(data, deviceToSend)
-          }
-        })
-      })
-      promiseObj.then(() =>
-        getAllSettings().then(() => {
-          initSettings()
-          setTimeout(page4Fin, 300)
-          //countChanges()
-        })
-      )
-    }
-  })
+  // document.getElementById('lightTest').addEventListener('click', e => {
+  //   var promiseObj
+  //   if (devices && devices.length && devices.length > 0) {
+  //     page4Init()
+  //     jumpPage(3)
+  //     devices.forEach(d => {
+  //       let deviceToSend = new HID.HID(d.path)
+  //       lightTestData.forEach(data => {
+  //         if (promiseObj) {
+  //           promiseObj.then(() => sendData(data, deviceToSend))
+  //         } else {
+  //           promiseObj = sendData(data, deviceToSend)
+  //         }
+  //       })
+  //     })
+  //     promiseObj.then(() =>
+  //       getAllSettings().then(() => {
+  //         initSettings()
+  //         setTimeout(page4Fin, 300)
+  //         //countChanges()
+  //       })
+  //     )
+  //   }
+  // })
 
   //初始化两个取色器
-  cpG1 = new ColorPicker({
-    dom: document.getElementById('setG1ColorPicker'),
-    value: document.getElementById('G1Color').value
-  })
-  cpG1.addEventListener('change', event => {
-    document.getElementById('G1Color').value = cpG1.value
-    document.getElementById('G1Color').dispatchEvent(new Event('change'))
-  })
+  // cpG1 = new ColorPicker({
+  //   dom: document.getElementById('setG1ColorPicker'),
+  //   value: document.getElementById('G1Color').value
+  // })
+  // cpG1.addEventListener('change', event => {
+  //   document.getElementById('G1Color').value = cpG1.value
+  //   document.getElementById('G1Color').dispatchEvent(new Event('change'))
+  // })
 
-  cpG2 = new ColorPicker({
-    dom: document.getElementById('setG2ColorPicker'),
-    value: document.getElementById('G2Color').value
-  })
-  cpG2.addEventListener('change', event => {
-    document.getElementById('G2Color').value = cpG2.value
-    document.getElementById('G2Color').dispatchEvent(new Event('change'))
-  })
+  // cpG2 = new ColorPicker({
+  //   dom: document.getElementById('setG2ColorPicker'),
+  //   value: document.getElementById('G2Color').value
+  // })
+  // cpG2.addEventListener('change', event => {
+  //   document.getElementById('G2Color').value = cpG2.value
+  //   document.getElementById('G2Color').dispatchEvent(new Event('change'))
+  // })
 
-  const cpArr = [cpG1.getDOM(), cpG2.getDOM()]
-  let upFlag = false
-  cpG1.getDOM().addEventListener('mousedown', () => {
-    cpG1.getDOM().style.display = 'block'
-    cpG1.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
-    upFlag = false
-  })
-  cpG2.getDOM().addEventListener('mousedown', () => {
-    cpG2.getDOM().style.display = 'block'
-    cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
-    upFlag = false
-  })
+  // const cpArr = [cpG1.getDOM(), cpG2.getDOM()]
+  // let upFlag = false
+  // cpG1.getDOM().addEventListener('mousedown', () => {
+  //   cpG1.getDOM().style.display = 'block'
+  //   cpG1.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+  //   upFlag = false
+  // })
+  // cpG2.getDOM().addEventListener('mousedown', () => {
+  //   cpG2.getDOM().style.display = 'block'
+  //   cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+  //   upFlag = false
+  // })
   //cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
-  document.addEventListener('mouseup', () => {
-    setTimeout(() => (upFlag = true), 0)
-  })
-  document.addEventListener('click', () => {
-    if (upFlag) {
-      cpArr.forEach(e => e.removeAttribute('style'))
-    }
-    //document.removeEventListener('click', clickFun)
-  })
+  // document.addEventListener('mouseup', () => {
+  //   setTimeout(() => (upFlag = true), 0)
+  // })
+  // document.addEventListener('click', () => {
+  //   if (upFlag) {
+  //     cpArr.forEach(e => e.removeAttribute('style'))
+  //   }
+  //   //document.removeEventListener('click', clickFun)
+  // })
 
   document
     .getElementById('useSettings')
@@ -928,16 +966,16 @@ Update Now?`)
     'theBtnDefInner'
   ).style.background = `url(${__dirname.replace(/\\/g, '/') +
     '/imgs/deviceKeyInfo.png'})`
-  document.getElementById(
-    'theLightDefInner'
-  ).style.background = `url(${__dirname.replace(/\\/g, '/') +
-    '/imgs/deviceLightInfo.png'})`
+  // document.getElementById(
+  //   'theLightDefInner'
+  // ).style.background = `url(${__dirname.replace(/\\/g, '/') +
+  //   '/imgs/deviceLightInfo.png'})`
   document.getElementById('deviceKeyMapTitle').innerText = getName(
     deviceInfo.description
   )
-  document.getElementById('deviceLightTitle').innerText = getName(
-    deviceInfo.description
-  )
+  // document.getElementById('deviceLightTitle').innerText = getName(
+  //   deviceInfo.description
+  // )
 
   getAllSettings().then(() => initSettings())
   initSettingsFunction()
