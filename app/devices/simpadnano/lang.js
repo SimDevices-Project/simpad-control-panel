@@ -35,6 +35,7 @@ module.exports = {
     keepOff: 'Off',
     keyPress: 'Key Press',
     rainbowColor: 'Rainbow',
+    rainbowEaseOut: 'Rainbow fade out',
 
     colorAndBrightness: 'Color', // & Brightness
     setBrightness: 'Set brightness',
@@ -868,6 +869,7 @@ module.exports = {
     keepOff: '关闭',
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹渐隐',
 
     colorAndBrightness: '颜色', //与亮度
     setBrightness: '设置亮度',
@@ -1090,6 +1092,7 @@ module.exports = {
     keepOff: '关闭',
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹渐灭',
 
     colorAndBrightness: '颜色', //与亮度
     setBrightness: '设置亮度',
@@ -1299,6 +1302,7 @@ module.exports = {
     keepOff: '關閉',
     keyPress: '按下亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹淡出',
 
     colorAndBrightness: '顏色', //與亮度
     setBrightness: '設置亮度',

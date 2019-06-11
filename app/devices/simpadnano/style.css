@@ -281,7 +281,7 @@ h1 {
 }
 #changeKeyCode {
   background-image: url('./imgs/set0.png');
-  left: 222px;
+  left: 132px;
 }
 #changeKeyCode:hover {
   background-image: url('./imgs/set0_1.png');
@@ -295,7 +295,7 @@ h1 {
 }
 #otherSettings {
   background-image: url('./imgs/set2.png');
-  left: 546px;
+  left: 636px;
 }
 #otherSettings:hover {
   background-image: url('./imgs/set2_1.png');

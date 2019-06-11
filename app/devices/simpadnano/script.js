@@ -233,35 +233,35 @@ const updateKeyCodeText = () => {
   })
 }
 
-// let cpG1
-// let cpG2
+let cpG1
+let cpG2
 
 const initSettings = () => {
   //备份机器选项数据
   settingChanged = [...settingsSet.map(arr => [...arr])]
   //灯光模式单选框
-  // var radios = [...document.getElementsByName('lightsType')]
-  // radios.forEach(node => {
-  //   node.checked = false
-  // })
-  // radios.forEach(radio => {
-  //   if (radio.value === settingsSet[8][0].toString()) {
-  //     radio.checked = true
-  //   }
-  // })
+  var radios = [...document.getElementsByName('lightsType')]
+  radios.forEach(node => {
+    node.checked = false
+  })
+  radios.forEach(radio => {
+    if (radio.value === settingsSet[8][0].toString()) {
+      radio.checked = true
+    }
+  })
   //灯光颜色
-  // document.getElementById('G1Color').value = `#${settingsSet[6][0]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[6][1]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[6][2].toString(16).padEnd(2, '0')}`
-  // cpG1.value = document.getElementById('G1Color').value
-  // document.getElementById('G2Color').value = `#${settingsSet[7][0]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[7][1]
-  //   .toString(16)
-  //   .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
-  // cpG2.value = document.getElementById('G2Color').value
+  document.getElementById('G1Color').value = `#${settingsSet[6][0]
+    .toString(16)
+    .padEnd(2, '0')}${settingsSet[6][1]
+    .toString(16)
+    .padEnd(2, '0')}${settingsSet[6][2].toString(16).padEnd(2, '0')}`
+  cpG1.value = document.getElementById('G1Color').value
+  document.getElementById('G2Color').value = `#${settingsSet[7][0]
+    .toString(16)
+    .padEnd(2, '0')}${settingsSet[7][1]
+    .toString(16)
+    .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
+  cpG2.value = document.getElementById('G2Color').value
   //灯光亮度
   // var G1Brightness = document.getElementById('G1Brightness')
   // var G2Brightness = document.getElementById('G2Brightness')
@@ -303,27 +303,29 @@ const initSettingsFunction = () => {
       countChanges()
     })
   })
-  // var colorGroupsCount = 2
-  // var colorOffset = 6
-  // for (let i = 0; i < colorGroupsCount; i++) {
-  //   document.getElementById(`G${i + 1}Color`).addEventListener('change', e => {
-  //     const target = settingChanged[colorOffset + i]
-  //     target[0] = parseInt(
-  //       document.getElementById(`G${i + 1}Color`).value.substr(1, 2),
-  //       16
-  //     )
-  //     target[1] = parseInt(
-  //       document.getElementById(`G${i + 1}Color`).value.substr(3, 2),
-  //       16
-  //     )
-  //     target[2] = parseInt(
-  //       document.getElementById(`G${i + 1}Color`).value.substr(5, 2),
-  //       16
-  //     )
-  //     //target[3] =
-  //     countChanges()
-  //   })
-  // }
+  // 初始化颜色选择器
+  var colorGroupsCount = 2
+  var colorOffset = 6
+  for (let i = 0; i < colorGroupsCount; i++) {
+    document.getElementById(`G${i + 1}Color`).addEventListener('change', e => {
+      const target = settingChanged[colorOffset + i]
+      target[0] = parseInt(
+        document.getElementById(`G${i + 1}Color`).value.substr(1, 2),
+        16
+      )
+      target[1] = parseInt(
+        document.getElementById(`G${i + 1}Color`).value.substr(3, 2),
+        16
+      )
+      target[2] = parseInt(
+        document.getElementById(`G${i + 1}Color`).value.substr(5, 2),
+        16
+      )
+      //target[3] =
+      countChanges()
+    })
+  }
+  // 初始化去抖
   document.getElementById('delayInput').addEventListener('change', e => {
     var value = parseInt(document.getElementById('delayInput').value)
       .toString(16)
@@ -680,46 +682,48 @@ const funs = (documentElement, deviceObj, funs) => {
   // })
 
   //初始化两个取色器
-  // cpG1 = new ColorPicker({
-  //   dom: document.getElementById('setG1ColorPicker'),
-  //   value: document.getElementById('G1Color').value
-  // })
-  // cpG1.addEventListener('change', event => {
-  //   document.getElementById('G1Color').value = cpG1.value
-  //   document.getElementById('G1Color').dispatchEvent(new Event('change'))
-  // })
+  cpG1 = new ColorPicker({
+    dom: document.getElementById('setG1ColorPicker'),
+    value: document.getElementById('G1Color').value
+  })
+  cpG1.addEventListener('change', event => {
+    document.getElementById('G1Color').value = cpG1.value
+    document.getElementById('G1Color').dispatchEvent(new Event('change'))
+  })
 
-  // cpG2 = new ColorPicker({
-  //   dom: document.getElementById('setG2ColorPicker'),
-  //   value: document.getElementById('G2Color').value
-  // })
-  // cpG2.addEventListener('change', event => {
-  //   document.getElementById('G2Color').value = cpG2.value
-  //   document.getElementById('G2Color').dispatchEvent(new Event('change'))
-  // })
+  cpG2 = new ColorPicker({
+    dom: document.getElementById('setG2ColorPicker'),
+    value: document.getElementById('G2Color').value
+  })
+  cpG2.addEventListener('change', event => {
+    document.getElementById('G2Color').value = cpG2.value
+    document.getElementById('G2Color').dispatchEvent(new Event('change'))
+  })
 
-  // const cpArr = [cpG1.getDOM(), cpG2.getDOM()]
-  // let upFlag = false
-  // cpG1.getDOM().addEventListener('mousedown', () => {
-  //   cpG1.getDOM().style.display = 'block'
-  //   cpG1.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
-  //   upFlag = false
-  // })
-  // cpG2.getDOM().addEventListener('mousedown', () => {
-  //   cpG2.getDOM().style.display = 'block'
-  //   cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
-  //   upFlag = false
-  // })
-  //cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
-  // document.addEventListener('mouseup', () => {
-  //   setTimeout(() => (upFlag = true), 0)
-  // })
-  // document.addEventListener('click', () => {
-  //   if (upFlag) {
-  //     cpArr.forEach(e => e.removeAttribute('style'))
-  //   }
-  //   //document.removeEventListener('click', clickFun)
-  // })
+  const cpArr = [cpG1.getDOM(), cpG2.getDOM()]
+  let upFlag = false
+  cpG1.getDOM().addEventListener('mousedown', () => {
+    cpG1.getDOM().style.display = 'block'
+    cpG1.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+    upFlag = false
+  })
+  cpG2.getDOM().addEventListener('mousedown', () => {
+    cpG2.getDOM().style.display = 'block'
+    cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
+    upFlag = false
+  })
+  cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
+  document.addEventListener('mouseup', () => {
+    setTimeout(() => (upFlag = true), 0)
+  })
+  document.addEventListener('click', () => {
+    if (upFlag) {
+      cpArr.forEach(e => e.removeAttribute('style'))
+    }
+    //document.removeEventListener('click', clickFun)
+  })
+
+  // 取色器初始化结束
 
   document
     .getElementById('useSettings')
@@ -966,16 +970,20 @@ Update Now?`)
     'theBtnDefInner'
   ).style.background = `url(${__dirname.replace(/\\/g, '/') +
     '/imgs/deviceKeyInfo.png'})`
-  // document.getElementById(
-  //   'theLightDefInner'
-  // ).style.background = `url(${__dirname.replace(/\\/g, '/') +
-  //   '/imgs/deviceLightInfo.png'})`
+    // 灯光配置信息显示
+  document.getElementById(
+    'theLightDefInner'
+  ).style.background = `url(${__dirname.replace(/\\/g, '/') +
+    '/imgs/deviceLightInfo.png'})`
+
   document.getElementById('deviceKeyMapTitle').innerText = getName(
     deviceInfo.description
   )
-  // document.getElementById('deviceLightTitle').innerText = getName(
-  //   deviceInfo.description
-  // )
+
+  // 灯光配置信息设备标题
+  document.getElementById('deviceLightTitle').innerText = getName(
+    deviceInfo.description
+  )
 
   getAllSettings().then(() => initSettings())
   initSettingsFunction()
