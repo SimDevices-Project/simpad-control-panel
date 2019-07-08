@@ -608,6 +608,7 @@ input[type='text'] {
   background-color: #fff;
   background-position: 0 0;
   background-repeat: no-repeat;
+  background-size: cover!important;
 }
 #deviceKeyMapTitle {
   display: block;
@@ -647,6 +648,7 @@ input[type='text'] {
   background-color: #fff;
   background-position: 0 0;
   background-repeat: no-repeat;
+  background-size: cover!important;
 }
 #deviceLightTitle {
   display: block;

@@ -310,7 +310,7 @@
             </span>
           </div>
           <div class="p">
-            <span class="titleP withAfter">LED1</span>
+            <span class="titleP withAfter">LED2</span>
             <span class="midP">
               <div class="colorBox" id="setG2ColorBox">
                 <span id="setG2Color" class="pointer">
@@ -329,7 +329,13 @@
       <p class="aBitM-Top">
         <span class="titleP withAfter" data-lang-key="delay">delay</span>
         <span class="midP">
-          <input type="number" id="delayInput" value="512" />
+          <input
+            type="number"
+            id="delayInput"
+            value="512"
+            min="16"
+            max="65535"
+          />
         </span>
       </p>
     </section>
@@ -404,6 +410,9 @@
         <span id="firmwareVersionNum">firmwareVersionNum</span>
       </p>
       <p class="aBitM-Top">
+        <button id="installDriver" data-lang-key="installDriver">
+          installDriver
+        </button>
         <button id="checkROMUpdate" data-lang-key="checkUpdate">
           checkUpdate
         </button>

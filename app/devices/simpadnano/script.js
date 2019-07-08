@@ -960,6 +960,25 @@ Update Now?`)
     }
   })
 
+  document.getElementById('installDriver').addEventListener('click',()=>{
+    document.getElementById('installDriver').disabled = true
+    const execFile = require('child_process').execFile
+    const cmd = execFile(
+      path.join(__dirname, '/UPDATER/iap_applition.exe'),
+      ['/S'],
+      {
+        // detached: true,
+        // stdio: 'ignore',
+        // shell: true,
+        cwd: __dirname + '\\UPDATER',
+        windowsHide: false
+      }
+    )
+    cmd.once('close',()=>{
+      document.getElementById('installDriver').disable = true
+    })
+  })
+
   Array.prototype.forEach.call(
     document.querySelectorAll("input[type='color']"),
     e => {
@@ -988,5 +1007,90 @@ Update Now?`)
   getAllSettings().then(() => initSettings())
   initSettingsFunction()
 }
+
+const animeLights = () => {
+  const childProcess = require('child_process')
+
+  let valueToShow = 0
+  let valLastTime = 0
+  let delaySet = 0
+  const highVolDelay = 25
+  let maxVal = 0
+  let maxValSetTime = 0
+  let nowTime = 0
+
+  const showAnimeVal = valNum => {
+    nowTime = performance.now()
+    if (valNum > maxVal) {
+      maxVal = valNum
+      maxValSetTime = nowTime
+    } else if (performance.now() - maxValSetTime > 10000 && valNum > 0) {
+      maxVal = valNum
+      maxValSetTime = nowTime
+    }
+    if (performance.now() - delaySet < highVolDelay) {
+      if (valNum > valLastTime * 1.10 && valNum > maxVal * 0.2) {
+        valueToShow = 100
+        delaySet = nowTime
+        if (performance.now() - maxValSetTime > 2000) {
+          maxVal = valNum
+          maxValSetTime = nowTime
+        }
+      }
+      valLastTime = valNum
+      return
+    }
+    if (valNum > valLastTime) {
+      if (valNum > valLastTime * 1.08 && valNum > maxVal * 0.2) {
+        valueToShow = 100
+        delaySet = nowTime
+      } else if (valNum > valLastTime * 1.06 && valNum > maxVal * 0.2) {
+        valueToShow *= 1.5
+        valueToShow += 15
+      } else if (valNum > valLastTime * 1.02 && valNum > maxVal * 0.2) {
+        valueToShow *= 1.3
+        valueToShow += 10
+      } else if(valNum > maxVal * 0.2){
+        valueToShow *= 1.2
+        valueToShow += 10
+      }
+      if (valueToShow > 100) {
+        valueToShow = 100
+      }
+    } else {
+      valueToShow *= 0.98
+      valueToShow -= 1
+    }
+    valLastTime = valNum
+    if (valueToShow <= 0) {
+      valueToShow = 0
+    }
+    const val = Math.round((valueToShow * 0xff) / 100)
+    if (val > 0xff) {
+      val = 0xff
+    }
+    sendData([0x00, 0x03, 0xff, Math.round(val * 0.7), 0, val])
+  }
+
+  const autoReloadVolProcess = () => {
+    const osValProcess = childProcess.execFile(
+      path.join(__dirname, '/LIGHT_CONTROLLER/OSVol.exe')
+    )
+    let tempChunkNum
+    osValProcess.stdout.on('data', chunk => {
+      tempChunkNum = parseFloat(chunk)
+      if (Number.isFinite(tempChunkNum)) {
+        showAnimeVal(tempChunkNum)
+      }
+    })
+    osValProcess.on('close', () => {
+      console.log('osVal Closed')
+      osValProcess.kill()
+      autoReloadVolProcess()
+    })
+  }
+  autoReloadVolProcess()
+}
+// animeLights()
 
 module.exports = funs

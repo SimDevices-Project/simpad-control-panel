@@ -918,6 +918,25 @@ Update Now?`)
     }
   })
 
+  document.getElementById('installDriver').addEventListener('click', () => {
+    document.getElementById('installDriver').disabled = true
+    const execFile = require('child_process').execFile
+    const cmd = execFile(
+      path.join(__dirname, '/UPDATER/iap_applition.exe'),
+      ['/S'],
+      {
+        // detached: true,
+        // stdio: 'ignore',
+        // shell: true,
+        cwd: __dirname + '\\UPDATER',
+        windowsHide: false
+      }
+    )
+    cmd.once('close', () => {
+      document.getElementById('installDriver').disable = true
+    })
+  })
+
   Array.prototype.forEach.call(
     document.querySelectorAll("input[type='color']"),
     e => {

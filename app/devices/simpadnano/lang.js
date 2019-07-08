@@ -66,6 +66,7 @@ module.exports = {
 
     about: 'About SimPad',
     checkUpdate: 'Check Update',
+    installDriver: "Install Driver (Require Administrator privileges)",
     isLatestVersion: 'The latest version',
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using SimPad!</p>
@@ -799,7 +800,8 @@ module.exports = {
 
     about: 'About SimPad',
     checkUpdate: 'Check Update',
-    aboutText: `<p>感谢您使用SimPad！</p>
+    installDriver: "Install Driver (Require Administrator privileges)",
+    aboutText: `<p>Thanks for choosing SimPad！</p>
     <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
     <p></p>
@@ -900,6 +902,7 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
+    installDriver: "安装更新驱动程序（需要管理员权限）",
     isLatestVersion: '已经是最新版本',
     jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
@@ -1121,6 +1124,9 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
+    installDriver: "安装更新驱动程序（需要管理员权限）",
+    isLatestVersion: '已经是最新版本',
+    jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
     <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
@@ -1329,7 +1335,8 @@ module.exports = {
     resetDeviceBtn: '重置',
 
     about: '關於',
-    checkUpdate: '檢查更新',
+    checkUpdate: '檢索更新',
+    installDriver: "安裝驅動程式（需管理員權限）",
     aboutText: `<p>感謝您使用SimPad！</p>
     <p>SimPad是一款基於C51單片機實現的自訂鍵盤，得名於Simple與Pad，表明這個設備力求簡單與實用，在這款設備的開發過程中受到以下人的幫助，</p>
     <p>特此感謝！</p>

@@ -35,6 +35,7 @@ module.exports = {
     keepOff: 'Off',
     keyPress: 'Key Press',
     rainbowColor: 'Rainbow',
+    rainbowEaseOut: 'Rainbow fade out',
 
     colorAndBrightness: 'Color', // & Brightness
     setBrightness: 'Set brightness',
@@ -65,7 +66,8 @@ module.exports = {
 
     about: 'About SimPad',
     checkUpdate: 'Check Update',
-    isLatestVersion: "The latest version",
+    installDriver: "Install Driver (Require Administrator privileges)",
+    isLatestVersion: 'The latest version',
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using SimPad!</p>
     <p>SimPad is a custom keyboard based on C51 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
@@ -104,6 +106,7 @@ module.exports = {
     //DevicesNames
     simpadv2: 'SimPad v2',
     sayoo2c: "Sayobot's KeyPad O2C",
+    simpadv2lite: 'SimPad v2 Lite',
 
     //ForKeyboard
     key_esc: 'Esc',
@@ -327,6 +330,7 @@ module.exports = {
     keyN_mouseRight: 'Mouse Right',
 
     firmwareVersion: 'Firmware Version',
+    chipID: 'Device ID',
     lightTest: 'Lights Test',
     checkUpdateFailed: 'Check Update Failed',
 
@@ -430,6 +434,8 @@ module.exports = {
 
     //DevicesNames
     simpadv2: 'SimPad v2',
+    simpadv2lite: 'SimPad v2 Lite',
+    simpadnano: 'SimPad Nano',
 
     //ForKeyboard
     key_esc: 'Esc',
@@ -737,7 +743,8 @@ module.exports = {
     noDevice: '選定を待つ',
     reselectDevice: '改めて設備を選ぶ',
 
-    simpadv2: 'SimPad v2'
+    simpadv2: 'SimPad v2',
+    simpadv2lite: 'SimPad v2 Lite'
   },
   'ru-RU': {
     title: 'Панель управления SimPad',
@@ -793,7 +800,8 @@ module.exports = {
 
     about: 'About SimPad',
     checkUpdate: 'Check Update',
-    aboutText: `<p>感谢您使用SimPad！</p>
+    installDriver: "Install Driver (Require Administrator privileges)",
+    aboutText: `<p>Thanks for choosing SimPad！</p>
     <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
     <p></p>
@@ -863,6 +871,7 @@ module.exports = {
     keepOff: '关闭',
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹渐隐',
 
     colorAndBrightness: '颜色', //与亮度
     setBrightness: '设置亮度',
@@ -893,7 +902,8 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
-    isLatestVersion:'已经是最新版本',
+    installDriver: "安装更新驱动程序（需要管理员权限）",
+    isLatestVersion: '已经是最新版本',
     jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
     <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
@@ -927,6 +937,7 @@ module.exports = {
     //设备列表
     simpadv2: 'SimPad 版本2',
     sayoo2c: '小夜のosu装备 O2C',
+    simpadv2lite: 'SimPad 版本2 轻量版',
 
     key_mouseLeft: '鼠标左键',
     key_mouseMiddle: '鼠标中键',
@@ -1045,6 +1056,7 @@ module.exports = {
     keyN_mouseRight: '鼠标右键',
 
     firmwareVersion: '固件版本',
+    chipID: '设备ID',
     lightTest: '灯光测试',
 
     checkUpdateFailed: '检查更新失败'
@@ -1083,6 +1095,7 @@ module.exports = {
     keepOff: '关闭',
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹渐灭',
 
     colorAndBrightness: '颜色', //与亮度
     setBrightness: '设置亮度',
@@ -1111,6 +1124,9 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
+    installDriver: "安装更新驱动程序（需要管理员权限）",
+    isLatestVersion: '已经是最新版本',
+    jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
     <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
@@ -1141,6 +1157,7 @@ module.exports = {
     reselectDevice: '重新选择设备',
 
     simpadv2: 'SimPad 版本2',
+    simpadv2lite: 'SimPad 版本2 轻量版',
 
     //ForKeyboard TextInfo
     keyN_null: '空',
@@ -1248,7 +1265,14 @@ module.exports = {
     keyN_downArrow: '↓',
     keyN_rightArrow: '→',
     keyN_numPad_0: '小键盘0',
-    keyN_numPad_period: '小键盘.'
+    keyN_numPad_period: '小键盘.',
+
+    
+    firmwareVersion: '固件版本',
+    chipID: '设备ID',
+    lightTest: '灯光测试',
+
+    checkUpdateFailed: '检查更新失败'
   },
   'zh-TW': {
     title: 'SimPad Control Panel',
@@ -1284,6 +1308,7 @@ module.exports = {
     keepOff: '關閉',
     keyPress: '按下亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹淡出',
 
     colorAndBrightness: '顏色', //與亮度
     setBrightness: '設置亮度',
@@ -1310,7 +1335,8 @@ module.exports = {
     resetDeviceBtn: '重置',
 
     about: '關於',
-    checkUpdate: '檢查更新',
+    checkUpdate: '檢索更新',
+    installDriver: "安裝驅動程式（需管理員權限）",
     aboutText: `<p>感謝您使用SimPad！</p>
     <p>SimPad是一款基於C51單片機實現的自訂鍵盤，得名於Simple與Pad，表明這個設備力求簡單與實用，在這款設備的開發過程中受到以下人的幫助，</p>
     <p>特此感謝！</p>
@@ -1452,6 +1478,12 @@ module.exports = {
     keyN_downArrow: '↓',
     keyN_rightArrow: '→',
     keyN_numPad_0: '小鍵盤0',
-    keyN_numPad_period: '小鍵盤.'
+    keyN_numPad_period: '小鍵盤.',
+    
+    firmwareVersion: '韌體版本',
+    chipID: '硬體ID',
+    lightTest: '燈光測試',
+
+    checkUpdateFailed: '檢索更新失敗'
   }
 }
