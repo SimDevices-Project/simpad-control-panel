@@ -933,7 +933,7 @@ Update Now?`)
       }
     )
     cmd.once('close', () => {
-      document.getElementById('installDriver').disable = true
+      document.getElementById('installDriver').disabled = true
     })
   })
 
