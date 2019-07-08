@@ -964,13 +964,13 @@ Update Now?`)
     document.getElementById('installDriver').disabled = true
     const execFile = require('child_process').execFile
     const cmd = execFile(
-      path.join(__dirname, '/UPDATER/iap_applition.exe'),
+      path.join(__dirname, '/DRIVER/SETUP.EXE'),
       ['/S'],
       {
         // detached: true,
         // stdio: 'ignore',
         // shell: true,
-        cwd: __dirname + '\\UPDATER',
+        cwd: __dirname + '\\DRIVER',
         windowsHide: false
       }
     )
