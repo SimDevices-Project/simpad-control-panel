@@ -60,7 +60,7 @@
   about: '關於',
   checkUpdate: '檢查更新',
   aboutText: `<p>感謝您使用SimPad！</p>
-  <p>SimPad是一款基於C51單片機實現的自訂鍵盤，得名於Simple與Pad，表明這個設備力求簡單與實用，在這款設備的開發過程中受到以下人的幫助，</p>
+  <p>SimPad是一款基於8051單片機實現的自訂鍵盤，得名於Simple與Pad，表明這個設備力求簡單與實用，在這款設備的開發過程中受到以下人的幫助，</p>
   <p>特此感謝！</p>
   <p></p>
   <p class="nameBefore">Sayobot小夜</p>

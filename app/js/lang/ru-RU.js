@@ -53,7 +53,7 @@ var lang = {
   about: 'About SimPad',
   checkUpdate: 'Check Update',
   aboutText: `<p>感谢您使用SimPad！</p>
-  <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
+  <p>SimPad是一款基于8051单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
   <p>特此感谢！</p>
   <p></p>
   <p class="nameBefore">Sayobot小夜</p>

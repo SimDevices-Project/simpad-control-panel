@@ -1,6 +1,6 @@
 # SimPad Control Panel
 
-SimPad is a custom keyboard based on C51 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical. It works good in music games (exp. osu!).
+SimPad is a custom keyboard based on 8051 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical. It works good in music games (exp. osu!).
 
 [Buy SimPad v2 on Taobao](https://item.taobao.com/item.htm?id=572562412403)
 

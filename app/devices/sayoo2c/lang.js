@@ -68,7 +68,7 @@ module.exports = {
     isLatestVersion: "The latest version",
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using Sayo\'s KeyPad!</p>
-    <p>Sayo\'s KeyPad is a custom keyboard based on C51 realize, Based on open-source project "SimPad".</p>`,
+    <p>Sayo\'s KeyPad is a custom keyboard based on 8051 realize, Based on open-source project "SimPad".</p>`,
 
     changesCount: 'Changes to apply',
     abandonsChanges: 'Discard all changes',
@@ -656,7 +656,7 @@ module.exports = {
     about: 'につき',
     checkUpdate: '検査更新',
     aboutText: `<p>Sayo\'s KeyPadご使用ありがとうございます</p>
-    <p>Sayo\'s KeyPadは、C51の単片機に基づいて実現されたカスタムキーボードであり</p>`,
+    <p>Sayo\'s KeyPadは、8051の単片機に基づいて実現されたカスタムキーボードであり</p>`,
 
     changesCount: '項発効の変更',
     abandonsChanges: 'すべての変更を諦める',
@@ -797,7 +797,7 @@ module.exports = {
     isLatestVersion: "已是最新版本",
     jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用Sayo\'s KeyPad！</p>
-    <p>Sayo\'s KeyPad是一款基于C51单片机实现的自定义键盘，基于开源项目“SimPad”完成。</p>
+    <p>Sayo\'s KeyPad是一款基于8051单片机实现的自定义键盘，基于开源项目“SimPad”完成。</p>
     <p>此外，您正在使用的是开源的迷你键盘配置工具，</p>
     <p></p>
     <a href="https://github.com/iamapig120/simpad-control-panel">
@@ -1002,7 +1002,7 @@ module.exports = {
     about: '关于',
     checkUpdate: '检查更新',
     aboutText: `<p>感谢您使用Sayo\'s KeyPad！</p>
-    <p>Sayo\'s KeyPad是一款基于C51单片机实现的自定义键盘，基于开源项目“SimPad”完成。</p>`,
+    <p>Sayo\'s KeyPad是一款基于8051单片机实现的自定义键盘，基于开源项目“SimPad”完成。</p>`,
 
     changesCount: '项生效的更改',
     abandonsChanges: '丢弃所有更改',
@@ -1182,7 +1182,7 @@ module.exports = {
     about: '關於',
     checkUpdate: '檢查更新',
     aboutText: `<p>感謝您使用Sayo\'s KeyPad！</p>
-    <p>Sayo\'s KeyPad是一款基於C51單片機實現的自訂鍵盤，基於開源項目“SimPad”完成。</p>`,
+    <p>Sayo\'s KeyPad是一款基於8051單片機實現的自訂鍵盤，基於開源項目“SimPad”完成。</p>`,
 
     changesCount: '項生效的更變',
     abandonsChanges: '放棄所有更變',

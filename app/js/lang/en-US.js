@@ -66,7 +66,7 @@ var lang = {
   checkUpdate: 'Check Update',
   jumpToBootMode: 'Enter Boot Mode',
   aboutText: `<p>Thank you for using SimPad!</p>
-  <p>SimPad is a custom keyboard based on C51 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
+  <p>SimPad is a custom keyboard based on 8051 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
   <p> Thank you very much.</p>
   <p></p>
   <p class="nameBefore">Sayobot小夜</p>

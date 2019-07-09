@@ -68,7 +68,7 @@ module.exports = {
     isLatestVersion: 'The latest version',
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using SimPad!</p>
-    <p>SimPad is a custom keyboard based on C51 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
+    <p>SimPad is a custom keyboard based on 8051 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
     <p> Thank you very much.</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
@@ -704,7 +704,7 @@ module.exports = {
     about: 'につき',
     checkUpdate: '検査更新',
     aboutText: `<p>SimPadご使用ありがとうございます</p>
-    <p>SimPadは、C51の単片機に基づいて実現されたカスタムキーボードであり、SimpleとPadから名をつけて、簡単で実用的な設備を示している。</p>
+    <p>SimPadは、8051の単片機に基づいて実現されたカスタムキーボードであり、SimpleとPadから名をつけて、簡単で実用的な設備を示している。</p>
     <p>SSimPadの開発過程で、以下通りの皆様からのご協力を頂いて、</p>
     <p>まことにありがとうございました！</p>
     <p></p>
@@ -797,7 +797,7 @@ module.exports = {
     about: 'About SimPad',
     checkUpdate: 'Check Update',
     aboutText: `<p>感谢您使用SimPad！</p>
-    <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
+    <p>SimPad是一款基于8051单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
@@ -899,7 +899,7 @@ module.exports = {
     isLatestVersion: '已经是最新版本',
     jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
-    <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
+    <p>SimPad是一款基于8051单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
@@ -1116,7 +1116,7 @@ module.exports = {
     about: '关于',
     checkUpdate: '检查更新',
     aboutText: `<p>感谢您使用SimPad！</p>
-    <p>SimPad是一款基于C51单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
+    <p>SimPad是一款基于8051单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
@@ -1317,7 +1317,7 @@ module.exports = {
     about: '關於',
     checkUpdate: '檢查更新',
     aboutText: `<p>感謝您使用SimPad！</p>
-    <p>SimPad是一款基於C51單片機實現的自訂鍵盤，得名於Simple與Pad，表明這個設備力求簡單與實用，在這款設備的開發過程中受到以下人的幫助，</p>
+    <p>SimPad是一款基於8051單片機實現的自訂鍵盤，得名於Simple與Pad，表明這個設備力求簡單與實用，在這款設備的開發過程中受到以下人的幫助，</p>
     <p>特此感謝！</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
