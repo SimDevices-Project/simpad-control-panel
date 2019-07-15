@@ -867,7 +867,7 @@ const funs = (documentElement, deviceObj, funs) => {
                 document.getElementById('checkROMUpdate').dataset.langKey
               )
               const obj = JSON.parse(xhr.responseText)
-              if (obj.version > nowVersion || true) {
+              if (obj.version > nowVersion) {
                 if (
                   confirm(`Find v${obj.version} with
 ${getLang('info', obj.description)}
@@ -906,7 +906,7 @@ Update Now?`)
                           updateWin.webContents.on('did-finish-load', () => {
                             updateWin.webContents.send('hexPath', filePath)
                           })
-                          updateWin.webContents.openDevTools()
+                          // updateWin.webContents.openDevTools()
                           updateWin.show()
                         }, 200)
                       })
