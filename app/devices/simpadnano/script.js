@@ -3,6 +3,7 @@
 const HID = require('node-hid')
 const os = require('os')
 const path = require('path')
+const electron = require('electron')
 
 //取色器
 const ColorPicker = require(`h5-color-picker`).ColorPicker
@@ -166,15 +167,13 @@ const getChipID = (dev = device) => {
      */
     getDataFunction.fun = data => {
       document.getElementById('chipIDNum').innerHTML = ''
-      ;[...data]
-        .slice(0, 4)
-        .forEach(
-          d =>
-            (document.getElementById('chipIDNum').innerHTML += d
-              .toString(16)
-              .toUpperCase()
-              .padStart(2, '0'))
-        )
+      ;[...data].slice(0, 4).forEach(
+        d =>
+          (document.getElementById('chipIDNum').innerHTML += d
+            .toString(16)
+            .toUpperCase()
+            .padStart(2, '0'))
+      )
       clearTimeout(autoGetDataTimer)
       resolve()
     }
@@ -868,25 +867,13 @@ const funs = (documentElement, deviceObj, funs) => {
                 document.getElementById('checkROMUpdate').dataset.langKey
               )
               const obj = JSON.parse(xhr.responseText)
-              if (obj.version > nowVersion) {
+              if (obj.version > nowVersion || true) {
                 if (
                   confirm(`Find v${obj.version} with
 ${getLang('info', obj.description)}
 Update Now?`)
                 ) {
                   setTimeout(() => {
-                    const execFile = require('child_process').execFile
-                    const cmd = execFile(
-                      path.join(__dirname, '/UPDATER/iap_applition.exe'),
-                      [],
-                      {
-                        // detached: true,
-                        // stdio: 'ignore',
-                        //shell: true,
-                        cwd: __dirname + '\\UPDATER',
-                        windowsHide: false
-                      }
-                    )
                     let httpObj
                     if (obj.url.indexOf('https') > -1) {
                       httpObj = require('https')
@@ -895,41 +882,33 @@ Update Now?`)
                     }
                     const fs = require('fs')
                     const crypto = require('crypto')
-                    let filePath
+                    let filePath = path.join(os.tmpdir(), 'simpadUpdate.hex')
+                    let file = fs.createWriteStream(filePath)
                     httpObj.get(obj.url, res => {
                       res.setEncoding('binary')
-                      let fileData = ''
+                      // let fileData = ''
                       res.on('data', chunk => {
-                        fileData += chunk
+                        file.write(chunk)
                       })
                       res.on('end', () => {
-                        filePath = path.join(
-                          os.tmpdir(),
-                          crypto
-                            .createHash('md5')
-                            .update(fileData)
-                            .digest('hex') + '.hex'
-                        )
-                        fs.writeFile(filePath, fileData, 'binary', err => {
-                          if (err) {
-                            console.error(err)
-                          }
-                          cmd.stdin.write(filePath + '\r\n')
-                        })
+                        file.end()
+                        // const md5 = crypto
+                        //   .createHash('md5')
+                        //   .update(fileData)
+                        //   .digest('hex')
+                        // if (obj.md5 !== md5) {
+                        //   return alert(`Wrong File!!!\nShould be ${obj.md5}\nYou got ${md5}`)
+                        // }
+                        setTimeout(() => {
+                          const updateWin = new electron.remote.BrowserWindow()
+                          updateWin.loadURL(path.join(__dirname, 'update.html'))
+                          updateWin.webContents.on('did-finish-load', () => {
+                            updateWin.webContents.send('hexPath', filePath)
+                          })
+                          updateWin.webContents.openDevTools()
+                          updateWin.show()
+                        }, 200)
                       })
-                    })
-                    cmd.stdout.on('data', data => {
-                      const dataStr = data.toString()
-                      if (dataStr.indexOf('READY') > -1) {
-                      } else if (dataStr.indexOf('ALL_SUCCESS') > -1) {
-                        alert('SUCCESS')
-                        cmd.kill(cmd.pid)
-                      } else if (
-                        dataStr.indexOf('WRONG_FAILED_TO_DOWNLOAD') > -1
-                      ) {
-                        alert('FAILED')
-                        cmd.kill(cmd.pid)
-                      }
                     })
                   }, 200)
                   sendData([0x00, 0x0b, 0x00, 0x00, 0x00, 0x0b])
@@ -960,21 +939,17 @@ Update Now?`)
     }
   })
 
-  document.getElementById('installDriver').addEventListener('click',()=>{
+  document.getElementById('installDriver').addEventListener('click', () => {
     document.getElementById('installDriver').disabled = true
     const execFile = require('child_process').execFile
-    const cmd = execFile(
-      path.join(__dirname, '/DRIVER/SETUP.EXE'),
-      ['/S'],
-      {
-        // detached: true,
-        // stdio: 'ignore',
-        // shell: true,
-        cwd: __dirname + '\\DRIVER',
-        windowsHide: false
-      }
-    )
-    cmd.once('close',()=>{
+    const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
+      // detached: true,
+      // stdio: 'ignore',
+      // shell: true,
+      cwd: __dirname + '\\DRIVER',
+      windowsHide: false
+    })
+    cmd.once('close', () => {
       document.getElementById('installDriver').disabled = true
     })
   })
@@ -989,7 +964,7 @@ Update Now?`)
     'theBtnDefInner'
   ).style.background = `url(${__dirname.replace(/\\/g, '/') +
     '/imgs/deviceKeyInfo.png'})`
-    // 灯光配置信息显示
+  // 灯光配置信息显示
   document.getElementById(
     'theLightDefInner'
   ).style.background = `url(${__dirname.replace(/\\/g, '/') +
@@ -1029,7 +1004,7 @@ const animeLights = () => {
       maxValSetTime = nowTime
     }
     if (performance.now() - delaySet < highVolDelay) {
-      if (valNum > valLastTime * 1.10 && valNum > maxVal * 0.2) {
+      if (valNum > valLastTime * 1.1 && valNum > maxVal * 0.2) {
         valueToShow = 100
         delaySet = nowTime
         if (performance.now() - maxValSetTime > 2000) {
@@ -1050,7 +1025,7 @@ const animeLights = () => {
       } else if (valNum > valLastTime * 1.02 && valNum > maxVal * 0.2) {
         valueToShow *= 1.3
         valueToShow += 10
-      } else if(valNum > maxVal * 0.2){
+      } else if (valNum > maxVal * 0.2) {
         valueToShow *= 1.2
         valueToShow += 10
       }
