@@ -886,19 +886,20 @@ Update Now?`)
                     let file = fs.createWriteStream(filePath)
                     httpObj.get(obj.url, res => {
                       res.setEncoding('binary')
-                      // let fileData = ''
+                      let fileData = ''
                       res.on('data', chunk => {
                         file.write(chunk)
+                        fileData += chunk
                       })
                       res.on('end', () => {
                         file.end()
-                        // const md5 = crypto
-                        //   .createHash('md5')
-                        //   .update(fileData)
-                        //   .digest('hex')
-                        // if (obj.md5 !== md5) {
-                        //   return alert(`Wrong File!!!\nShould be ${obj.md5}\nYou got ${md5}`)
-                        // }
+                        const md5 = crypto
+                          .createHash('md5')
+                          .update(fileData)
+                          .digest('hex')
+                        if (obj.md5 !== md5) {
+                          return alert(`Wrong File!!!\nShould be ${obj.md5}\nYou got ${md5}`)
+                        }
                         setTimeout(() => {
                           const updateWin = new electron.remote.BrowserWindow()
                           updateWin.loadURL(path.join(__dirname, 'update.html'))
