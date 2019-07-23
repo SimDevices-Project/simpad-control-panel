@@ -261,6 +261,16 @@ const initSettings = () => {
     document.getElementById('superSpeedOff').style.display = 'none'
     document.getElementById('superSpeedOn').removeAttribute('style')
   }
+  // 夜灯
+  var radios = [...document.getElementsByName('nightLightsType')]
+  radios.forEach(node => {
+    node.checked = false
+  })
+  radios.forEach(radio => {
+    if (radio.value === settingsSet[10][2].toString(10)) {
+      radio.checked = true
+    }
+  })
   countChanges()
 }
 
@@ -400,6 +410,15 @@ const initSettingsFunction = () => {
       }
       updateKeyCodeText()
       updateKeyBoard()
+      countChanges()
+    })
+  })
+
+  // 夜灯
+  var radios = [...document.getElementsByName('nightLightsType')]
+  radios.forEach(node => {
+    node.addEventListener('click', e => {
+      settingChanged[10][2] = parseInt(node.value, 10)
       countChanges()
     })
   })
@@ -921,17 +940,13 @@ Update Now?`)
   document.getElementById('installDriver').addEventListener('click', () => {
     document.getElementById('installDriver').disabled = true
     const execFile = require('child_process').execFile
-    const cmd = execFile(
-      path.join(__dirname, '/DRIVER/SETUP.EXE'),
-      ['/S'],
-      {
-        // detached: true,
-        // stdio: 'ignore',
-        // shell: true,
-        cwd: __dirname + '\\DRIVER',
-        windowsHide: false
-      }
-    )
+    const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
+      // detached: true,
+      // stdio: 'ignore',
+      // shell: true,
+      cwd: __dirname + '\\DRIVER',
+      windowsHide: false
+    })
     cmd.once('close', () => {
       document.getElementById('installDriver').disabled = true
     })

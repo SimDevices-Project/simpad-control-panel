@@ -285,9 +285,11 @@ const initSettings = () => {
   updateKeyCodeText()
   //极速模式
   if (settingsSet[10][0]) {
-    document.getElementById('nightLightsType0').checked = true
+    document.getElementById('superSpeedOn').style.display = 'none'
+    document.getElementById('superSpeedOff').removeAttribute('style')
   } else {
-    document.getElementById('nightLightsType1').checked = true
+    document.getElementById('superSpeedOff').style.display = 'none'
+    document.getElementById('superSpeedOn').removeAttribute('style')
   }
   // 夜灯
   var radios = [...document.getElementsByName('nightLightsType')]
