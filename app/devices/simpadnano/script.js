@@ -244,7 +244,7 @@ const initSettings = () => {
     node.checked = false
   })
   radios.forEach(radio => {
-    if (radio.value === settingsSet[8][0].toString()) {
+    if (radio.value === settingsSet[8][0].toString(10)) {
       radio.checked = true
     }
   })
@@ -265,12 +265,12 @@ const initSettings = () => {
   var G1Brightness = document.getElementById('G1Brightness')
   var G2Brightness = document.getElementById('G2Brightness')
   if (settingsSet[6][3]) {
-    G1Brightness.innerHTML = `${(settingsSet[6][3] / 4 * 100) >> 0}%`
+    G1Brightness.innerHTML = `${((settingsSet[6][3] / 4) * 100) >> 0}%`
   } else {
     G1Brightness.innerHTML = '100%'
   }
   if (settingsSet[7][3]) {
-    G2Brightness.innerHTML = `${(settingsSet[7][3] / 4 * 100) >> 0}%`
+    G2Brightness.innerHTML = `${((settingsSet[7][3] / 4) * 100) >> 0}%`
   } else {
     G2Brightness.innerHTML = '100%'
   }
@@ -285,20 +285,29 @@ const initSettings = () => {
   updateKeyCodeText()
   //极速模式
   if (settingsSet[10][0]) {
-    document.getElementById('superSpeedOn').style.display = 'none'
-    document.getElementById('superSpeedOff').removeAttribute('style')
+    document.getElementById('nightLightsType0').checked = true
   } else {
-    document.getElementById('superSpeedOff').style.display = 'none'
-    document.getElementById('superSpeedOn').removeAttribute('style')
+    document.getElementById('nightLightsType1').checked = true
   }
+  // 夜灯
+  var radios = [...document.getElementsByName('nightLightsType')]
+  radios.forEach(node => {
+    node.checked = false
+  })
+  radios.forEach(radio => {
+    if (radio.value === settingsSet[10][2].toString(10)) {
+      radio.checked = true
+    }
+  })
   countChanges()
 }
 
 const initSettingsFunction = () => {
+  // 灯光模式
   var radios = [...document.getElementsByName('lightsType')]
   radios.forEach(node => {
     node.addEventListener('click', e => {
-      settingChanged[8][0] = parseInt(node.value)
+      settingChanged[8][0] = parseInt(node.value, 10)
       countChanges()
     })
   })
@@ -329,34 +338,34 @@ const initSettingsFunction = () => {
   var G2Brightness = document.getElementById('G2Brightness')
   var G1BrightnessBtn = document.getElementById('G1BrightnessBtn')
   var G2BrightnessBtn = document.getElementById('G2BrightnessBtn')
-  const G1BrightnessFun = e=>{
-    settingChanged[6][3] ++
-    if(settingChanged[6][3] > 4){
+  const G1BrightnessFun = e => {
+    settingChanged[6][3]++
+    if (settingChanged[6][3] > 4) {
       settingChanged[6][3] = 1
     }
     if (settingChanged[6][3]) {
-      G1Brightness.innerHTML = `${(settingChanged[6][3] / 4 * 100) >> 0}%`
+      G1Brightness.innerHTML = `${((settingChanged[6][3] / 4) * 100) >> 0}%`
     } else {
       G1Brightness.innerHTML = '100%'
     }
     countChanges()
   }
-  const G2BrightnessFun = e=>{
-    settingChanged[7][3] ++
-    if(settingChanged[7][3] > 4){
+  const G2BrightnessFun = e => {
+    settingChanged[7][3]++
+    if (settingChanged[7][3] > 4) {
       settingChanged[7][3] = 1
     }
     if (settingChanged[7][3]) {
-      G2Brightness.innerHTML = `${(settingChanged[7][3] / 4 * 100) >> 0}%`
+      G2Brightness.innerHTML = `${((settingChanged[7][3] / 4) * 100) >> 0}%`
     } else {
       G2Brightness.innerHTML = '100%'
     }
     countChanges()
   }
-  G1Brightness.addEventListener('click',G1BrightnessFun)
-  G2Brightness.addEventListener('click',G2BrightnessFun)
-  G1BrightnessBtn.addEventListener('click',G1BrightnessFun)
-  G2BrightnessBtn.addEventListener('click',G2BrightnessFun)
+  G1Brightness.addEventListener('click', G1BrightnessFun)
+  G2Brightness.addEventListener('click', G2BrightnessFun)
+  G1BrightnessBtn.addEventListener('click', G1BrightnessFun)
+  G2BrightnessBtn.addEventListener('click', G2BrightnessFun)
   // 初始化去抖
   document.getElementById('delayInput').addEventListener('change', e => {
     var value = parseInt(document.getElementById('delayInput').value)
@@ -465,6 +474,15 @@ const initSettingsFunction = () => {
       }
       updateKeyCodeText()
       updateKeyBoard()
+      countChanges()
+    })
+  })
+
+  // 夜灯
+  var radios = [...document.getElementsByName('nightLightsType')]
+  radios.forEach(node => {
+    node.addEventListener('click', e => {
+      settingChanged[10][2] = parseInt(node.value, 10)
       countChanges()
     })
   })
@@ -931,7 +949,11 @@ Update Now?`)
                           .update(fileData)
                           .digest('hex')
                         if (obj.md5 !== md5) {
-                          return alert(`Wrong File!!!\nShould be ${obj.md5}\nYou got ${md5}`)
+                          return alert(
+                            `Wrong File!!!\nShould be ${
+                              obj.md5
+                            }\nYou got ${md5}`
+                          )
                         }
                         setTimeout(() => {
                           const updateWin = new electron.remote.BrowserWindow()

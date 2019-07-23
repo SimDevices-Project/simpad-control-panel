@@ -40,6 +40,10 @@ module.exports = {
     colorAndBrightness: 'Color & Brightness', 
     setBrightness: 'Set brightness',
 
+    nightLights: 'Nightlights', 
+    nightLightsOn: 'Turn On',
+    nightLightsOff: 'Turn Off',
+
     keyDelay: 'Input Debounce',
     keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
     <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
@@ -376,6 +380,9 @@ module.exports = {
     colorAndBrightness: 'Faber und Helligkeit',
     setBrightness: 'Helligkeit einstellen',
 
+    nightLightsOn: 'ein',
+    nightLightsOff: 'aus',
+
     keyDelay: 'Shake Reduction',
     keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
     <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
@@ -686,6 +693,10 @@ module.exports = {
     colorAndBrightness: '色、明るの設定', //与亮度
     setBrightness: '明るさを設置する',
 
+    nightLights: 'ナイトライト', 
+    nightLightsOn: 'オン',
+    nightLightsOff: 'オフ',
+
     keyDelay: 'キーストローク消去',
     keyDelayInfo: `SimPadの特別なキーストローク消去の方法は有効にキーストローク消去による遅延を下げる。ここで、ボタンが上がる時発生したキーストローク消去の機能のトリガー遅延が調整できる。`,
     delay: 'タイムアウト',
@@ -875,6 +886,10 @@ module.exports = {
 
     colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
+
+    nightLights: '夜灯', 
+    nightLightsOn: '开启',
+    nightLightsOff: '关闭',
 
     keyDelay: '按键消抖',
     keyDelayInfo: `按键抖动是机械键盘物理特性导致的一个问题，会造成机械键盘一次按下有时会触发多次。通常键盘厂商使用按键按下延时判断来减少其带来的影响，但是会造成键盘响应的速度降低并产生相对较大的延迟。
@@ -1100,6 +1115,10 @@ module.exports = {
     colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
 
+    nightLights: '夜灯', 
+    nightLightsOn: '开启',
+    nightLightsOff: '关闭',
+
     keyDelay: '按键去抖动',
     keyDelayInfo: `按键抖动是机械键盘物理特性导致的一个问题，会造成机械键盘一次按下有时会触发多次。通常键盘厂商使用按键按下延时判断来减少其带来的影响，但是会造成键盘响应的速度降低并产生相对较大的延迟。
     <br>SimPad独特的消抖方式可以有效降低这项操作带来的响应速度降低和额外延迟问题，虽然不推荐您修改默认设置，但您依然可以在这里调整该消抖方式独有的触发延时`,
@@ -1312,6 +1331,10 @@ module.exports = {
 
     colorAndBrightness: '顏色與亮度',
     setBrightness: '設置亮度',
+
+    nightLights: '夜燈', 
+    nightLightsOn: '開啓',
+    nightLightsOff: '關閉',
 
     keyDelay: '按鍵防抖',
     keyDelayInfo: `SimPad使用了一種不同於普通鍵盤的防抖方式，可以有效降低防抖帶來的延遲，
