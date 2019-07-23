@@ -262,18 +262,18 @@ const initSettings = () => {
     .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
   cpG2.value = document.getElementById('G2Color').value
   //灯光亮度
-  // var G1Brightness = document.getElementById('G1Brightness')
-  // var G2Brightness = document.getElementById('G2Brightness')
-  // if (settingsSet[6][3]) {
-  //   G1Brightness.innerHTML = `${(settingsSet[6][3] / 4 * 100) >> 0}%`
-  // } else {
-  //   G1Brightness.innerHTML = 'OFF'
-  // }
-  // if (settingsSet[7][3]) {
-  //   G2Brightness.innerHTML = `${(settingsSet[7][3] / 4 * 100) >> 0}%`
-  // } else {
-  //   G2Brightness.innerHTML = 'OFF'
-  // }
+  var G1Brightness = document.getElementById('G1Brightness')
+  var G2Brightness = document.getElementById('G2Brightness')
+  if (settingsSet[6][3]) {
+    G1Brightness.innerHTML = `${(settingsSet[6][3] / 4 * 100) >> 0}%`
+  } else {
+    G1Brightness.innerHTML = '100%'
+  }
+  if (settingsSet[7][3]) {
+    G2Brightness.innerHTML = `${(settingsSet[7][3] / 4 * 100) >> 0}%`
+  } else {
+    G2Brightness.innerHTML = '100%'
+  }
   //消抖
   var delayInput = document.getElementById('delayInput')
   delayInput.value =
@@ -324,6 +324,39 @@ const initSettingsFunction = () => {
       countChanges()
     })
   }
+  // 初始化亮度选择器
+  var G1Brightness = document.getElementById('G1Brightness')
+  var G2Brightness = document.getElementById('G2Brightness')
+  var G1BrightnessBtn = document.getElementById('G1BrightnessBtn')
+  var G2BrightnessBtn = document.getElementById('G2BrightnessBtn')
+  const G1BrightnessFun = e=>{
+    settingChanged[6][3] ++
+    if(settingChanged[6][3] > 4){
+      settingChanged[6][3] = 1
+    }
+    if (settingChanged[6][3]) {
+      G1Brightness.innerHTML = `${(settingChanged[6][3] / 4 * 100) >> 0}%`
+    } else {
+      G1Brightness.innerHTML = '100%'
+    }
+    countChanges()
+  }
+  const G2BrightnessFun = e=>{
+    settingChanged[7][3] ++
+    if(settingChanged[7][3] > 4){
+      settingChanged[7][3] = 1
+    }
+    if (settingChanged[7][3]) {
+      G2Brightness.innerHTML = `${(settingChanged[7][3] / 4 * 100) >> 0}%`
+    } else {
+      G2Brightness.innerHTML = '100%'
+    }
+    countChanges()
+  }
+  G1Brightness.addEventListener('click',G1BrightnessFun)
+  G2Brightness.addEventListener('click',G2BrightnessFun)
+  G1BrightnessBtn.addEventListener('click',G1BrightnessFun)
+  G2BrightnessBtn.addEventListener('click',G2BrightnessFun)
   // 初始化去抖
   document.getElementById('delayInput').addEventListener('change', e => {
     var value = parseInt(document.getElementById('delayInput').value)
@@ -940,20 +973,20 @@ Update Now?`)
     }
   })
 
-  document.getElementById('installDriver').addEventListener('click', () => {
-    document.getElementById('installDriver').disabled = true
-    const execFile = require('child_process').execFile
-    const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
-      // detached: true,
-      // stdio: 'ignore',
-      // shell: true,
-      cwd: __dirname + '\\DRIVER',
-      windowsHide: false
-    })
-    cmd.once('close', () => {
-      document.getElementById('installDriver').disabled = true
-    })
-  })
+  // document.getElementById('installDriver').addEventListener('click', () => {
+  //   document.getElementById('installDriver').disabled = true
+  //   const execFile = require('child_process').execFile
+  //   const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
+  //     // detached: true,
+  //     // stdio: 'ignore',
+  //     // shell: true,
+  //     cwd: __dirname + '\\DRIVER',
+  //     windowsHide: false
+  //   })
+  //   cmd.once('close', () => {
+  //     document.getElementById('installDriver').disabled = true
+  //   })
+  // })
 
   Array.prototype.forEach.call(
     document.querySelectorAll("input[type='color']"),

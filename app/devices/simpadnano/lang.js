@@ -37,7 +37,7 @@ module.exports = {
     rainbowColor: 'Rainbow',
     rainbowEaseOut: 'Rainbow fade out',
 
-    colorAndBrightness: 'Color', // & Brightness
+    colorAndBrightness: 'Color & Brightness', 
     setBrightness: 'Set brightness',
 
     keyDelay: 'Input Debounce',
@@ -373,7 +373,7 @@ module.exports = {
     keepOn: 'Immer glanz',
     keepOff: 'aus',
     keyPress: 'Drücken Sie, um zu beleuchten',
-    colorAndBrightness: 'Faber', //与亮度
+    colorAndBrightness: 'Faber und Helligkeit',
     setBrightness: 'Helligkeit einstellen',
 
     keyDelay: 'Shake Reduction',
@@ -683,7 +683,7 @@ module.exports = {
     keepOn: '常に明るい',
     keepOff: 'オフ',
     keyPress: '押すとつき',
-    colorAndBrightness: '色の設定', //与亮度
+    colorAndBrightness: '色、明るの設定', //与亮度
     setBrightness: '明るさを設置する',
 
     keyDelay: 'キーストローク消去',
@@ -779,7 +779,7 @@ module.exports = {
     easeIn: 'Fade in',
     keepOn: 'Always on',
     keepOn: 'Off',
-    colorAndBrightness: 'Color', // & Brightness
+    colorAndBrightness: 'Color & Brightness',
     setBrightness: 'Set brightness',
 
     keyDelay: 'Input Debounce',
@@ -873,7 +873,7 @@ module.exports = {
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹渐隐',
 
-    colorAndBrightness: '颜色', //与亮度
+    colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
 
     keyDelay: '按键消抖',
@@ -1097,7 +1097,7 @@ module.exports = {
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹渐灭',
 
-    colorAndBrightness: '颜色', //与亮度
+    colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
 
     keyDelay: '按键去抖动',
@@ -1310,7 +1310,7 @@ module.exports = {
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹淡出',
 
-    colorAndBrightness: '顏色', //與亮度
+    colorAndBrightness: '顏色與亮度',
     setBrightness: '設置亮度',
 
     keyDelay: '按鍵防抖',
