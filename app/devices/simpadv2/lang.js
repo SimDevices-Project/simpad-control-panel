@@ -3,7 +3,7 @@ module.exports = {
     title: 'SimPad Control Panel',
     selectDevice: 'Select Devices',
     selectOperation: 'Select Operation',
-    detailedSettings: 'Detailed Settings',
+    detailedSettings: 'Advanced Settings',
     apply: 'Apply',
     conInfo: 'Please connect and select your device',
     refresh: 'Refresh',
@@ -11,9 +11,9 @@ module.exports = {
     chooseInfo: 'Select the operation you want to perform',
     changeKeyCodeBT: 'Modify Shortcuts',
     changeLightsBT: 'Modify Lighting',
-    otherSettingsBT: 'Others',
+    otherSettingsBT: 'Advanced settings',
     pleaseWait: 'Please wait...',
-    successToApply: 'Success!',
+    successToApply: 'Settings applied!',
     returnToContinue: 'Return',
     exitProgram: 'Exit',
 
@@ -26,7 +26,7 @@ module.exports = {
 
     changeLights: 'Lights Mode & Color',
     changeLightsInfo:
-      'You can adjust lights mode or set colours for each lights of groups',
+      'You can adjust lights mode or set colours for each key',
     viewLightsMap: 'View lighting configuration',
     lightsMode: 'Mode',
     easeOut: 'Fade out',
@@ -56,21 +56,21 @@ module.exports = {
     superSpeedMode: 'Full Speed Mode',
     superSpeedModeInfo:
       'You can enable "full speed mode" to disable all lights to get the fastest speed, reboot device to apply.',
-    superSpeedModeeBtnOn: 'Trun On',
-    superSpeedModeeBtnOff: 'Trun Off',
+    superSpeedModeeBtnOn: 'Turn on',
+    superSpeedModeeBtnOff: 'Turn off',
 
     resetDevice: 'Reset Device',
-    resetDeviceInfo: 'Device can be reset to default settings',
+    resetDeviceInfo: 'Device can be reseted to default settings',
     resetDeviceBtn: 'Reset',
     resetAllDevicesBtn: 'Reset All',
 
     about: 'About SimPad',
     checkUpdate: 'Check Update',
-    installDriver: "Install Driver (Require Administrator privileges)",
-    isLatestVersion: 'The latest version',
+    installDriver: "Install Driver (Requires administrative privileges)",
+    isLatestVersion: 'Already on latest version',
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using SimPad!</p>
-    <p>SimPad is a custom keyboard based on 8051 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
+    <p>SimPad is a custom keyboard based on 8051 logic, and got its name from the Simple and Pad, which indicates to Simple and practical. Thanks to the following people for help in the process of the development of the keyboard,</p>
     <p> Thank you very much.</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
@@ -92,14 +92,14 @@ module.exports = {
       <p class="canBeSeleted">View Handle's Blog</p>
     </a>
     <p></p>
-    <p>By Handle</p>
+    <p>~ Handle</p>
     <p>2018.7.4</p>`,
 
-    changesCount: 'Changes to apply',
+    changesCount: 'changes pending',
     abandonsChanges: 'Discard all changes',
-    applyToDevice: 'Apply To Device',
+    applyToDevice: 'Apply changes',
 
-    selectedDevice: 'Current Device',
+    selectedDevice: 'Current selected device',
     noDevice: 'Awaiting selection',
     reselectDevice: 'Select another device',
 
@@ -338,73 +338,72 @@ module.exports = {
       "Good morning, and in case I don't see ya, good afternoon, good evening, and good night!"
   },
   'de-DE': {
-    title: 'Systemsteuerung SimPad',
-    selectDevice: 'Gerät wählen ',
-    selectOperation: 'Operationen wählen',
-    detailedSettings: 'Betone Einstellungen',
+    title: 'SimPad Systemsteuerung',
+    selectDevice: 'Gerät auswählen',
+    selectOperation: 'Einstellung auswählen',
+    detailedSettings: 'Detaillierten Einstellung',
     apply: 'anwenden',
     conInfo:
-      'Bitte verbinden und einstellen Sie das Gerät, das Sie ändern möchten',
-    refresh: 'Neu laden',
-    confirmAndNext: 'Bestätigen und bedinen das Gerät',
-    chooseInfo: 'Bitte wählen Sie die Einstellung',
-    changeKeyCodeBT: 'Veränderen den Schlüsselwert',
-    changeLightsBT: 'Einstellen den Licht',
-    otherSettingsBT: 'Andere Einstellungen',
-    pleaseWait: 'Es wird bewerbet, bitte warten',
-    successToApply: 'Es ist bewerbet',
-    returnToContinue: 'Rückkehr',
+      'Bitte verbinden und wählen sie ihr Gerät',
+    refresh: 'Aktualisieren',
+    confirmAndNext: 'Auswählen',
+    chooseInfo: 'Bitte wählen sie eine Einstellung',
+    changeKeyCodeBT: 'Tasteneinstellungen',
+    changeLightsBT: 'Lichteinstellungen',
+    otherSettingsBT: 'Erweiterte Einstellungen',
+    pleaseWait: 'Einstellungen werden übernommen, bitte warten',
+    successToApply: 'Eintellungen erfolgreich angewandt',
+    returnToContinue: 'Zurück',
     exitProgram: 'Beenden',
 
     edit: 'Bearbeiten',
 
-    changeKeyCode: 'Schlüsselwert einstellen',
+    changeKeyCode: 'Tastatureinstellungen bearbeiten',
     changeKeyCodeInfo:
-      'Sie können hier den Schlüsselwert für jeden Schlüssel separat festlegen',
-    viewKeyMap: 'Siehe Schlüssel-Definitionen',
+      'Tasten sowie Tastenkombinationen können separat eingestellt werden',
+    viewKeyMap: 'Tastenkonfiguration anzeigen',
 
-    changeLights: 'Lichtmuster und -farbe',
+    changeLights: 'Beleuchtungsmodi und Farbeinstellungen',
     changeLightsInfo:
-      'Sie können hier den Beleuchtungsmodus oder die Farbe von jeder Gruppe separat einstellen',
-    viewLightsMap: 'Überprüfen Sie die Geräte-Lichtkonfiguration',
-    lightsMode: 'Muster',
-    easeOut: 'Drücken Sie, um zu beleuchten und dann zu verblassen',
-    easeIn: 'Drücken Sie, um zu verblassen und dann zu beleuchten',
-    keepOn: 'Immer glanz',
-    keepOff: 'aus',
-    keyPress: 'Drücken Sie, um zu beleuchten',
-    colorAndBrightness: 'Faber', //与亮度
+      'Beleuchtungsmodi und Farben können separat eingestellt werden',
+    viewLightsMap: 'Lichtkonfiguration anzeigen',
+    lightsMode: 'Beleuchtungsmodus',
+    easeOut: 'Ease-out Animation',
+    easeIn: 'Ease-in Animation',
+    keepOn: 'Beleuchtung immer an',
+    keepOff: 'Beleuchtung immmer aus',
+    keyPress: 'Beleuchtung auf Tastendruck',
+    colorAndBrightness: 'Farbe', //与亮度
     setBrightness: 'Helligkeit einstellen',
 
-    nightLightsOn: 'ein',
-    nightLightsOff: 'aus',
+    nightLightsOn: 'Beleuchtung bei ausgeschaltetem Computer an',
+    nightLightsOff: 'Beleuchtung bei ausgeschaltetem Computer aus',
 
-    keyDelay: 'Shake Reduction',
-    keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
-    <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
+    keyDelay: 'Tastenverzögerung',
+    keyDelayInfo: `SimPad verwendet eine Input Debounce-Funktion, welche die Verzögerung einstellt, bis ein Tastenanhieb registriert wird.
+    <br>Ändern sie Diese, um die Verzögerung zu verändern`,
     delay: 'Verzögerung',
 
     advancedOptions: 'Erweiterte Einstellungen',
-    advancedOptionsInfo: `Das Erweitert Menü bietet einige erweiterte Funktionen, die Benutzern nicht empfohlen werden. Alle Änderungen im Erweitert Menü überspringen die Validierung und wenden sie direkt an`,
-    sendDataPack: 'Pakete senden',
-    sendDataPackInfo: `Wenn Sie mit dem SimPad-Paketformat vertraut sind, können Sie Pakete auch direkt an das Gerät senden. Der von Ihnen eingegebene Text wird nach Leerzeichen in hexadezimale Daten zerlegt`,
+    advancedOptionsInfo: `Das Ändern von erweiterten Eintellungen erfordert moderate Erfahrung von Benutzern.`,
+    sendDataPack: 'Data Packets senden',
+    sendDataPackInfo: `Wenn Sie mit dem SimPad-Packetformat vertraut sind, können Sie Pakete auch direkt an das Gerät senden. Ihre Eingabe wird, duch Leertasten getrennt, hexadezimal verarbeitet`,
     sendDataPackBtn: 'Senden',
 
-    superSpeedMode: 'Ohne-Licht-Mode',
+    superSpeedMode: 'Hochleistungsmodus',
     superSpeedModeInfo:
-      'Sie können den Ohne-Licht-Mode verwenden, um alle Lichteffekte vollständig abzuschalten, um die schnellste Erfahrung zu erzielen. Starten Sie das Gerät neu, damit es wirksam wird',
-    superSpeedModeeBtnOn: 'ein',
-    superSpeedModeeBtnOff: 'aus',
+      'Aktivieren sie den Hochleistungsmodus, werdedn Lichteffekte vollständig abgeschaltet, um die Geschwindigkeit des Geräts zu erhöhern. Ein Geräteneustart ist nach Übernahme der Einstellung erforderlich,
+    superSpeedModeeBtnOn: 'Aktivieren',
+    superSpeedModeeBtnOff: 'Deaktivieren',
 
     resetDevice: 'Gerät zurücksetzen',
-    resetDeviceInfo: 'Sie können Ihr Gerät zurücksetzen',
+    resetDeviceInfo: 'Das Gerät kann hier auf Werkeinstellungen zurückgesetzt werden',
     resetDeviceBtn: 'Zurücksetzen',
 
     about: 'Über uns',
-    checkUpdate: 'Updetes suchen',
-    aboutText: `<p>SimPad zu verwenden.</p>
-    <p>SimPad wurde von den folgenden Personen während des Entwicklungsprozesses unterstützt</p>
-    <p>特此感谢！</p>
+    checkUpdate: 'Nach Updates suchen',
+    aboutText: `<p>Über SimPad.</p>
+    <p>SimPad ist eine kundenspezifische Tastatur, die auf einer 8051-Logik basiert. Seinen Namen hat es von "Simple" und "Pad". Dies deutet darauf hin, dass das Gerät einfach und praktisch ist. SimPad wurde von den folgenden Personen während des Entwicklung unterstützt:</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
     <p class="nameBefore">noodlefighter</p>
@@ -413,27 +412,27 @@ module.exports = {
     <p class="nameBefore">晨旭</p>
     <p class="nameBefore">Antecer</p>
     <p></p>
-    <p>Wir bedanken uns Ihnen dafür</p>
+    <p>Wir bedanken uns ausserdem bei</p>
     <p></p>
     <p class="nameBefore">Mn2O7</p>
     <p></p>
     <a href="https://www.bysb.net/3363.html">
-      <p class="canBeSeleted">Besuchen Sie die Seite des Tastur</p>
+      <p class="canBeSeleted">Besuchen Sie die Seite des Produkts</p>
     </a>
     <a href="https://www.bysb.net">
-      <p class="canBeSeleted">Besuchen das Blog des Entwickler, 手柄君的小阁</p>
+      <p class="canBeSeleted">Besuchen den Blog des Entwicklers, 手柄君的小阁</p>
     </a>
     <p></p>
-    <p>By Handle</p>
+    <p>~ Handle</p>
     <p>2018.7.4</p>`,
 
-    changesCount: 'Effektive Änderungen',
-    abandonsChanges: 'Verwerfen Sie die Änderungen',
-    applyToDevice: 'Auf das Gerät anwenden',
+    changesCount: 'Änderung(en) bevorstehend',
+    abandonsChanges: 'Änderungen verwerfen',
+    applyToDevice: 'Änderungen anwenden',
 
-    selectedDevice: 'Aktuelles Gerät',
-    noDevice: 'Warten auf Auswahl',
-    reselectDevice: 'Erneuen Auswahl das Gerät',
+    selectedDevice: 'Ausgewähltes Gerät',
+    noDevice: 'Warte auf Auswahl',
+    reselectDevice: 'Geräteauswahl ändern',
 
     //DevicesNames
     simpadv2: 'SimPad v2',
