@@ -40,6 +40,10 @@ module.exports = {
     colorAndBrightness: 'Color', // & Brightness
     setBrightness: 'Set brightness',
 
+    nightLights: 'Nightlights', 
+    nightLightsOn: 'Turn on',
+    nightLightsOff: 'Turn off',
+
     keyDelay: 'Input Debounce',
     keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
     <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
