@@ -396,7 +396,7 @@ module.exports = {
 
     superSpeedMode: 'Hochleistungsmodus',
     superSpeedModeInfo:
-      'Aktivieren sie den Hochleistungsmodus, werdedn Lichteffekte vollständig abgeschaltet, um die Geschwindigkeit des Geräts zu erhöhern. Ein Geräteneustart ist nach Übernahme der Einstellung erforderlich,
+      'Aktivieren sie den Hochleistungsmodus, werdedn Lichteffekte vollständig abgeschaltet, um die Geschwindigkeit des Geräts zu erhöhern. Ein Geräteneustart ist nach Übernahme der Einstellung erforderlich',
     superSpeedModeeBtnOn: 'Aktivieren',
     superSpeedModeeBtnOff: 'Deaktivieren',
 
@@ -419,6 +419,7 @@ module.exports = {
     <p>Wir bedanken uns ausserdem bei</p>
     <p></p>
     <p class="nameBefore">Mn2O7</p>
+    <p class="nameBefore">oSumAtrIX</p>
     <p></p>
     <a href="https://www.bysb.net/3363.html">
       <p class="canBeSeleted">Besuchen Sie die Seite des Produkts</p>
