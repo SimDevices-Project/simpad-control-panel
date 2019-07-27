@@ -304,19 +304,23 @@ const initSettings = () => {
   })
 
   // 灯光速度
-  const DEFAULT_LIGHT_DELAY = 0x10000 - 0xa000
+  const DEFAULT_LIGHT_DELAY = 0x0a00
   const easeLightDelayInput = document.getElementById('easeLightDelayInput')
-  easeLightDelayInput.value =
-    ((0x10000 - settingsSet[11][0]) << 8) | settingsSet[11][1]
-  if (easeLightDelayInput.value === 0x10000) {
+  easeLightDelayInput.value = (settingsSet[11][0] << 8) | settingsSet[11][1]
+  if (
+    easeLightDelayInput.value === 0x10000 ||
+    easeLightDelayInput.value < 0x0a
+  ) {
     easeLightDelayInput.value = DEFAULT_LIGHT_DELAY
   }
   const rainbowLightDelayInput = document.getElementById(
     'rainbowLightDelayInput'
   )
-  rainbowLightDelayInput.value =
-    ((0x10000 - settingsSet[11][2]) << 8) | settingsSet[11][3]
-  if (rainbowLightDelayInput.value === 0x10000) {
+  rainbowLightDelayInput.value = (settingsSet[11][2] << 8) | settingsSet[11][3]
+  if (
+    rainbowLightDelayInput.value === 0x10000 ||
+    rainbowLightDelayInput.value < 0x0a
+  ) {
     rainbowLightDelayInput.value = DEFAULT_LIGHT_DELAY
   }
   countChanges()
@@ -508,10 +512,9 @@ const initSettingsFunction = () => {
   })
 
   // 灯光速度
-  const DEFAULT_LIGHT_DELAY = 0x10000 - 0xa000
   const easeLightDelayInput = document.getElementById('easeLightDelayInput')
   easeLightDelayInput.addEventListener('change', e => {
-    const trueValue = 0x10000 - easeLightDelayInput.value
+    const trueValue = easeLightDelayInput.value
     settingsSet[11][0] = (trueValue & 0xff00) >> 8
     settingsSet[11][1] = trueValue & 0x00ff
     countChanges()
@@ -520,7 +523,7 @@ const initSettingsFunction = () => {
     'rainbowLightDelayInput'
   )
   rainbowLightDelayInput.addEventListener('change', e => {
-    const trueValue = 0x10000 - rainbowLightDelayInput.value
+    const trueValue = rainbowLightDelayInput.value
     settingsSet[11][2] = (trueValue & 0xff00) >> 8
     settingsSet[11][3] = trueValue & 0x00ff
     countChanges()
@@ -538,7 +541,8 @@ const templeData = [
   [0x07, 0x00, 0x00, 0xff, 0x04], //#0000FF 100%(4)
   [0x08, 0x06, 0x00, 0x00, 0x00], //Mode 6, 彩虹
   [0x09, 0x00, 0x00, 0x00, 0x60], //0x60 => 96 (MAX 16^6-1)
-  [0x0a, 0x00, 0x00, 0x00, 0x40] //0x00 极速模式处于关闭
+  [0x0a, 0x00, 0x00, 0x00, 0x40], //0x00 极速模式处于关闭，夜灯打开
+  [0x0b, 0x0a, 0x00, 0x0a, 0x00] //0x0A00 延迟设置
 ]
 templeData.forEach(arr => {
   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]

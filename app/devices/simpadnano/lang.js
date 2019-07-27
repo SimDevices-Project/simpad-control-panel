@@ -38,8 +38,8 @@ module.exports = {
     rainbowEaseOut: 'Rainbow fade out',
 
     lightsDelay: 'Lights Speeds',
-    easeLightDelay: 'Fade in or out speed',
-    rainbowLightDelay: 'Rainbow change speed',
+    easeLightDelay: 'Fade in or out delay',
+    rainbowLightDelay: 'Rainbow change delay',
 
     colorAndBrightness: 'Color & Brightness', 
     setBrightness: 'Set brightness',
@@ -889,8 +889,8 @@ module.exports = {
     rainbowEaseOut: '彩虹渐隐',
 
     lightsDelay: '灯光速度',
-    easeLightDelay: '渐隐渐显速度',
-    rainbowLightDelay: '彩虹渐变速度',
+    easeLightDelay: '渐隐渐显延迟',
+    rainbowLightDelay: '彩虹渐变延迟',
 
     colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
@@ -1121,8 +1121,8 @@ module.exports = {
     rainbowEaseOut: '彩虹渐灭',
 
     lightsDelay: '灯光速度',
-    easeLightDelay: '渐亮渐灭速度',
-    rainbowLightDelay: '彩虹变化速度',
+    easeLightDelay: '渐亮渐灭延迟',
+    rainbowLightDelay: '彩虹变化延迟',
 
     colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
@@ -1342,8 +1342,8 @@ module.exports = {
     rainbowEaseOut: '彩虹淡出',
 
     lightsDelay: '燈光變換速率',
-    easeLightDelay: '淡入淡出速率',
-    rainbowLightDelay: '彩虹變色速率',
+    easeLightDelay: '淡入淡出延時',
+    rainbowLightDelay: '彩虹變色延時',
 
     colorAndBrightness: '顏色與亮度',
     setBrightness: '設置亮度',
