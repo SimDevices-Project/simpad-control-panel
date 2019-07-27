@@ -515,8 +515,8 @@ const initSettingsFunction = () => {
   const easeLightDelayInput = document.getElementById('easeLightDelayInput')
   easeLightDelayInput.addEventListener('change', e => {
     const trueValue = easeLightDelayInput.value
-    settingsSet[11][0] = (trueValue & 0xff00) >> 8
-    settingsSet[11][1] = trueValue & 0x00ff
+    settingChanged[11][0] = (trueValue & 0xff00) >> 8
+    settingChanged[11][1] = trueValue & 0x00ff
     countChanges()
   })
   const rainbowLightDelayInput = document.getElementById(
@@ -524,8 +524,8 @@ const initSettingsFunction = () => {
   )
   rainbowLightDelayInput.addEventListener('change', e => {
     const trueValue = rainbowLightDelayInput.value
-    settingsSet[11][2] = (trueValue & 0xff00) >> 8
-    settingsSet[11][3] = trueValue & 0x00ff
+    settingChanged[11][2] = (trueValue & 0xff00) >> 8
+    settingChanged[11][3] = trueValue & 0x00ff
     countChanges()
   })
 }
