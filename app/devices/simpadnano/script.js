@@ -565,7 +565,7 @@ const useSettings = () => {
     })
     for (let i = 0; i < changesBool.length; i++) {
       if (changesBool[i]) {
-        promiseObj.then(() =>
+        promiseObj = promiseObj.then(() =>
           sendData([
             i,
             settingChanged[i][0],
@@ -582,7 +582,7 @@ const useSettings = () => {
         )
       }
     }
-    promiseObj.then(() => {
+    promiseObj = promiseObj.then(() => {
       getAllSettings().then(() => {
         initSettings()
         countChanges()
