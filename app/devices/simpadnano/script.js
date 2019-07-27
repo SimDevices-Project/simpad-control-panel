@@ -65,7 +65,7 @@ let sendData, page4Fin, page4Init, jumpPage
  * 7: LED1, R,G,B,亮度
  * 8: 灯光模式
  * 9: 防抖设定
- * 10: 极速模式
+ * 10: 极速模式，IAP模式，夜灯设置
  * 11: 保留
  */
 const settingsSet = new Array(12).fill(0).map(() => new Array(8))
@@ -110,6 +110,7 @@ const getAllSettings = (dev = device) => {
       .then(() => getSettings(8, dev))
       .then(() => getSettings(9, dev))
       .then(() => getSettings(10, dev))
+      .then(() => getSettings(11, dev))
       .then(
         () =>
           new Promise(r => {
@@ -301,6 +302,23 @@ const initSettings = () => {
       radio.checked = true
     }
   })
+
+  // 灯光速度
+  const DEFAULT_LIGHT_DELAY = 0x10000 - 0xa000
+  const easeLightDelayInput = document.getElementById('easeLightDelayInput')
+  easeLightDelayInput.value =
+    ((0x10000 - settingsSet[11][0]) << 8) | settingsSet[11][1]
+  if (easeLightDelayInput.value === 0x10000) {
+    easeLightDelayInput.value = DEFAULT_LIGHT_DELAY
+  }
+  const rainbowLightDelayInput = document.getElementById(
+    'rainbowLightDelayInput'
+  )
+  rainbowLightDelayInput.value =
+    ((0x10000 - settingsSet[11][2]) << 8) | settingsSet[11][3]
+  if (rainbowLightDelayInput.value === 0x10000) {
+    rainbowLightDelayInput.value = DEFAULT_LIGHT_DELAY
+  }
   countChanges()
 }
 
@@ -487,6 +505,25 @@ const initSettingsFunction = () => {
       settingChanged[10][2] = parseInt(node.value, 10)
       countChanges()
     })
+  })
+
+  // 灯光速度
+  const DEFAULT_LIGHT_DELAY = 0x10000 - 0xa000
+  const easeLightDelayInput = document.getElementById('easeLightDelayInput')
+  easeLightDelayInput.addEventListener('change', e => {
+    const trueValue = 0x10000 - easeLightDelayInput.value
+    settingsSet[11][0] = (trueValue & 0xff00) >> 8
+    settingsSet[11][1] = trueValue & 0x00ff
+    countChanges()
+  })
+  const rainbowLightDelayInput = document.getElementById(
+    'rainbowLightDelayInput'
+  )
+  rainbowLightDelayInput.addEventListener('change', e => {
+    const trueValue = 0x10000 - rainbowLightDelayInput.value
+    settingsSet[11][2] = (trueValue & 0xff00) >> 8
+    settingsSet[11][3] = trueValue & 0x00ff
+    countChanges()
   })
 }
 
