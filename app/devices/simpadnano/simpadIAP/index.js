@@ -43,7 +43,7 @@ const getDevices = () => {
  * @param {number} redefine 重定义指令
  */
 function* sendROM(buf, device, redefine = 0xa0) {
-  const MAX_DATA_LENGTH = 0x20
+  const MAX_DATA_LENGTH = 0x30
   let address = 0
   /**
    * @type {number[]}
@@ -109,6 +109,7 @@ const autoWriteAndVerifyROM = (
       let running = 'WRITE'
       let romWriter = sendROM(buf, device)
       let romVerifier = sendROM(buf, device, 0xc0)
+      let romVerifier2 = sendROM(buf, device, 0xc0)
       const timer = setInterval(() => {
         switch (running) {
           case 'WRITE': {
@@ -135,6 +136,25 @@ const autoWriteAndVerifyROM = (
               generatorDone = romVerifier.next().done
             } else if (readyFlag && generatorDone) {
               console.log('Verify End')
+              generatorDone = false
+              running = 'VERIFY2'
+            }
+            break
+          }
+          case 'VERIFY2': {
+            if (readyFlag && !generatorDone) {
+              if (lastTimeData) {
+                // 如果验证失败
+                if (lastTimeData[1] === 0xff) {
+                  console.log('Verify Failed')
+                  console.log(lastTimeData.join(','))
+                  romWriter = sendROM(buf, device)
+                  running = 'WRITE'
+                }
+              }
+              generatorDone = romVerifier2.next().done
+            } else if (readyFlag && generatorDone) {
+              console.log('Verify2 End')
               // 清除定时器
               clearInterval(timer)
               // 重启设备
