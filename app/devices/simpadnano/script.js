@@ -1061,13 +1061,13 @@ Update Now?`)
   )
   document.getElementById(
     'theBtnDefInner'
-  ).style.background = `url(${__dirname.replace(/\\/g, '/') +
-    '/imgs/deviceKeyInfo.png'})`
+  ).style.background = `url("${__dirname.replace(/\\/g, '/') +
+    '/imgs/deviceKeyInfo.png'}")`
   // 灯光配置信息显示
   document.getElementById(
     'theLightDefInner'
-  ).style.background = `url(${__dirname.replace(/\\/g, '/') +
-    '/imgs/deviceLightInfo.png'})`
+  ).style.background = `url("${__dirname.replace(/\\/g, '/') +
+    '/imgs/deviceLightInfo.png'}")`
 
   document.getElementById('deviceKeyMapTitle').innerText = getName(
     deviceInfo.description

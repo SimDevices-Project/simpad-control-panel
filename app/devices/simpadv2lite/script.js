@@ -926,8 +926,8 @@ Update Now?`)
   )
   document.getElementById(
     'theBtnDefInner'
-  ).style.background = `url(${__dirname.replace(/\\/g, '/') +
-    '/imgs/deviceKeyInfo.png'})`
+  ).style.background = `url("${__dirname.replace(/\\/g, '/') +
+    '/imgs/deviceKeyInfo.png'}")`
   // document.getElementById(
   //   'theLightDefInner'
   // ).style.background = `url(${__dirname.replace(/\\/g, '/') +
