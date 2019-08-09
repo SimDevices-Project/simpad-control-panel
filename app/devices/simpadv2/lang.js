@@ -37,7 +37,11 @@ module.exports = {
     rainbowColor: 'Rainbow',
     rainbowEaseOut: 'Rainbow fade out',
 
-    colorAndBrightness: 'Color', // & Brightness
+    lightsDelay: 'Lights Speeds',
+    easeLightDelay: 'Fade in or out delay',
+    rainbowLightDelay: 'Rainbow change delay',
+
+    colorAndBrightness: 'Color & Brightness', 
     setBrightness: 'Set brightness',
 
     nightLights: 'Nightlights', 
@@ -60,8 +64,8 @@ module.exports = {
     superSpeedMode: 'Full Speed Mode',
     superSpeedModeInfo:
       'You can enable "full speed mode" to disable all lights to get the fastest speed, reboot device to apply.',
-    superSpeedModeeBtnOn: 'Turn on',
-    superSpeedModeeBtnOff: 'Turn off',
+    superSpeedModeeBtnOn: 'Trun on',
+    superSpeedModeeBtnOff: 'Trun off',
 
     resetDevice: 'Reset Device',
     resetDeviceInfo: 'Device can be reseted to default settings',
@@ -348,7 +352,7 @@ module.exports = {
     detailedSettings: 'Detaillierten Einstellung',
     apply: 'anwenden',
     conInfo:
-      'Bitte verbinden und wählen sie ihr Gerät',
+    'Bitte verbinden und wählen sie ihr Gerät',
     refresh: 'Aktualisieren',
     confirmAndNext: 'Auswählen',
     chooseInfo: 'Bitte wählen sie eine Einstellung',
@@ -428,7 +432,7 @@ module.exports = {
       <p class="canBeSeleted">Besuchen den Blog des Entwicklers, 手柄君的小阁</p>
     </a>
     <p></p>
-    <p>~ Handle</p>
+    <p>By Handle</p>
     <p>2018.7.4</p>`,
 
     changesCount: 'Änderung(en) bevorstehend',
@@ -690,7 +694,7 @@ module.exports = {
     keepOn: '常に明るい',
     keepOff: 'オフ',
     keyPress: '押すとつき',
-    colorAndBrightness: '色の設定', //与亮度
+    colorAndBrightness: '色、明るの設定', //与亮度
     setBrightness: '明るさを設置する',
 
     nightLights: 'ナイトライト', 
@@ -790,12 +794,8 @@ module.exports = {
     easeIn: 'Fade in',
     keepOn: 'Always on',
     keepOn: 'Off',
-    colorAndBrightness: 'Color', // & Brightness
+    colorAndBrightness: 'Color & Brightness',
     setBrightness: 'Set brightness',
-
-    nightLights: 'Nightlights', 
-    nightLightsOn: 'Turn On',
-    nightLightsOff: 'Turn Off',
 
     keyDelay: 'Input Debounce',
     keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
@@ -888,7 +888,11 @@ module.exports = {
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹渐隐',
 
-    colorAndBrightness: '颜色', //与亮度
+    lightsDelay: '灯光速度',
+    easeLightDelay: '渐隐渐显延迟',
+    rainbowLightDelay: '彩虹渐变延迟',
+
+    colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
 
     nightLights: '夜灯', 
@@ -1116,7 +1120,11 @@ module.exports = {
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹渐灭',
 
-    colorAndBrightness: '颜色', //与亮度
+    lightsDelay: '灯光速度',
+    easeLightDelay: '渐亮渐灭延迟',
+    rainbowLightDelay: '彩虹变化延迟',
+
+    colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
 
     nightLights: '夜灯', 
@@ -1333,7 +1341,11 @@ module.exports = {
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹淡出',
 
-    colorAndBrightness: '顏色', //與亮度
+    lightsDelay: '燈光變換速率',
+    easeLightDelay: '淡入淡出延時',
+    rainbowLightDelay: '彩虹變色延時',
+
+    colorAndBrightness: '顏色與亮度',
     setBrightness: '設置亮度',
 
     nightLights: '夜燈', 
