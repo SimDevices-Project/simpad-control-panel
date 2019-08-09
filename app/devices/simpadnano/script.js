@@ -66,7 +66,7 @@ let sendData, page4Fin, page4Init, jumpPage
  * 8: 灯光模式
  * 9: 防抖设定
  * 10: 极速模式，IAP模式，夜灯设置
- * 11: 保留
+ * 11: 灯光速度
  */
 const settingsSet = new Array(12).fill(0).map(() => new Array(8))
 
