@@ -98,9 +98,9 @@ const data = {
   '516': [0, 0x5b, 'keyN_numPad_3'],
   '517': [0, 0x58, 'keyN_numPad_enter'],
 
-  '601': [1, 0b000000001, 'keyN_leftCtrl'],
-  '602': [1, 0xb00001000, 'keyN_leftWin'],
-  '603': [1, 0xb00000100, 'keyN_leftAlt'],
+  '601': [1, 0b00000001, 'keyN_leftCtrl'],
+  '602': [1, 0b00001000, 'keyN_leftWin'],
+  '603': [1, 0b00000100, 'keyN_leftAlt'],
   '604': [0, 0x2c, 'keyN_space'],
   '605': [1, 0b01000000, 'keyN_rightAlt'],
   '606': [1, 0b10000000, 'keyN_rightWin'],
