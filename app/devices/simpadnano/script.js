@@ -252,15 +252,15 @@ const initSettings = () => {
   //灯光颜色
   document.getElementById('G1Color').value = `#${settingsSet[6][0]
     .toString(16)
-    .padEnd(2, '0')}${settingsSet[6][1]
+    .padStart(2, '0')}${settingsSet[6][1]
     .toString(16)
-    .padEnd(2, '0')}${settingsSet[6][2].toString(16).padEnd(2, '0')}`
+    .padStart(2, '0')}${settingsSet[6][2].toString(16).padStart(2, '0')}`
   cpG1.value = document.getElementById('G1Color').value
   document.getElementById('G2Color').value = `#${settingsSet[7][0]
     .toString(16)
-    .padEnd(2, '0')}${settingsSet[7][1]
+    .padStart(2, '0')}${settingsSet[7][1]
     .toString(16)
-    .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
+    .padStart(2, '0')}${settingsSet[7][2].toString(16).padStart(2, '0')}`
   cpG2.value = document.getElementById('G2Color').value
   //灯光亮度
   var G1Brightness = document.getElementById('G1Brightness')
