@@ -36,6 +36,8 @@ module.exports = {
     keyPress: 'Key Press',
     rainbowColor: 'Rainbow',
     rainbowEaseOut: 'Rainbow fade out',
+    keySwitch: 'On-Off',
+    rainbowSwitch: 'Rainbow On-Off',
 
     lightsDelay: 'Lights Speeds',
     easeLightDelay: 'Fade in or out delay',
@@ -381,6 +383,7 @@ module.exports = {
     keepOn: 'Beleuchtung immer an',
     keepOff: 'Beleuchtung immmer aus',
     keyPress: 'Beleuchtung auf Tastendruck',
+
     colorAndBrightness: 'Farbe', //与亮度
     setBrightness: 'Helligkeit einstellen',
 
@@ -694,6 +697,7 @@ module.exports = {
     keepOn: '常に明るい',
     keepOff: 'オフ',
     keyPress: '押すとつき',
+
     colorAndBrightness: '色、明るの設定', //与亮度
     setBrightness: '明るさを設置する',
 
@@ -887,6 +891,8 @@ module.exports = {
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹渐隐',
+    keySwitch: '按键切换常亮',
+    rainbowSwitch: '按键切换彩虹',
 
     lightsDelay: '灯光速度',
     easeLightDelay: '渐隐渐显延迟',
@@ -1119,6 +1125,8 @@ module.exports = {
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹渐灭',
+    keySwitch: '按键切换常亮',
+    rainbowSwitch: '按键切换彩虹',
 
     lightsDelay: '灯光速度',
     easeLightDelay: '渐亮渐灭延迟',
@@ -1340,6 +1348,8 @@ module.exports = {
     keyPress: '按下亮起',
     rainbowColor: '彩虹',
     rainbowEaseOut: '彩虹淡出',
+    keySwitch: '按鍵切換常亮',
+    rainbowSwitch: '按鍵切換彩虹',
 
     lightsDelay: '燈光變換速率',
     easeLightDelay: '淡入淡出延時',
