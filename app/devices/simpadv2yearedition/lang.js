@@ -671,9 +671,9 @@ module.exports = {
     selectOperation: '操作を選定する',
     detailedSettings: '具体な配置',
     apply: '応用',
-    conInfo: '接続して、ご変更したい設備を選択してください',
-    refresh: 'リフレッシュ',
-    confirmAndNext: '確認、この設備を操作す',
+    conInfo: '設定変更を行うデバイスを選択してください',
+    refresh: '再読込',
+    confirmAndNext: 'このデバイスの設定をする',
     chooseInfo: '行いたい設定をご選択してください',
     changeKeyCodeBT: 'キーワードを変更する',
     changeLightsBT: 'ライトを設置する',
@@ -760,8 +760,8 @@ module.exports = {
     abandonsChanges: 'すべての変更を諦める',
     applyToDevice: '設備に応用する',
 
-    selectedDevice: '当前の設備',
-    noDevice: '選定を待つ',
+    selectedDevice: '選択されたデバイス',
+    noDevice: '選択待ち',
     reselectDevice: '改めて設備を選ぶ',
 
     simpadv2: 'SimPad v2',
