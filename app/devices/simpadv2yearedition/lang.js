@@ -3,7 +3,7 @@ module.exports = {
     title: 'SimPad Control Panel',
     selectDevice: 'Select Devices',
     selectOperation: 'Select Operation',
-    detailedSettings: 'Detailed Settings',
+    detailedSettings: 'Advanced Settings',
     apply: 'Apply',
     conInfo: 'Please connect and select your device',
     refresh: 'Refresh',
@@ -11,9 +11,9 @@ module.exports = {
     chooseInfo: 'Select the operation you want to perform',
     changeKeyCodeBT: 'Modify Shortcuts',
     changeLightsBT: 'Modify Lighting',
-    otherSettingsBT: 'Others',
+    otherSettingsBT: 'Advanced settings',
     pleaseWait: 'Please wait...',
-    successToApply: 'Success!',
+    successToApply: 'Settings applied!',
     returnToContinue: 'Return',
     exitProgram: 'Exit',
 
@@ -25,8 +25,7 @@ module.exports = {
     viewKeyMap: 'View shortcuts for device',
 
     changeLights: 'Lights Mode & Color',
-    changeLightsInfo:
-      'You can adjust lights mode or set colours for each lights of groups',
+    changeLightsInfo: 'You can adjust lights mode or set colours for each key',
     viewLightsMap: 'View lighting configuration',
     lightsMode: 'Mode',
     easeOut: 'Fade out',
@@ -35,9 +34,20 @@ module.exports = {
     keepOff: 'Off',
     keyPress: 'Key Press',
     rainbowColor: 'Rainbow',
+    rainbowEaseOut: 'Rainbow fade out',
+    keySwitch: 'On-Off',
+    rainbowSwitch: 'Rainbow On-Off',
 
-    colorAndBrightness: 'Color', // & Brightness
+    lightsDelay: 'Lights Speeds',
+    easeLightDelay: 'Fade in or out delay',
+    rainbowLightDelay: 'Rainbow change delay',
+
+    colorAndBrightness: 'Color & Brightness',
     setBrightness: 'Set brightness',
+
+    nightLights: 'Nightlights',
+    nightLightsOn: 'Turn on',
+    nightLightsOff: 'Turn off',
 
     keyDelay: 'Input Debounce',
     keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
@@ -55,20 +65,21 @@ module.exports = {
     superSpeedMode: 'Full Speed Mode',
     superSpeedModeInfo:
       'You can enable "full speed mode" to disable all lights to get the fastest speed, reboot device to apply.',
-    superSpeedModeeBtnOn: 'Trun On',
-    superSpeedModeeBtnOff: 'Trun Off',
+    superSpeedModeeBtnOn: 'Trun on',
+    superSpeedModeeBtnOff: 'Trun off',
 
     resetDevice: 'Reset Device',
-    resetDeviceInfo: 'Device can be reset to default settings',
+    resetDeviceInfo: 'Device can be reseted to default settings',
     resetDeviceBtn: 'Reset',
     resetAllDevicesBtn: 'Reset All',
 
     about: 'About SimPad',
     checkUpdate: 'Check Update',
-    isLatestVersion: 'The latest version',
+    installDriver: 'Install Driver (Requires administrative privileges)',
+    isLatestVersion: 'Already on latest version',
     jumpToBootMode: 'Enter Boot Mode',
     aboutText: `<p>Thank you for using SimPad!</p>
-    <p>SimPad is a custom keyboard based on 8051 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
+    <p>SimPad is a custom keyboard based on 8051 logic, and got its name from the Simple and Pad, which indicates to Simple and practical. Thanks to the following people for help in the process of the development of the keyboard,</p>
     <p> Thank you very much.</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
@@ -90,14 +101,14 @@ module.exports = {
       <p class="canBeSeleted">View Handle's Blog</p>
     </a>
     <p></p>
-    <p>By Handle</p>
+    <p>~ Handle</p>
     <p>2018.7.4</p>`,
 
-    changesCount: 'Changes to apply',
+    changesCount: 'changes pending',
     abandonsChanges: 'Discard all changes',
-    applyToDevice: 'Apply To Device',
+    applyToDevice: 'Apply changes',
 
-    selectedDevice: 'Current Device',
+    selectedDevice: 'Current selected device',
     noDevice: 'Awaiting selection',
     reselectDevice: 'Select another device',
 
@@ -105,6 +116,7 @@ module.exports = {
     simpadv2: 'SimPad v2',
     sayoo2c: "Sayobot's KeyPad O2C",
     simpadv2lite: 'SimPad v2 Lite',
+    simpadv2yearedition: 'SimPad v2 Year Edition',
 
     //ForKeyboard
     key_esc: 'Esc',
@@ -328,6 +340,7 @@ module.exports = {
     keyN_mouseRight: 'Mouse Right',
 
     firmwareVersion: 'Firmware Version',
+    chipID: 'Device ID',
     lightTest: 'Lights Test',
     checkUpdateFailed: 'Check Update Failed',
 
@@ -335,70 +348,73 @@ module.exports = {
       "Good morning, and in case I don't see ya, good afternoon, good evening, and good night!"
   },
   'de-DE': {
-    title: 'Systemsteuerung SimPad',
-    selectDevice: 'Gerät wählen ',
-    selectOperation: 'Operationen wählen',
-    detailedSettings: 'Betone Einstellungen',
+    title: 'SimPad Systemsteuerung',
+    selectDevice: 'Gerät auswählen',
+    selectOperation: 'Einstellung auswählen',
+    detailedSettings: 'Detaillierten Einstellung',
     apply: 'anwenden',
-    conInfo:
-      'Bitte verbinden und einstellen Sie das Gerät, das Sie ändern möchten',
-    refresh: 'Neu laden',
-    confirmAndNext: 'Bestätigen und bedinen das Gerät',
-    chooseInfo: 'Bitte wählen Sie die Einstellung',
-    changeKeyCodeBT: 'Veränderen den Schlüsselwert',
-    changeLightsBT: 'Einstellen den Licht',
-    otherSettingsBT: 'Andere Einstellungen',
-    pleaseWait: 'Es wird bewerbet, bitte warten',
-    successToApply: 'Es ist bewerbet',
-    returnToContinue: 'Rückkehr',
+    conInfo: 'Bitte verbinden und wählen sie ihr Gerät',
+    refresh: 'Aktualisieren',
+    confirmAndNext: 'Auswählen',
+    chooseInfo: 'Bitte wählen sie eine Einstellung',
+    changeKeyCodeBT: 'Tasteneinstellungen',
+    changeLightsBT: 'Lichteinstellungen',
+    otherSettingsBT: 'Erweiterte Einstellungen',
+    pleaseWait: 'Einstellungen werden übernommen, bitte warten',
+    successToApply: 'Eintellungen erfolgreich angewandt',
+    returnToContinue: 'Zurück',
     exitProgram: 'Beenden',
 
     edit: 'Bearbeiten',
 
-    changeKeyCode: 'Schlüsselwert einstellen',
+    changeKeyCode: 'Tastatureinstellungen bearbeiten',
     changeKeyCodeInfo:
-      'Sie können hier den Schlüsselwert für jeden Schlüssel separat festlegen',
-    viewKeyMap: 'Siehe Schlüssel-Definitionen',
+      'Tasten sowie Tastenkombinationen können separat eingestellt werden',
+    viewKeyMap: 'Tastenkonfiguration anzeigen',
 
-    changeLights: 'Lichtmuster und -farbe',
+    changeLights: 'Beleuchtungsmodi und Farbeinstellungen',
     changeLightsInfo:
-      'Sie können hier den Beleuchtungsmodus oder die Farbe von jeder Gruppe separat einstellen',
-    viewLightsMap: 'Überprüfen Sie die Geräte-Lichtkonfiguration',
-    lightsMode: 'Muster',
-    easeOut: 'Drücken Sie, um zu beleuchten und dann zu verblassen',
-    easeIn: 'Drücken Sie, um zu verblassen und dann zu beleuchten',
-    keepOn: 'Immer glanz',
-    keepOff: 'aus',
-    keyPress: 'Drücken Sie, um zu beleuchten',
-    colorAndBrightness: 'Faber', //与亮度
+      'Beleuchtungsmodi und Farben können separat eingestellt werden',
+    viewLightsMap: 'Lichtkonfiguration anzeigen',
+    lightsMode: 'Beleuchtungsmodus',
+    easeOut: 'Ease-out Animation',
+    easeIn: 'Ease-in Animation',
+    keepOn: 'Beleuchtung immer an',
+    keepOff: 'Beleuchtung immmer aus',
+    keyPress: 'Beleuchtung auf Tastendruck',
+
+    colorAndBrightness: 'Farbe', //与亮度
     setBrightness: 'Helligkeit einstellen',
 
-    keyDelay: 'Shake Reduction',
-    keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
-    <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
+    nightLightsOn: 'Beleuchtung bei ausgeschaltetem Computer an',
+    nightLightsOff: 'Beleuchtung bei ausgeschaltetem Computer aus',
+
+    keyDelay: 'Tastenverzögerung',
+    keyDelayInfo: `SimPad verwendet eine Input Debounce-Funktion, welche die Verzögerung einstellt, bis ein Tastenanhieb registriert wird.
+    <br>Ändern sie Diese, um die Verzögerung zu verändern`,
     delay: 'Verzögerung',
 
     advancedOptions: 'Erweiterte Einstellungen',
-    advancedOptionsInfo: `Das Erweitert Menü bietet einige erweiterte Funktionen, die Benutzern nicht empfohlen werden. Alle Änderungen im Erweitert Menü überspringen die Validierung und wenden sie direkt an`,
-    sendDataPack: 'Pakete senden',
-    sendDataPackInfo: `Wenn Sie mit dem SimPad-Paketformat vertraut sind, können Sie Pakete auch direkt an das Gerät senden. Der von Ihnen eingegebene Text wird nach Leerzeichen in hexadezimale Daten zerlegt`,
+    advancedOptionsInfo: `Das Ändern von erweiterten Eintellungen erfordert moderate Erfahrung von Benutzern.`,
+    sendDataPack: 'Data Packets senden',
+    sendDataPackInfo: `Wenn Sie mit dem SimPad-Packetformat vertraut sind, können Sie Pakete auch direkt an das Gerät senden. Ihre Eingabe wird, duch Leertasten getrennt, hexadezimal verarbeitet`,
     sendDataPackBtn: 'Senden',
 
-    superSpeedMode: 'Ohne-Licht-Mode',
+    superSpeedMode: 'Hochleistungsmodus',
     superSpeedModeInfo:
-      'Sie können den Ohne-Licht-Mode verwenden, um alle Lichteffekte vollständig abzuschalten, um die schnellste Erfahrung zu erzielen. Starten Sie das Gerät neu, damit es wirksam wird',
-    superSpeedModeeBtnOn: 'ein',
-    superSpeedModeeBtnOff: 'aus',
+      'Aktivieren sie den Hochleistungsmodus, werdedn Lichteffekte vollständig abgeschaltet, um die Geschwindigkeit des Geräts zu erhöhern. Ein Geräteneustart ist nach Übernahme der Einstellung erforderlich',
+    superSpeedModeeBtnOn: 'Aktivieren',
+    superSpeedModeeBtnOff: 'Deaktivieren',
 
     resetDevice: 'Gerät zurücksetzen',
-    resetDeviceInfo: 'Sie können Ihr Gerät zurücksetzen',
+    resetDeviceInfo:
+      'Das Gerät kann hier auf Werkeinstellungen zurückgesetzt werden',
     resetDeviceBtn: 'Zurücksetzen',
 
     about: 'Über uns',
-    checkUpdate: 'Updetes suchen',
-    aboutText: `<p>SimPad zu verwenden.</p>
-    <p>SimPad wurde von den folgenden Personen während des Entwicklungsprozesses unterstützt</p>
-    <p>特此感谢！</p>
+    checkUpdate: 'Nach Updates suchen',
+    aboutText: `<p>Über SimPad.</p>
+    <p>SimPad ist eine kundenspezifische Tastatur, die auf einer 8051-Logik basiert. Seinen Namen hat es von "Simple" und "Pad". Dies deutet darauf hin, dass das Gerät einfach und praktisch ist. SimPad wurde von den folgenden Personen während des Entwicklung unterstützt:</p>
     <p></p>
     <p class="nameBefore">Sayobot小夜</p>
     <p class="nameBefore">noodlefighter</p>
@@ -407,31 +423,34 @@ module.exports = {
     <p class="nameBefore">晨旭</p>
     <p class="nameBefore">Antecer</p>
     <p></p>
-    <p>Wir bedanken uns Ihnen dafür</p>
+    <p>Wir bedanken uns ausserdem bei</p>
     <p></p>
     <p class="nameBefore">Mn2O7</p>
+    <p class="nameBefore">oSumAtrIX</p>
     <p></p>
     <a href="https://www.bysb.net/3363.html">
-      <p class="canBeSeleted">Besuchen Sie die Seite des Tastur</p>
+      <p class="canBeSeleted">Besuchen Sie die Seite des Produkts</p>
     </a>
     <a href="https://www.bysb.net">
-      <p class="canBeSeleted">Besuchen das Blog des Entwickler, 手柄君的小阁</p>
+      <p class="canBeSeleted">Besuchen den Blog des Entwicklers, 手柄君的小阁</p>
     </a>
     <p></p>
     <p>By Handle</p>
     <p>2018.7.4</p>`,
 
-    changesCount: 'Effektive Änderungen',
-    abandonsChanges: 'Verwerfen Sie die Änderungen',
-    applyToDevice: 'Auf das Gerät anwenden',
+    changesCount: 'Änderung(en) bevorstehend',
+    abandonsChanges: 'Änderungen verwerfen',
+    applyToDevice: 'Änderungen anwenden',
 
-    selectedDevice: 'Aktuelles Gerät',
-    noDevice: 'Warten auf Auswahl',
-    reselectDevice: 'Erneuen Auswahl das Gerät',
+    selectedDevice: 'Ausgewähltes Gerät',
+    noDevice: 'Warte auf Auswahl',
+    reselectDevice: 'Geräteauswahl ändern',
 
     //DevicesNames
     simpadv2: 'SimPad v2',
     simpadv2lite: 'SimPad v2 Lite',
+    simpadnano: 'SimPad Nano',
+    simpadv2yearedition: 'SimPad v2 Year Edition',
 
     //ForKeyboard
     key_esc: 'Esc',
@@ -679,8 +698,13 @@ module.exports = {
     keepOn: '常に明るい',
     keepOff: 'オフ',
     keyPress: '押すとつき',
-    colorAndBrightness: '色の設定', //与亮度
+
+    colorAndBrightness: '色、明るの設定', //与亮度
     setBrightness: '明るさを設置する',
+
+    nightLights: 'ナイトライト',
+    nightLightsOn: 'オン',
+    nightLightsOff: 'オフ',
 
     keyDelay: 'キーストローク消去',
     keyDelayInfo: `SimPadの特別なキーストローク消去の方法は有効にキーストローク消去による遅延を下げる。ここで、ボタンが上がる時発生したキーストローク消去の機能のトリガー遅延が調整できる。`,
@@ -740,97 +764,354 @@ module.exports = {
     reselectDevice: '改めて設備を選ぶ',
 
     simpadv2: 'SimPad v2',
-    simpadv2lite: 'SimPad v2 Lite'
+    simpadv2lite: 'SimPad v2 Lite',
+    simpadv2yearedition: 'SimPad v2 周年記念モデル'
   },
   'ru-RU': {
     title: 'Панель управления SimPad',
     selectDevice: 'Выбрать устройства',
     selectOperation: 'Выберите операцию',
     detailedSettings: 'Подробные настройки',
-    apply: 'Подать заявление',
+    apply: 'Применить',
     conInfo: 'Подключите и выберите устройство',
-    refresh: 'обновление',
-    confirmAndNext: 'Подключите',
+    refresh: 'Обновить',
+    confirmAndNext: 'Подключить',
     chooseInfo: 'Выберите операцию, которую вы хотите выполнить',
-    changeKeyCodeBT: 'Изменение кодов ключей',
-    changeLightsBT: 'Изменить освещение',
-    otherSettingsBT: 'другие',
+    changeKeyCodeBT: 'Настройка кнопок',
+    changeLightsBT: 'Настройка подсветки',
+    otherSettingsBT: 'Доп. настройки',
     pleaseWait: 'Пожалуйста, подождите...',
-    successToApply: 'успех!',
+    successToApply: 'Настройки применены!',
+    returnToContinue: 'Вернуться',
     exitProgram: 'Выход',
 
-    edit: 'редактор',
+    edit: 'Изменить',
 
-    changeKeyCode: 'Клавиша редактирования',
+    changeKeyCode: 'Изменение кнопок',
     changeKeyCodeInfo:
-      'Вы можете установить клавиатуру каждого ключа здесь, поддерживая основные сочетания клавиш',
-    viewKeyMap: 'Конфигурирование клавиатуры',
+      'Вы можете установить любую кнопку здесь, включая сочетание клавиш',
+    viewKeyMap: 'Посмотреть кнопки на устройстве',
 
-    changeLights: 'Lights Mode & Color',
-    changeLightsInfo:
-      'You can adjust lights mode or set colours for each lights of groups',
-    viewLightsMap: 'View lighting configuration',
-    lightsMode: 'Mode',
-    easeOut: 'Fade out',
-    easeIn: 'Fade in',
-    keepOn: 'Always on',
-    keepOn: 'Off',
-    colorAndBrightness: 'Color', // & Brightness
-    setBrightness: 'Set brightness',
+    changeLights: 'Подсветка',
+    changeLightsInfo: 'Здесь вы можете настроить подсветку',
+    viewLightsMap: 'Просмотреть настройки подсветки',
+    lightsMode: 'Режимы',
+    easeOut: 'Затухание',
+    easeIn: 'Появление',
+    keepOn: 'Всегда включён',
+    keepOff: 'Выключить',
+    keyPress: 'По нажатию кнопки',
+    rainbowColor: 'Радуга',
+    rainbowEaseOut: 'Затухание Радуга',
+    keySwitch: 'Выключение по нажатию',
+    rainbowSwitch: 'Выключение по нажатию Радуга',
 
-    keyDelay: 'Input Debounce',
-    keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
-    <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
-    delay: 'Delay',
+    lightsDelay: 'Скорость подсветки',
+    easeLightDelay: 'Задержка Затухания и Появления',
+    rainbowLightDelay: 'Задержка смены цвета (радуга)',
 
-    advancedOptions: 'Advanced Options',
-    advancedOptionsInfo: `You can fine tune some settings here, recommended for pro users，
-    <br>All changes made in Advanced Options are applied immediately`,
-    sendDataPack: 'Send Data Packets',
-    sendDataPackInfo: `If you are familiar with SimPad data format，you can send data directly to the device，
-    <br>Your text input will be treated as raw hex data, separated by space`,
-    sendDataPackBtn: 'Send',
-    resetDevice: 'Reset Device',
-    resetDeviceInfo: 'Device can be reset to default settings',
-    resetDeviceBtn: 'Reset',
+    colorAndBrightness: 'Цвет & Подсвета',
+    setBrightness: 'Настроить яркость',
 
-    about: 'About SimPad',
-    checkUpdate: 'Check Update',
-    aboutText: `<p>感谢您使用SimPad！</p>
-    <p>SimPad是一款基于8051单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
-    <p>特此感谢！</p>
-    <p></p>
-    <p class="nameBefore">Sayobot小夜</p>
-    <p class="nameBefore">noodlefighter</p>
-    <p class="nameBefore">kd飞飞</p>
-    <p class="nameBefore">rikka0w0</p>
-    <p class="nameBefore">晨旭</p>
-    <p class="nameBefore">Antecer</p>
-    <p></p>
-    <p>Special thanks</p>
-    <p>English interpreter</p>
-    <p class="nameBefore">Jeff - Source Localization Team</p>
-    <p class="nameBefore">HDY</p>
-    <p></p>
-    <a href="https://www.bysb.net/3363.html">
-      <p class="canBeSeleted">访问键盘发布页</p>
-    </a>
-    <a href="https://www.bysb.net">
-      <p class="canBeSeleted">访问手柄君的小阁博客</p>
-    </a>
-    <p></p>
-    <p>By Handle</p>
-    <p>2018.7.4</p>`,
+    nightLights: 'Работа подсветки не подключая к компьютеру',
+    nightLightsOn: 'Включить',
+    nightLightsOff: 'Выключить',
 
-    changesCount: 'Changes to apply',
-    abandonsChanges: 'Discard all changes',
-    applyToDevice: 'Apply To Device',
+    keyDelay: 'Медленные кнопки',
+    keyDelayInfo: `SimPad использует функцию отладки ввода, которая регулирует задержку до регистрации нажатия клавиши.
+   <br>Вы можете изменять задержку!`,
+    delay: 'Задержка',
 
-    selectedDevice: 'Current Device',
-    noDevice: 'Awaiting selection',
-    reselectDevice: 'Select another device',
+    advancedOptions: 'Доп. Настройки',
+    advancedOptionsInfo: `Вы можете настроить некоторые параметры здесь, рекомендуется для профессиональных пользователей，
+   <br>Все изменения, сделанные в дополнительных параметрах, применяются сразу`,
+    sendDataPack: 'Отправить пакеты данных',
+    sendDataPackInfo: `Если вы знакомы с форматов данных SimPad ，вы можете отправлять данные сразу на ваше устройство，
+   <br>Ваш текстовый ввод будет обработан как необработанные шестнадцатеричные данные, разделены пробелом`,
+    sendDataPackBtn: 'Отправить',
 
-    simpadv2: 'SimPad v2'
+    superSpeedMode: 'Максималочка',
+    superSpeedModeInfo:
+      'Здесь можете включить "Максималочку" чтобы выключить всю подсветку для получения быстрого отклика, перезапустите устройство чтобы применить.',
+    superSpeedModeeBtnOn: 'Включить',
+    superSpeedModeeBtnOff: 'Выключить',
+
+    resetDevice: 'Сброс устройства',
+    resetDeviceInfo: 'Сброс устройства до стандартных настроек',
+    resetDeviceBtn: 'Сброс',
+    resetAllDevicesBtn: 'Сбросить ВСЁ',
+
+    about: 'О SimPad',
+    checkUpdate: 'Проверить обновление',
+    installDriver: 'Установить Драйвера (потребует UAC)',
+    isLatestVersion: 'Установлена последняя прошивка',
+    jumpToBootMode: 'Перейти в режим Загрузки',
+    aboutText: `<p>Спасибо что выбрали SimPad!</p>
+   <p>SimPad это кастомная клавиатура основаная на 8051 плате, получившая свое имя от слов "slim" и Pad, что указывает на простоту и практичность. Спасибо людям, которые помогли мне в разработке клавиатуры,</p>
+   <p> Спасибо вам большое.</p>
+   <p></p>
+   <p class="nameBefore">Sayobot小夜</p>
+   <p class="nameBefore">noodlefighter</p>
+   <p class="nameBefore">kd飞飞</p>
+   <p class="nameBefore">rikka0w0</p>
+   <p class="nameBefore">晨旭</p>
+   <p class="nameBefore">Antecer</p>
+   <p></p>
+   <p>Специальная благодарность!</p>
+   <p>Перевод на русский</p>
+   <p class="nameBefore">Kr3st1k</p>
+   <p></p>
+   <a href="https://www.bysb.net/3363.html">
+     <p class="canBeSeleted">Посмотреть страницу клавиатуры</p>
+   </a>
+   <a href="https://www.bysb.net">
+     <p class="canBeSeleted">Просмотреть блог разработчика</p>
+   </a>
+   <p></p>
+   <p>~ Handle</p>
+   <p>2018.7.4</p>`,
+
+    changesCount: 'Ожидающие изменения',
+    abandonsChanges: 'Сбросить все изменения',
+    applyToDevice: 'Применить изменения',
+
+    selectedDevice: 'Выбранное устройство',
+    noDevice: 'Ждёт Выбора',
+    reselectDevice: 'Выберите другое устройство',
+
+    //DevicesNames
+    simpadv2: 'SimPad v2',
+    sayoo2c: "Sayobot's KeyPad O2C",
+    simpadv2lite: 'SimPad v2 Lite',
+
+    //ForKeyboard
+    key_esc: 'Esc',
+    key_f1: 'F1',
+    key_f2: 'F2',
+    key_f3: 'F3',
+    key_f4: 'F4',
+    key_f5: 'F5',
+    key_f6: 'F6',
+    key_f7: 'F7',
+    key_f8: 'F8',
+    key_f9: 'F9',
+    key_f10: 'F10',
+    key_f11: 'F11',
+    key_f12: 'F12',
+    key_prtSc: 'Print Src',
+    key_scrLk: 'Sroll Lock',
+    key_pauseBreak: 'Pause Break',
+    key_waveLine: '~ `',
+    key_1: '! 1',
+    key_2: '@ 2',
+    key_3: '# 3',
+    key_4: '$ 4',
+    key_5: '% 5',
+    key_6: '^ 6',
+    key_7: '&amp; 7',
+    key_8: '* 8',
+    key_9: '( 9',
+    key_0: ') 0',
+    key_bar: '_ -',
+    key_equal: '+ =',
+    key_bsp: 'Backspace',
+    key_ins: 'Ins',
+    key_home: 'Home',
+    key_pageUp: 'Page Up',
+    key_numPad_numLk: 'Num Lock',
+    key_numPad_slash: '/',
+    key_numPad_asterisk: '*',
+    key_numPad_bar: '-',
+    key_tab: 'Tab',
+    key_q: 'Q',
+    key_w: 'W',
+    key_e: 'E',
+    key_r: 'R',
+    key_t: 'T',
+    key_y: 'Y',
+    key_u: 'U',
+    key_i: 'I',
+    key_o: 'O',
+    key_p: 'P',
+    key_leftParenthesis: '{ [',
+    key_rightParenthesis: '} ]',
+    key_backSlant: '| \\',
+    key_del: 'Del',
+    key_end: 'End',
+    key_pgDn: 'Page Down',
+    key_numPad_7: '7 Hom',
+    key_numPad_8: '8 ↑',
+    key_numPad_9: '9 PgU',
+    key_numPad_add: '+',
+    key_capsLock: 'CapsLock',
+    key_a: 'A',
+    key_s: 'S',
+    key_d: 'D',
+    key_f: 'F',
+    key_g: 'G',
+    key_h: 'H',
+    key_j: 'J',
+    key_k: 'K',
+    key_l: 'L',
+    key_semicolon: ': ;',
+    key_quotationMark: '" \'',
+    key_enter: 'Enter',
+    key_numPad_4: '4 ←',
+    key_numPad_5: '5',
+    key_numPad_6: '6 →',
+    key_leftShift: 'Shift',
+    key_z: 'Z',
+    key_x: 'X',
+    key_c: 'C',
+    key_v: 'V',
+    key_b: 'B',
+    key_n: 'N',
+    key_m: 'M',
+    key_comma: '&lt; ,',
+    key_period: '&gt; .',
+    key_questionMark: '? /',
+    key_rightShift: 'Shift',
+    key_upArrow: '↑',
+    key_numPad_1: '1 End',
+    key_numPad_2: '2 ↓',
+    key_numPad_3: '3 PgD',
+    key_numPad_enter: 'Enter',
+    key_leftCtrl: 'Ctrl',
+    key_leftWin: '&#xF17A',
+    key_leftAlt: 'Alt',
+    key_space: 'Space',
+    key_rightAlt: 'Alt',
+    key_rightWin: '&#xF17A',
+    key_menu: '&#xF022',
+    key_rightCtrl: 'Ctrl',
+    key_leftArrow: '←',
+    key_downArrow: '↓',
+    key_rightArrow: '→',
+    key_numPad_0: '0 Ins',
+    key_numPad_period: 'Del .',
+
+    key_mouseLeft: 'ЛКМ',
+    key_mouseMiddle: 'СКМ',
+    key_mouseRight: 'ПКМ',
+    //ForKeyboard TextInfo
+    keyN_null: 'Null',
+
+    keyN_esc: 'Esc',
+    keyN_f1: 'F1',
+    keyN_f2: 'F2',
+    keyN_f3: 'F3',
+    keyN_f4: 'F4',
+    keyN_f5: 'F5',
+    keyN_f6: 'F6',
+    keyN_f7: 'F7',
+    keyN_f8: 'F8',
+    keyN_f9: 'F9',
+    keyN_f10: 'F10',
+    keyN_f11: 'F11',
+    keyN_f12: 'F12',
+    keyN_prtSc: 'Print Screen',
+    keyN_scrLk: 'Sroll Lock',
+    keyN_pauseBreak: 'Pause Break',
+    keyN_waveLine: '~',
+    keyN_1: '1',
+    keyN_2: '2',
+    keyN_3: '3',
+    keyN_4: '4',
+    keyN_5: '5',
+    keyN_6: '6',
+    keyN_7: '7',
+    keyN_8: '8',
+    keyN_9: '9',
+    keyN_0: '0',
+    keyN_bar: '-',
+    keyN_equal: '=',
+    keyN_bsp: 'Backspace',
+    keyN_ins: 'Insert',
+    keyN_home: 'Home',
+    keyN_pageUp: 'Page Up',
+    keyN_numPad_numLk: 'Num Lock',
+    keyN_numPad_slash: 'NumPad /',
+    keyN_numPad_asterisk: 'NumPad *',
+    keyN_numPad_bar: 'NumPad -',
+    keyN_tab: 'Tab',
+    keyN_q: 'Q',
+    keyN_w: 'W',
+    keyN_e: 'E',
+    keyN_r: 'R',
+    keyN_t: 'T',
+    keyN_y: 'Y',
+    keyN_u: 'U',
+    keyN_i: 'I',
+    keyN_o: 'O',
+    keyN_p: 'P',
+    keyN_leftParenthesis: '[',
+    keyN_rightParenthesis: ']',
+    keyN_backSlant: '\\',
+    keyN_del: 'Delete',
+    keyN_end: 'End',
+    keyN_pgDn: 'Page Down',
+    keyN_numPad_7: 'NumPad 7',
+    keyN_numPad_8: 'NumPad 8',
+    keyN_numPad_9: 'NumPad 9',
+    keyN_numPad_add: 'NumPad +',
+    keyN_capsLock: 'CapsLock',
+    keyN_a: 'A',
+    keyN_s: 'S',
+    keyN_d: 'D',
+    keyN_f: 'F',
+    keyN_g: 'G',
+    keyN_h: 'H',
+    keyN_j: 'J',
+    keyN_k: 'K',
+    keyN_l: 'L',
+    keyN_semicolon: ';',
+    keyN_quotationMark: "'",
+    keyN_enter: 'Enter',
+    keyN_numPad_4: 'NumPad 4',
+    keyN_numPad_5: 'NumPad 5',
+    keyN_numPad_6: 'NumPad 6',
+    keyN_leftShift: 'Left Shift',
+    keyN_z: 'Z',
+    keyN_x: 'X',
+    keyN_c: 'C',
+    keyN_v: 'V',
+    keyN_b: 'B',
+    keyN_n: 'N',
+    keyN_m: 'M',
+    keyN_comma: ',',
+    keyN_period: '.',
+    keyN_questionMark: '/',
+    keyN_rightShift: 'Right Shift',
+    keyN_upArrow: '↑',
+    keyN_numPad_1: 'NumPad 1',
+    keyN_numPad_2: 'NumPad 2',
+    keyN_numPad_3: 'NumPad 3',
+    keyN_numPad_enter: 'NumPad Enter',
+    keyN_leftCtrl: 'Left Ctrl',
+    keyN_leftWin: 'Left Win',
+    keyN_leftAlt: 'Left Alt',
+    keyN_space: 'Space',
+    keyN_rightAlt: 'Right Alt',
+    keyN_rightWin: 'Right Win',
+    keyN_menu: 'Application',
+    keyN_rightCtrl: 'Right Ctrl',
+    keyN_leftArrow: '←',
+    keyN_downArrow: '↓',
+    keyN_rightArrow: '→',
+    keyN_numPad_0: 'NumPad 0',
+    keyN_numPad_period: 'NumPad .',
+
+    keyN_mouseLeft: 'ЛКМ',
+    keyN_mouseMiddle: 'СКМ',
+    keyN_mouseRight: 'ПКМ',
+
+    firmwareVersion: 'Версия прошивки',
+    chipID: 'ID устройства',
+    lightTest: 'Проверка подсветки',
+    checkUpdateFailed: 'Не удалось проверить обновление :c',
+
+    egg_1:
+      'Доброе утро, даже если я тебя не вижу, добрый день, добрый вечер, и доброй ночи!'
   },
   'zh-CN': {
     title: 'SimPad 配置工具',
@@ -866,9 +1147,20 @@ module.exports = {
     keepOff: '关闭',
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹渐隐',
+    keySwitch: '按键切换常亮',
+    rainbowSwitch: '按键切换彩虹',
 
-    colorAndBrightness: '颜色', //与亮度
+    lightsDelay: '灯光速度',
+    easeLightDelay: '渐隐渐显延迟',
+    rainbowLightDelay: '彩虹渐变延迟',
+
+    colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
+
+    nightLights: '夜灯',
+    nightLightsOn: '开启',
+    nightLightsOff: '关闭',
 
     keyDelay: '按键消抖',
     keyDelayInfo: `按键抖动是机械键盘物理特性导致的一个问题，会造成机械键盘一次按下有时会触发多次。通常键盘厂商使用按键按下延时判断来减少其带来的影响，但是会造成键盘响应的速度降低并产生相对较大的延迟。
@@ -896,6 +1188,7 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
+    installDriver: '安装更新驱动程序（需要管理员权限）',
     isLatestVersion: '已经是最新版本',
     jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
@@ -931,6 +1224,7 @@ module.exports = {
     simpadv2: 'SimPad 版本2',
     sayoo2c: '小夜のosu装备 O2C',
     simpadv2lite: 'SimPad 版本2 轻量版',
+    simpadv2yearedition: 'SimPad v2 周年版',
 
     key_mouseLeft: '鼠标左键',
     key_mouseMiddle: '鼠标中键',
@@ -1049,6 +1343,7 @@ module.exports = {
     keyN_mouseRight: '鼠标右键',
 
     firmwareVersion: '固件版本',
+    chipID: '设备ID',
     lightTest: '灯光测试',
 
     checkUpdateFailed: '检查更新失败'
@@ -1087,9 +1382,20 @@ module.exports = {
     keepOff: '关闭',
     keyPress: '按下时亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹渐灭',
+    keySwitch: '按键切换常亮',
+    rainbowSwitch: '按键切换彩虹',
 
-    colorAndBrightness: '颜色', //与亮度
+    lightsDelay: '灯光速度',
+    easeLightDelay: '渐亮渐灭延迟',
+    rainbowLightDelay: '彩虹变化延迟',
+
+    colorAndBrightness: '颜色与亮度',
     setBrightness: '设置亮度',
+
+    nightLights: '夜灯',
+    nightLightsOn: '开启',
+    nightLightsOff: '关闭',
 
     keyDelay: '按键去抖动',
     keyDelayInfo: `按键抖动是机械键盘物理特性导致的一个问题，会造成机械键盘一次按下有时会触发多次。通常键盘厂商使用按键按下延时判断来减少其带来的影响，但是会造成键盘响应的速度降低并产生相对较大的延迟。
@@ -1115,6 +1421,9 @@ module.exports = {
 
     about: '关于',
     checkUpdate: '检查更新',
+    installDriver: '安装更新驱动程序（需要管理员权限）',
+    isLatestVersion: '已经是最新版本',
+    jumpToBootMode: '进入升级模式',
     aboutText: `<p>感谢您使用SimPad！</p>
     <p>SimPad是一款基于8051单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款设备的开发过程中受到了以下人的帮助，</p>
     <p>特此感谢！</p>
@@ -1146,6 +1455,7 @@ module.exports = {
 
     simpadv2: 'SimPad 版本2',
     simpadv2lite: 'SimPad 版本2 轻量版',
+    simpadv2yearedition: 'SimPad v2 周年版',
 
     //ForKeyboard TextInfo
     keyN_null: '空',
@@ -1253,7 +1563,13 @@ module.exports = {
     keyN_downArrow: '↓',
     keyN_rightArrow: '→',
     keyN_numPad_0: '小键盘0',
-    keyN_numPad_period: '小键盘.'
+    keyN_numPad_period: '小键盘.',
+
+    firmwareVersion: '固件版本',
+    chipID: '设备ID',
+    lightTest: '灯光测试',
+
+    checkUpdateFailed: '检查更新失败'
   },
   'zh-TW': {
     title: 'SimPad Control Panel',
@@ -1289,9 +1605,20 @@ module.exports = {
     keepOff: '關閉',
     keyPress: '按下亮起',
     rainbowColor: '彩虹',
+    rainbowEaseOut: '彩虹淡出',
+    keySwitch: '按鍵切換常亮',
+    rainbowSwitch: '按鍵切換彩虹',
 
-    colorAndBrightness: '顏色', //與亮度
+    lightsDelay: '燈光變換速率',
+    easeLightDelay: '淡入淡出延時',
+    rainbowLightDelay: '彩虹變色延時',
+
+    colorAndBrightness: '顏色與亮度',
     setBrightness: '設置亮度',
+
+    nightLights: '夜燈',
+    nightLightsOn: '開啓',
+    nightLightsOff: '關閉',
 
     keyDelay: '按鍵防抖',
     keyDelayInfo: `SimPad使用了一種不同於普通鍵盤的防抖方式，可以有效降低防抖帶來的延遲，
@@ -1315,7 +1642,8 @@ module.exports = {
     resetDeviceBtn: '重置',
 
     about: '關於',
-    checkUpdate: '檢查更新',
+    checkUpdate: '檢索更新',
+    installDriver: '安裝驅動程式（需管理員權限）',
     aboutText: `<p>感謝您使用SimPad！</p>
     <p>SimPad是一款基於8051單片機實現的自訂鍵盤，得名於Simple與Pad，表明這個設備力求簡單與實用，在這款設備的開發過程中受到以下人的幫助，</p>
     <p>特此感謝！</p>
@@ -1350,6 +1678,7 @@ module.exports = {
     reselectDevice: '重新選擇設備',
 
     simpadv2: 'SimPad v2',
+    simpadv2yearedition: 'SimPad v2 周年版',
 
     //ForKeyboard TextInfo
     keyN_null: '空',
@@ -1457,6 +1786,12 @@ module.exports = {
     keyN_downArrow: '↓',
     keyN_rightArrow: '→',
     keyN_numPad_0: '小鍵盤0',
-    keyN_numPad_period: '小鍵盤.'
+    keyN_numPad_period: '小鍵盤.',
+
+    firmwareVersion: '韌體版本',
+    chipID: '硬體ID',
+    lightTest: '燈光測試',
+
+    checkUpdateFailed: '檢索更新失敗'
   }
 }

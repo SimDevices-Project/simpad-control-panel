@@ -3,89 +3,105 @@ var lang = {
   selectDevice: 'Выбрать устройства',
   selectOperation: 'Выберите операцию',
   detailedSettings: 'Подробные настройки',
-  apply: 'Подать заявление',
-  conInfo: 'Подключите и выберите устройство',
-  refresh: 'обновление',
-  confirmAndNext: 'Подключите',
-  chooseInfo: 'Выберите операцию, которую вы хотите выполнить',
-  changeKeyCodeBT: 'Изменение кодов ключей',
-  changeLightsBT: 'Изменить освещение',
-  otherSettingsBT: 'другие',
-  pleaseWait:"Пожалуйста, подождите...",
-  successToApply:"успех!",
-  exitProgram: 'Выход',
-  
-  edit: 'редактор',
+    apply: 'Применить',
+    conInfo: 'Подключите и выберите устройство',
+    refresh: 'Обновить',
+    confirmAndNext: 'Подключить',
+    chooseInfo: 'Выберите операцию, которую вы хотите выполнить',
+    changeKeyCodeBT: 'Настройка кнопок',
+    changeLightsBT: 'Настройка подсветки',
+    otherSettingsBT: 'Доп. настройки',
+    pleaseWait: 'Пожалуйста, подождите...',
+    successToApply: 'Настройки применены!',
+    returnToContinue: 'Вернуться',
+    exitProgram: 'Выход',
 
-  changeKeyCode: 'Клавиша редактирования',
-  changeKeyCodeInfo:
-    'Вы можете установить клавиатуру каждого ключа здесь, поддерживая основные сочетания клавиш',
-  viewKeyMap: 'Конфигурирование клавиатуры',
+ edit: 'Изменить',
 
-  changeLights: 'Lights Mode & Color',
-  changeLightsInfo:
-    'You can adjust lights mode or set colours for each lights of groups',
-  viewLightsMap: 'View lighting configuration',
-  lightsMode: 'Mode',
-  easeOut: 'Fade out',
-  easeIn: 'Fade in',
-  keepOn: 'Always on',
-  keepOn: 'Off',
-  colorAndBrightness: 'Color',// & Brightness
-  setBrightness: 'Set brightness',
+ changeKeyCode: 'Изменение кнопок',
+    changeKeyCodeInfo:
+      'Вы можете установить любую кнопку здесь, включая сочетание клавиш',
+    viewKeyMap: 'Посмотреть кнопки на устройстве',
 
-  keyDelay: 'Input Debounce',
-  keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
-  <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
-  delay: 'Delay',
+    changeLights: 'Подсветка',
+    changeLightsInfo:
+      'Здесь вы можете настроить подсветку',
+    viewLightsMap: 'Просмотреть настройки подсветки',
+    lightsMode: 'Режимы',
+    easeOut: 'Затухание',
+    easeIn: 'Появление',
+    keepOn: 'Всегда включён',
+    keepOff: 'Выключить',
+    keyPress: 'По нажатию кнопки',
+    rainbowColor: 'Радуга',
+    rainbowEaseOut: 'Затухание Радуга',
+    keySwitch: 'Выключение по нажатию',
+    rainbowSwitch: 'Выключение по нажатию Радуга',
 
-  advancedOptions: 'Advanced Options',
-  advancedOptionsInfo: `You can fine tune some settings here, recommended for pro users，
-  <br>All changes made in Advanced Options are applied immediately`,
-  sendDataPack: 'Send Data Packets',
-  sendDataPackInfo: `If you are familiar with SimPad data format，you can send data directly to the device，
-  <br>Your text input will be treated as raw hex data, separated by space`,
-  sendDataPackBtn: 'Send',
+    lightsDelay: 'Скорость подсветки',
+    easeLightDelay: 'Задержка Затухания и Появления',
+    rainbowLightDelay: 'Задержка смены цвета (радуга)',
+
+    colorAndBrightness: 'Цвет & Подсвета', 
+    setBrightness: 'Настроить яркость',
+
+    nightLights: 'Работа подсветки не подключая к компьютеру', 
+    nightLightsOn: 'Включить',
+    nightLightsOff: 'Выключить',
+
+    keyDelay: 'Медленные кнопки',
+    keyDelayInfo: `SimPad использует функцию отладки ввода, которая регулирует задержку до регистрации нажатия клавиши.
+    <br>Вы можете изменять задержку!`,
+    delay: 'Задержка',
+
+    advancedOptions: 'Доп. Настройки',
+    advancedOptionsInfo: `Вы можете настроить некоторые параметры здесь, рекомендуется для профессиональных пользователей，
+    <br>Все изменения, сделанные в дополнительных параметрах, применяются сразу`,
+    sendDataPack: 'Отправить пакеты данных',
+    sendDataPackInfo: `Если вы знакомы с форматов данных SimPad ，вы можете отправлять данные сразу на ваше устройство，
+    <br>Ваш текстовый ввод будет обработан как необработанные шестнадцатеричные данные, разделены пробелом`,
+    sendDataPackBtn: 'Отправить',
   resetDevice: 'Reset Device',
   resetDeviceInfo: 'Device can be reset to default settings',
   resetDeviceBtn: 'Reset',
 
-  about: 'About SimPad',
-  checkUpdate: 'Check Update',
-  aboutText: `<p>感谢您使用SimPad！</p>
-  <p>SimPad是一款基于8051单片机实现的自定义键盘，得名于Simple与Pad，表明这个设备力求简单与实用，在这款键盘的开发过程中受到了以下人的帮助，</p>
-  <p>特此感谢！</p>
-  <p></p>
-  <p class="nameBefore">Sayobot小夜</p>
-  <p class="nameBefore">noodlefighter</p>
-  <p class="nameBefore">kd飞飞</p>
-  <p class="nameBefore">rikka0w0</p>
-  <p class="nameBefore">晨旭</p>
-  <p class="nameBefore">Antecer</p>
-  <p></p>
-  <p>Special thanks</p>
-  <p>English interpreter</p>
-  <p class="nameBefore">Jeff - Source Localization Team</p>
-  <p class="nameBefore">HDY</p>
-  <p></p>
-  <a href="https://www.bysb.net/3363.html">
-    <p class="canBeSeleted">访问键盘发布页</p>
-  </a>
-  <a href="https://www.bysb.net">
-    <p class="canBeSeleted">访问手柄君的小阁博客</p>
-  </a>
-  <p></p>
-  <p>By Handle</p>
-  <p>Last Update At 2018.7.4</p>`,
+   about: 'О SimPad',
+    checkUpdate: 'Проверить обновление',
+    installDriver: "Установить Драйвера (потребует UAC)",
+    isLatestVersion: 'Установлена последняя прошивка',
+    jumpToBootMode: 'Перейти в режим Загрузки',
+    aboutText: `<p>Спасибо что выбрали SimPad!</p>
+    <p>SimPad это кастомная клавиатура основаная на 8051 плате, и получило свое имя от слов "slim" и Pad, что указывает на простоту и практичность. Спасибо людям, которые помогли мне в разработке клавиатуры,</p>
+    <p> Спасибо вам большое.</p>
+    <p></p>
+    <p class="nameBefore">Sayobot小夜</p>
+    <p class="nameBefore">noodlefighter</p>
+    <p class="nameBefore">kd飞飞</p>
+    <p class="nameBefore">rikka0w0</p>
+    <p class="nameBefore">晨旭</p>
+    <p class="nameBefore">Antecer</p>
+    <p></p>
+    <p>Специальная благодарность!</p>
+    <p>Перевод на русский</p>
+    <p class="nameBefore">Kr3st1k</p>
+    <p></p>
+    <a href="https://www.bysb.net/3363.html">
+      <p class="canBeSeleted">Посмотреть страницу клавиатуры</p>
+    </a>
+    <a href="https://www.bysb.net">
+      <p class="canBeSeleted">Просмотреть блог разработчика</p>
+    </a>
+    <p></p>
+    <p>~ Handle</p>
+    <p>2018.7.4</p>`,
 
-  changesCount: 'Changes to apply',
-  abandonsChanges: 'Discard all changes',
-  applyToDevice: 'Apply To Device',
+    changesCount: 'Ожидающие изменения',
+    abandonsChanges: 'Сбросить все изменения',
+    applyToDevice: 'Применить изменения',
 
-  selectedDevice: 'Current Device',
-  noDevice: 'Awaiting selection',
-  reselectDevice: 'Select another device',
-
+    selectedDevice: 'Выбранное устройство',
+    noDevice: 'Ждёт Выбора',
+    reselectDevice: 'Выберите другое устройство',
   simpadv2: 'SimPad v2'
 }
 exports.lang = lang

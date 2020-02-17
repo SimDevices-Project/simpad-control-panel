@@ -3,6 +3,7 @@
 const HID = require('node-hid')
 const os = require('os')
 const path = require('path')
+const electron = require('electron')
 
 //取色器
 const ColorPicker = require(`h5-color-picker`).ColorPicker
@@ -64,7 +65,7 @@ let sendData, page4Fin, page4Init, jumpPage
  * 7: LED1, R,G,B,亮度
  * 8: 灯光模式
  * 9: 防抖设定
- * 10: 极速模式
+ * 10: 极速模式，IAP模式，夜灯设置
  * 11: 灯光速度
  */
 const settingsSet = new Array(12).fill(0).map(() => new Array(8))
@@ -109,7 +110,7 @@ const getAllSettings = (dev = device) => {
       .then(() => getSettings(8, dev))
       .then(() => getSettings(9, dev))
       .then(() => getSettings(10, dev))
-      .then(() => getSettings(11, dev)) // 灯光速度
+      .then(() => getSettings(11, dev))
       .then(
         () =>
           new Promise(r => {
@@ -123,6 +124,7 @@ const getAllSettings = (dev = device) => {
     return new Promise((r, e) => e())
   }
 }
+// 获取版本号信息
 let nowVersion
 const getVersion = (dev = device) =>
   new Promise(function doIt(r, e) {
@@ -158,6 +160,34 @@ const getVersion = (dev = device) =>
     }
     autoGetDataTimer = setTimeout(() => doIt(r, e), 30)
   })
+
+const getChipID = (dev = device) => {
+  return new Promise((resolve, error) => {
+    /**
+     * @param {[string]} data
+     */
+    getDataFunction.fun = data => {
+      document.getElementById('chipIDNum').innerHTML = ''
+      ;[...data].slice(0, 4).forEach(
+        d =>
+          (document.getElementById('chipIDNum').innerHTML += d
+            .toString(16)
+            .toUpperCase()
+            .padStart(2, '0'))
+      )
+      clearTimeout(autoGetDataTimer)
+      resolve()
+    }
+    if (dev) {
+      var dat = [0x00, 0x02, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00]
+      sendData(dat).catch(err => clearTimeout(autoGetDataTimer))
+    } else {
+      error()
+      return
+    }
+    autoGetDataTimer = setTimeout(() => doIt(r, e), 30)
+  })
+}
 
 const updateKeyCodeText = () => {
   //键值设置
@@ -215,36 +245,36 @@ const initSettings = () => {
     node.checked = false
   })
   radios.forEach(radio => {
-    if (radio.value === settingsSet[8][0].toString()) {
+    if (radio.value === settingsSet[8][0].toString(10)) {
       radio.checked = true
     }
   })
   //灯光颜色
   document.getElementById('G1Color').value = `#${settingsSet[6][0]
     .toString(16)
-    .padStart(2, '0')}${settingsSet[6][1]
+    .padEnd(2, '0')}${settingsSet[6][1]
     .toString(16)
-    .padStart(2, '0')}${settingsSet[6][2].toString(16).padStart(2, '0')}`
+    .padEnd(2, '0')}${settingsSet[6][2].toString(16).padEnd(2, '0')}`
   cpG1.value = document.getElementById('G1Color').value
   document.getElementById('G2Color').value = `#${settingsSet[7][0]
     .toString(16)
-    .padStart(2, '0')}${settingsSet[7][1]
+    .padEnd(2, '0')}${settingsSet[7][1]
     .toString(16)
-    .padStart(2, '0')}${settingsSet[7][2].toString(16).padStart(2, '0')}`
+    .padEnd(2, '0')}${settingsSet[7][2].toString(16).padEnd(2, '0')}`
   cpG2.value = document.getElementById('G2Color').value
   //灯光亮度
-  // var G1Brightness = document.getElementById('G1Brightness')
-  // var G2Brightness = document.getElementById('G2Brightness')
-  // if (settingsSet[6][3]) {
-  //   G1Brightness.innerHTML = `${(settingsSet[6][3] / 4 * 100) >> 0}%`
-  // } else {
-  //   G1Brightness.innerHTML = 'OFF'
-  // }
-  // if (settingsSet[7][3]) {
-  //   G2Brightness.innerHTML = `${(settingsSet[7][3] / 4 * 100) >> 0}%`
-  // } else {
-  //   G2Brightness.innerHTML = 'OFF'
-  // }
+  var G1Brightness = document.getElementById('G1Brightness')
+  var G2Brightness = document.getElementById('G2Brightness')
+  if (settingsSet[6][3]) {
+    G1Brightness.innerHTML = `${((settingsSet[6][3] / 4) * 100) >> 0}%`
+  } else {
+    G1Brightness.innerHTML = '100%'
+  }
+  if (settingsSet[7][3]) {
+    G2Brightness.innerHTML = `${((settingsSet[7][3] / 4) * 100) >> 0}%`
+  } else {
+    G2Brightness.innerHTML = '100%'
+  }
   //消抖
   var delayInput = document.getElementById('delayInput')
   delayInput.value =
@@ -252,7 +282,7 @@ const initSettings = () => {
     settingsSet[9][1] * 0x010000 +
     settingsSet[9][2] * 0x0100 +
     settingsSet[9][3]
-  getVersion()
+  getVersion().then(getChipID)
   updateKeyCodeText()
   //极速模式
   if (settingsSet[10][0]) {
@@ -293,18 +323,19 @@ const initSettings = () => {
   ) {
     rainbowLightDelayInput.value = DEFAULT_LIGHT_DELAY
   }
-
   countChanges()
 }
 
 const initSettingsFunction = () => {
+  // 灯光模式
   var radios = [...document.getElementsByName('lightsType')]
   radios.forEach(node => {
     node.addEventListener('click', e => {
-      settingChanged[8][0] = parseInt(node.value)
+      settingChanged[8][0] = parseInt(node.value, 10)
       countChanges()
     })
   })
+  // 初始化颜色选择器
   var colorGroupsCount = 2
   var colorOffset = 6
   for (let i = 0; i < colorGroupsCount; i++) {
@@ -326,6 +357,40 @@ const initSettingsFunction = () => {
       countChanges()
     })
   }
+  // 初始化亮度选择器
+  var G1Brightness = document.getElementById('G1Brightness')
+  var G2Brightness = document.getElementById('G2Brightness')
+  var G1BrightnessBtn = document.getElementById('G1BrightnessBtn')
+  var G2BrightnessBtn = document.getElementById('G2BrightnessBtn')
+  const G1BrightnessFun = e => {
+    settingChanged[6][3]++
+    if (settingChanged[6][3] > 4) {
+      settingChanged[6][3] = 1
+    }
+    if (settingChanged[6][3]) {
+      G1Brightness.innerHTML = `${((settingChanged[6][3] / 4) * 100) >> 0}%`
+    } else {
+      G1Brightness.innerHTML = '100%'
+    }
+    countChanges()
+  }
+  const G2BrightnessFun = e => {
+    settingChanged[7][3]++
+    if (settingChanged[7][3] > 4) {
+      settingChanged[7][3] = 1
+    }
+    if (settingChanged[7][3]) {
+      G2Brightness.innerHTML = `${((settingChanged[7][3] / 4) * 100) >> 0}%`
+    } else {
+      G2Brightness.innerHTML = '100%'
+    }
+    countChanges()
+  }
+  G1Brightness.addEventListener('click', G1BrightnessFun)
+  G2Brightness.addEventListener('click', G2BrightnessFun)
+  G1BrightnessBtn.addEventListener('click', G1BrightnessFun)
+  G2BrightnessBtn.addEventListener('click', G2BrightnessFun)
+  // 初始化去抖
   document.getElementById('delayInput').addEventListener('change', e => {
     var value = parseInt(document.getElementById('delayInput').value)
       .toString(16)
@@ -474,23 +539,23 @@ const templeData = [
   [0x05, 0x00, 0x3b, 0x00, 0x00], //F3
   [0x06, 0x00, 0xff, 0x00, 0x04], //#00FF00 100%(4)
   [0x07, 0x00, 0x00, 0xff, 0x04], //#0000FF 100%(4)
-  [0x08, 0x06, 0x00, 0x00, 0x00], //Mode 6 彩虹
+  [0x08, 0x06, 0x00, 0x00, 0x00], //Mode 6, 彩虹
   [0x09, 0x00, 0x00, 0x00, 0x60], //0x60 => 96 (MAX 16^6-1)
   [0x0a, 0x00, 0x00, 0x00, 0x40], //0x00 极速模式处于关闭，夜灯打开
-  [0x0b, 0x05, 0x00, 0x0a, 0x00] //0x0A00 延迟设置
+  [0x0b, 0x0a, 0x00, 0x0a, 0x00] //0x0A00 延迟设置
 ]
 templeData.forEach(arr => {
   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
 })
 // 灯光测试数据
-const lightTestData = [
-  [0x06, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
-  [0x07, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
-  [0x08, 0x02, 0x00, 0x00, 0x00] //Mode 0
-]
-lightTestData.forEach(arr => {
-  arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
-})
+// const lightTestData = [
+//   [0x06, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
+//   [0x07, 0xff, 0xff, 0xff, 0x04], //#FFFFFF 100%(4)
+//   [0x08, 0x02, 0x00, 0x00, 0x00] //Mode 0
+// ]
+// lightTestData.forEach(arr => {
+//   arr[5] = arr[1] ^ arr[2] ^ arr[3] ^ arr[4]
+// })
 const useSettings = () => {
   if (changesBool.filter(e => e).length > 0) {
     var promiseObj = new Promise(r => {
@@ -500,7 +565,7 @@ const useSettings = () => {
     })
     for (let i = 0; i < changesBool.length; i++) {
       if (changesBool[i]) {
-        promiseObj.then(() =>
+        promiseObj = promiseObj.then(() =>
           sendData([
             i,
             settingChanged[i][0],
@@ -517,7 +582,7 @@ const useSettings = () => {
         )
       }
     }
-    promiseObj.then(() => {
+    promiseObj = promiseObj.then(() => {
       getAllSettings().then(() => {
         initSettings()
         countChanges()
@@ -574,7 +639,14 @@ const funs = (documentElement, deviceObj, funs) => {
       return funs.getData
     },
     set fun(val) {
-      funs.getData = val
+      funs.getData = data => {
+        let consoleInfo = ''
+        ;[...data].forEach(
+          d => (consoleInfo += d.toString(16).padStart(2, '0'))
+        )
+        console.log('Get Device Data: ' + consoleInfo)
+        return val(data)
+      }
     }
   }
 
@@ -677,30 +749,30 @@ const funs = (documentElement, deviceObj, funs) => {
     }
   })
   // 灯光测试按钮
-  document.getElementById('lightTest').addEventListener('click', e => {
-    var promiseObj
-    if (devices && devices.length && devices.length > 0) {
-      page4Init()
-      jumpPage(3)
-      devices.forEach(d => {
-        let deviceToSend = new HID.HID(d.path)
-        lightTestData.forEach(data => {
-          if (promiseObj) {
-            promiseObj.then(() => sendData(data, deviceToSend))
-          } else {
-            promiseObj = sendData(data, deviceToSend)
-          }
-        })
-      })
-      promiseObj.then(() =>
-        getAllSettings().then(() => {
-          initSettings()
-          setTimeout(page4Fin, 300)
-          //countChanges()
-        })
-      )
-    }
-  })
+  // document.getElementById('lightTest').addEventListener('click', e => {
+  //   var promiseObj
+  //   if (devices && devices.length && devices.length > 0) {
+  //     page4Init()
+  //     jumpPage(3)
+  //     devices.forEach(d => {
+  //       let deviceToSend = new HID.HID(d.path)
+  //       lightTestData.forEach(data => {
+  //         if (promiseObj) {
+  //           promiseObj.then(() => sendData(data, deviceToSend))
+  //         } else {
+  //           promiseObj = sendData(data, deviceToSend)
+  //         }
+  //       })
+  //     })
+  //     promiseObj.then(() =>
+  //       getAllSettings().then(() => {
+  //         initSettings()
+  //         setTimeout(page4Fin, 300)
+  //         //countChanges()
+  //       })
+  //     )
+  //   }
+  // })
 
   //初始化两个取色器
   cpG1 = new ColorPicker({
@@ -733,7 +805,7 @@ const funs = (documentElement, deviceObj, funs) => {
     cpG2.getDOM().style.animation = 'fadeInFromNone 0.2s ease-in'
     upFlag = false
   })
-  //cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
+  cpArr.forEach(e => e.addEventListener('click', e => e.stopPropagation()))
   document.addEventListener('mouseup', () => {
     setTimeout(() => (upFlag = true), 0)
   })
@@ -743,6 +815,8 @@ const funs = (documentElement, deviceObj, funs) => {
     }
     //document.removeEventListener('click', clickFun)
   })
+
+  // 取色器初始化结束
 
   document
     .getElementById('useSettings')
@@ -894,18 +968,6 @@ ${getLang('info', obj.description)}
 Update Now?`)
                 ) {
                   setTimeout(() => {
-                    const execFile = require('child_process').execFile
-                    const cmd = execFile(
-                      path.join(__dirname, '/UPDATER/iap_applition.exe'),
-                      [],
-                      {
-                        // detached: true,
-                        // stdio: 'ignore',
-                        //shell: true,
-                        cwd: __dirname + '\\UPDATER',
-                        windowsHide: false
-                      }
-                    )
                     let httpObj
                     if (obj.url.indexOf('https') > -1) {
                       httpObj = require('https')
@@ -914,41 +976,38 @@ Update Now?`)
                     }
                     const fs = require('fs')
                     const crypto = require('crypto')
-                    let filePath
+                    let filePath = path.join(os.tmpdir(), 'simpadUpdate.hex')
+                    let file = fs.createWriteStream(filePath)
                     httpObj.get(obj.url, res => {
                       res.setEncoding('binary')
                       let fileData = ''
                       res.on('data', chunk => {
+                        file.write(chunk)
                         fileData += chunk
                       })
                       res.on('end', () => {
-                        filePath = path.join(
-                          os.tmpdir(),
-                          crypto
-                            .createHash('md5')
-                            .update(fileData)
-                            .digest('hex') + '.hex'
-                        )
-                        fs.writeFile(filePath, fileData, 'binary', err => {
-                          if (err) {
-                            console.error(err)
-                          }
-                          cmd.stdin.write(filePath + '\r\n')
-                        })
+                        file.end()
+                        const md5 = crypto
+                          .createHash('md5')
+                          .update(fileData)
+                          .digest('hex')
+                        if (obj.md5 !== md5) {
+                          return alert(
+                            `Wrong File!!!\nShould be ${
+                              obj.md5
+                            }\nYou got ${md5}`
+                          )
+                        }
+                        setTimeout(() => {
+                          const updateWin = new electron.remote.BrowserWindow()
+                          updateWin.loadURL(path.join(__dirname, 'update.html'))
+                          updateWin.webContents.on('did-finish-load', () => {
+                            updateWin.webContents.send('hexPath', filePath)
+                          })
+                          // updateWin.webContents.openDevTools()
+                          updateWin.show()
+                        }, 200)
                       })
-                    })
-                    cmd.stdout.on('data', data => {
-                      const dataStr = data.toString()
-                      if (dataStr.indexOf('READY') > -1) {
-                      } else if (dataStr.indexOf('ALL_SUCCESS') > -1) {
-                        alert('SUCCESS')
-                        cmd.kill(cmd.pid)
-                      } else if (
-                        dataStr.indexOf('WRONG_FAILED_TO_DOWNLOAD') > -1
-                      ) {
-                        alert('FAILED')
-                        cmd.kill(cmd.pid)
-                      }
                     })
                   }, 200)
                   sendData([0x00, 0x0b, 0x00, 0x00, 0x00, 0x0b])
@@ -979,20 +1038,20 @@ Update Now?`)
     }
   })
 
-  document.getElementById('installDriver').addEventListener('click', () => {
-    document.getElementById('installDriver').disabled = true
-    const execFile = require('child_process').execFile
-    const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
-      // detached: true,
-      // stdio: 'ignore',
-      // shell: true,
-      cwd: __dirname + '\\DRIVER',
-      windowsHide: false
-    })
-    cmd.once('close', () => {
-      document.getElementById('installDriver').disabled = true
-    })
-  })
+  // document.getElementById('installDriver').addEventListener('click', () => {
+  //   document.getElementById('installDriver').disabled = true
+  //   const execFile = require('child_process').execFile
+  //   const cmd = execFile(path.join(__dirname, '/DRIVER/SETUP.EXE'), ['/S'], {
+  //     // detached: true,
+  //     // stdio: 'ignore',
+  //     // shell: true,
+  //     cwd: __dirname + '\\DRIVER',
+  //     windowsHide: false
+  //   })
+  //   cmd.once('close', () => {
+  //     document.getElementById('installDriver').disabled = true
+  //   })
+  // })
 
   Array.prototype.forEach.call(
     document.querySelectorAll("input[type='color']"),
@@ -1004,13 +1063,17 @@ Update Now?`)
     'theBtnDefInner'
   ).style.background = `url("${__dirname.replace(/\\/g, '/') +
     '/imgs/deviceKeyInfo.png'}")`
+  // 灯光配置信息显示
   document.getElementById(
     'theLightDefInner'
   ).style.background = `url("${__dirname.replace(/\\/g, '/') +
     '/imgs/deviceLightInfo.png'}")`
+
   document.getElementById('deviceKeyMapTitle').innerText = getName(
     deviceInfo.description
   )
+
+  // 灯光配置信息设备标题
   document.getElementById('deviceLightTitle').innerText = getName(
     deviceInfo.description
   )
@@ -1018,5 +1081,90 @@ Update Now?`)
   getAllSettings().then(() => initSettings())
   initSettingsFunction()
 }
+
+const animeLights = () => {
+  const childProcess = require('child_process')
+
+  let valueToShow = 0
+  let valLastTime = 0
+  let delaySet = 0
+  const highVolDelay = 25
+  let maxVal = 0
+  let maxValSetTime = 0
+  let nowTime = 0
+
+  const showAnimeVal = valNum => {
+    nowTime = performance.now()
+    if (valNum > maxVal) {
+      maxVal = valNum
+      maxValSetTime = nowTime
+    } else if (performance.now() - maxValSetTime > 10000 && valNum > 0) {
+      maxVal = valNum
+      maxValSetTime = nowTime
+    }
+    if (performance.now() - delaySet < highVolDelay) {
+      if (valNum > valLastTime * 1.1 && valNum > maxVal * 0.2) {
+        valueToShow = 100
+        delaySet = nowTime
+        if (performance.now() - maxValSetTime > 2000) {
+          maxVal = valNum
+          maxValSetTime = nowTime
+        }
+      }
+      valLastTime = valNum
+      return
+    }
+    if (valNum > valLastTime) {
+      if (valNum > valLastTime * 1.08 && valNum > maxVal * 0.2) {
+        valueToShow = 100
+        delaySet = nowTime
+      } else if (valNum > valLastTime * 1.06 && valNum > maxVal * 0.2) {
+        valueToShow *= 1.5
+        valueToShow += 15
+      } else if (valNum > valLastTime * 1.02 && valNum > maxVal * 0.2) {
+        valueToShow *= 1.3
+        valueToShow += 10
+      } else if (valNum > maxVal * 0.2) {
+        valueToShow *= 1.2
+        valueToShow += 10
+      }
+      if (valueToShow > 100) {
+        valueToShow = 100
+      }
+    } else {
+      valueToShow *= 0.98
+      valueToShow -= 1
+    }
+    valLastTime = valNum
+    if (valueToShow <= 0) {
+      valueToShow = 0
+    }
+    const val = Math.round((valueToShow * 0xff) / 100)
+    if (val > 0xff) {
+      val = 0xff
+    }
+    sendData([0x00, 0x03, 0xff, Math.round(val * 0.7), 0, val])
+  }
+
+  const autoReloadVolProcess = () => {
+    const osValProcess = childProcess.execFile(
+      path.join(__dirname, '/LIGHT_CONTROLLER/OSVol.exe')
+    )
+    let tempChunkNum
+    osValProcess.stdout.on('data', chunk => {
+      tempChunkNum = parseFloat(chunk)
+      if (Number.isFinite(tempChunkNum)) {
+        showAnimeVal(tempChunkNum)
+      }
+    })
+    osValProcess.on('close', () => {
+      console.log('osVal Closed')
+      osValProcess.kill()
+      autoReloadVolProcess()
+    })
+  }
+  autoReloadVolProcess()
+}
+// animeLights()
 
 module.exports = funs
