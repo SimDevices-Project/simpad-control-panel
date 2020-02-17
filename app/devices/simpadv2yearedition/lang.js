@@ -94,7 +94,7 @@ module.exports = {
     <p class="nameBefore">Jeff - Source Localization Team</p>
     <p class="nameBefore">HDY</p>
     <p></p>
-    <a href="https://www.bysb.net/3363.html">
+    <a href="https://sim.bysb.net/">
       <p class="canBeSeleted">View the keyboard publishing page</p>
     </a>
     <a href="https://www.bysb.net">
@@ -428,7 +428,7 @@ module.exports = {
     <p class="nameBefore">Mn2O7</p>
     <p class="nameBefore">oSumAtrIX</p>
     <p></p>
-    <a href="https://www.bysb.net/3363.html">
+    <a href="https://sim.bysb.net/">
       <p class="canBeSeleted">Besuchen Sie die Seite des Produkts</p>
     </a>
     <a href="https://www.bysb.net">
@@ -745,7 +745,7 @@ module.exports = {
     <p>日本語の翻訳協力</p>
     <p class="nameBefore">ルビー</p>
     <p></p>
-    <a href="https://www.bysb.net/3363.html">
+    <a href="https://sim.bysb.net/">
       <p class="canBeSeleted">まことにありがとうございました！</p>
     </a>
     <a href="https://www.bysb.net">
@@ -861,7 +861,7 @@ module.exports = {
    <p>Перевод на русский</p>
    <p class="nameBefore">Kr3st1k</p>
    <p></p>
-   <a href="https://www.bysb.net/3363.html">
+   <a href="https://sim.bysb.net/">
      <p class="canBeSeleted">Посмотреть страницу клавиатуры</p>
    </a>
    <a href="https://www.bysb.net">
@@ -1202,7 +1202,7 @@ module.exports = {
     <p class="nameBefore">晨旭</p>
     <p class="nameBefore">Antecer</p>
     <p></p>
-    <a href="https://www.bysb.net/3363.html">
+    <a href="https://sim.bysb.net/">
       <p class="canBeSeleted">访问键盘发布页</p>
     </a>
     <a href="https://www.bysb.net">
@@ -1435,7 +1435,7 @@ module.exports = {
     <p class="nameBefore">晨旭</p>
     <p class="nameBefore">Antecer</p>
     <p></p>
-    <a href="https://www.bysb.net/3363.html">
+    <a href="https://sim.bysb.net/">
       <p class="canBeSeleted">访问键盘发布页</p>
     </a>
     <a href="https://www.bysb.net">
@@ -1659,7 +1659,7 @@ module.exports = {
     <p>中文（臺灣）翻譯</p>
     <p class="nameBefore">Spy</p>
     <p></p>
-    <a href="https://www.bysb.net/3363.html">
+    <a href="https://sim.bysb.net/">
       <p class="canBeSeleted">訪問鍵盤發佈頁面</p>
     </a>
     <a href="https://www.bysb.net">

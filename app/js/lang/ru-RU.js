@@ -85,7 +85,7 @@ var lang = {
     <p>Перевод на русский</p>
     <p class="nameBefore">Kr3st1k</p>
     <p></p>
-    <a href="https://www.bysb.net/3363.html">
+    <a href="https://sim.bysb.net/">
       <p class="canBeSeleted">Посмотреть страницу клавиатуры</p>
     </a>
     <a href="https://www.bysb.net">
