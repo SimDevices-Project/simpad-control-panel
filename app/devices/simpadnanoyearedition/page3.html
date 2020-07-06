@@ -1,0 +1,519 @@
+<div class="page3Box">
+  <div class="page3top"></div>
+  <div class="leftPannel" id="leftPannel">
+    <p>
+      <span class="pointer activeTitle" data-lang-key="changeKeyCode"
+        >changeKeyCode</span
+      >
+    </p>
+    <p>
+      <span class="pointer" data-lang-key="changeLights">changeLights</span>
+    </p>
+    <p><span class="pointer" data-lang-key="keyDelay">keyDelay</span></p>
+    <p>
+      <span class="pointer" data-lang-key="advancedOptions"
+        >advancedOptions</span
+      >
+    </p>
+    <p><span class="pointer" data-lang-key="about">about</span></p>
+    <p></p>
+    <div id="changesCount" class="changesCount hide">
+      <p>
+        <span id="changesCountValue">3</span>
+        <span data-lang-key="changesCount">changesCount</span>
+      </p>
+      <p>
+        <span
+          class="pointer"
+          id="abandonsChanges"
+          data-lang-key="abandonsChanges"
+          >abandonsChanges</span
+        >
+      </p>
+      <p>
+        <span class="pointer" id="useSettings" data-lang-key="applyToDevice"
+          >applyToDevice</span
+        >
+      </p>
+    </div>
+  </div>
+  <div class="rightPannel" id="rightPannel">
+    <section id="keyCodeSettings" class="firstTop">
+      <h4 data-lang-key="changeKeyCode">changeKeyCode</h4>
+      <p data-lang-key="changeKeyCodeInfo">changeKeyCodeInfo</p>
+      <p class="canBeSeleted" id="checkBtnDef" data-lang-key="viewKeyMap">
+        viewKeyMap
+      </p>
+      <div id="theBtnDef">
+        <div id="theBtnDefInner"><p id="deviceKeyMapTitle"></p></div>
+      </div>
+      <div id="btnSettingsList">
+        <p>
+          <span class="titleP withAfter">BT1</span> <span class="midP">Z</span>
+          <span class="rightP" data-lang-key="edit">edit</span>
+        </p>
+        <p>
+          <span class="titleP withAfter">BT2</span> <span class="midP">X</span>
+          <span class="rightP" data-lang-key="edit">edit</span>
+        </p>
+        <p>
+          <span class="titleP withAfter">BT3</span>
+          <span class="midP">Ctrl+R</span>
+          <span class="rightP" data-lang-key="edit">edit</span>
+        </p>
+        <!-- <p>
+          <span class="titleP withAfter">BT4</span>
+          <span class="midP">F2</span>
+          <span class="rightP" data-lang-key="edit">edit</span>
+        </p>
+        <p>
+          <span class="titleP withAfter">BT5</span>
+          <span class="midP">F3</span>
+          <span class="rightP" data-lang-key="edit">edit</span>
+        </p> -->
+        <div class="keyboard" id="keyboardPannel">
+          <div class="keyboard-line keyboard-line1">
+            <div class="key mr-20 v-mid" data-lang-key="key_esc">Esc</div>
+            <div class="key v-mid" data-lang-key="key_f1">F1</div>
+            <div class="key v-mid" data-lang-key="key_f2">F2</div>
+            <div class="key v-mid" data-lang-key="key_f3">F3</div>
+            <div class="key mr-16 v-mid" data-lang-key="key_f4">F4</div>
+            <div class="key v-mid" data-lang-key="key_f5">F5</div>
+            <div class="key v-mid" data-lang-key="key_f6">F6</div>
+            <div class="key v-mid" data-lang-key="key_f7">F7</div>
+            <div class="key mr-16 v-mid" data-lang-key="key_f8">F8</div>
+            <div class="key v-mid" data-lang-key="key_f9">F9</div>
+            <div class="key v-mid" data-lang-key="key_f10">F10</div>
+            <div class="key v-mid" data-lang-key="key_f11">F11</div>
+            <div class="key mr-8 v-mid" data-lang-key="key_f12">F12</div>
+            <div class="key mid" data-lang-key="key_prtSc">Print Scm</div>
+            <div class="key mid" data-lang-key="key_scrLk">Sroll Lock</div>
+            <div class="key mid" data-lang-key="key_pauseBreak">
+              Pause Break
+            </div>
+          </div>
+          <div class="keyboard-line keyboard-line2">
+            <div class="key" data-lang-key="key_waveLine">~ `</div>
+            <div class="key" data-lang-key="key_1">! 1</div>
+            <div class="key" data-lang-key="key_2">@ 2</div>
+            <div class="key" data-lang-key="key_3"># 3</div>
+            <div class="key" data-lang-key="key_4">$ 4</div>
+            <div class="key" data-lang-key="key_5">% 5</div>
+            <div class="key" data-lang-key="key_6">^ 6</div>
+            <div class="key" data-lang-key="key_7">&amp; 7</div>
+            <div class="key" data-lang-key="key_8">* 8</div>
+            <div class="key" data-lang-key="key_9">( 9</div>
+            <div class="key" data-lang-key="key_0">) 0</div>
+            <div class="key" data-lang-key="key_bar">_ -</div>
+            <div class="key" data-lang-key="key_equal">+ =</div>
+            <div class="key mr-8 bsp mid v-mid" data-lang-key="key_bsp">
+              Backspace
+            </div>
+            <div class="key mid v-mid" data-lang-key="key_ins">Ins</div>
+            <div class="key mid v-mid" data-lang-key="key_home">Home</div>
+            <div class="key mr-8 mid" data-lang-key="key_pageUp">Page Up</div>
+            <div class="key mid" data-lang-key="key_numPad_numLk">Num Lock</div>
+            <div class="key mid v-mid" data-lang-key="key_numPad_slash">/</div>
+            <div class="key mid v-mid" data-lang-key="key_numPad_asterisk">
+              *
+            </div>
+            <div class="key mid v-mid" data-lang-key="key_numPad_bar">-</div>
+          </div>
+          <div class="keyboard-line keyboard-line3">
+            <div class="key x15" data-lang-key="key_tab">Tab</div>
+            <div class="key" data-lang-key="key_q">Q</div>
+            <div class="key" data-lang-key="key_w">W</div>
+            <div class="key" data-lang-key="key_e">E</div>
+            <div class="key" data-lang-key="key_r">R</div>
+            <div class="key" data-lang-key="key_t">T</div>
+            <div class="key" data-lang-key="key_y">Y</div>
+            <div class="key" data-lang-key="key_u">U</div>
+            <div class="key" data-lang-key="key_i">I</div>
+            <div class="key" data-lang-key="key_o">O</div>
+            <div class="key" data-lang-key="key_p">P</div>
+            <div class="key" data-lang-key="key_leftParenthesis">{ [</div>
+            <div class="key" data-lang-key="key_rightParenthesis">} ]</div>
+            <div class="key mr-8 x15" data-lang-key="key_backSlant">| \</div>
+            <div class="key mid v-mid" data-lang-key="key_del">Del</div>
+            <div class="key mid v-mid" data-lang-key="key_end">End</div>
+            <div class="key mr-8 mid" data-lang-key="key_pgDn">Page Down</div>
+            <div class="key" data-lang-key="key_numPad_7">7 Hom</div>
+            <div class="key" data-lang-key="key_numPad_8">8 ↑</div>
+            <div class="key" data-lang-key="key_numPad_9">9 PgU</div>
+            <div class="key x2-h mid" data-lang-key="key_numPad_add">+</div>
+          </div>
+          <div class="keyboard-line keyboard-line4">
+            <div class="key x2 v-mid" data-lang-key="key_capsLock">
+              CapsLock
+            </div>
+            <div class="key" data-lang-key="key_a">A</div>
+            <div class="key" data-lang-key="key_s">S</div>
+            <div class="key" data-lang-key="key_d">D</div>
+            <div class="key" data-lang-key="key_f">F</div>
+            <div class="key" data-lang-key="key_g">G</div>
+            <div class="key" data-lang-key="key_h">H</div>
+            <div class="key" data-lang-key="key_j">J</div>
+            <div class="key" data-lang-key="key_k">K</div>
+            <div class="key" data-lang-key="key_l">L</div>
+            <div class="key" data-lang-key="key_semicolon">: ;</div>
+            <div class="key" data-lang-key="key_quotationMark">" '</div>
+            <div
+              class="key mr-8-ex3k bsp right v-mid"
+              data-lang-key="key_enter"
+            >
+              Enter
+            </div>
+            <div class="key" data-lang-key="key_numPad_4">4 ←</div>
+            <div class="key" data-lang-key="key_numPad_5">5</div>
+            <div class="key" data-lang-key="key_numPad_6">6 →</div>
+          </div>
+          <div class="keyboard-line keyboard-line5">
+            <div class="key x25 v-mid" data-lang-key="key_leftShift">Shift</div>
+            <div class="key" data-lang-key="key_z">Z</div>
+            <div class="key" data-lang-key="key_x">X</div>
+            <div class="key" data-lang-key="key_c">C</div>
+            <div class="key" data-lang-key="key_v">V</div>
+            <div class="key" data-lang-key="key_b">B</div>
+            <div class="key" data-lang-key="key_n">N</div>
+            <div class="key" data-lang-key="key_m">M</div>
+            <div class="key" data-lang-key="key_comma">&lt; ,</div>
+            <div class="key" data-lang-key="key_period">&gt; .</div>
+            <div class="key" data-lang-key="key_questionMark">? /</div>
+            <div
+              class="key x25 mr-8-ex1k right v-mid"
+              data-lang-key="key_rightShift"
+            >
+              Shift
+            </div>
+            <div class="key v-mid mr-8-ex1k mid" data-lang-key="key_upArrow">
+              ↑
+            </div>
+            <div class="key" data-lang-key="key_numPad_1">1 End</div>
+            <div class="key" data-lang-key="key_numPad_2">2 ↓</div>
+            <div class="key" data-lang-key="key_numPad_3">3 PgD</div>
+            <div class="key x2-h mid" data-lang-key="key_numPad_enter">
+              Enter
+            </div>
+          </div>
+          <div class="keyboard-line keyboard-line6">
+            <div class="key x125 v-mid" data-lang-key="key_leftCtrl">Ctrl</div>
+            <div
+              class="key x125 v-mid mid key-fa-font"
+              data-lang-key="key_leftWin"
+            >
+              &#xF17A;
+            </div>
+            <div class="key x125 v-mid" data-lang-key="key_leftAlt">Alt</div>
+            <div class="key v-mid mid space" data-lang-key="key_space">
+              Space
+            </div>
+            <div class="key x125 v-mid" data-lang-key="key_rightAlt">Alt</div>
+            <div
+              class="key x125 v-mid mid key-fa-font"
+              data-lang-key="key_rightWin"
+            >
+              &#xF17A;
+            </div>
+            <div
+              class="key x125 v-mid mid key-fa-font"
+              data-lang-key="key_menu"
+            >
+              &#xF022;
+            </div>
+            <div class="key x125 v-mid  mr-8" data-lang-key="key_rightCtrl">
+              Ctrl
+            </div>
+            <div class="key mid v-mid" data-lang-key="key_leftArrow">←</div>
+            <div class="key mid v-mid" data-lang-key="key_downArrow">↓</div>
+            <div class="key v-mid mr-8 mid" data-lang-key="key_rightArrow">
+              →
+            </div>
+            <div class="key x2" data-lang-key="key_numPad_0">0 Ins</div>
+            <div class="key" data-lang-key="key_numPad_period">.Del</div>
+          </div>
+          <div class="keyboard-line keyboard-line7">
+            <div class="key x2 v-mid mid" data-lang-key="key_mouseLeft">
+              MouseL
+            </div>
+            <div class="key x2 v-mid mid" data-lang-key="key_mouseMiddle">
+              MouseM
+            </div>
+            <div class="key x2 v-mid mid" data-lang-key="key_mouseRight">
+              MouseR
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="lightsSettings">
+      <h4 data-lang-key="changeLights">changeLights</h4>
+      <p data-lang-key="changeLightsInfo">changeLightsInfo</p>
+      <p class="canBeSeleted" id="checkLightDef" data-lang-key="viewLightsMap">
+        viewLightsMap
+      </p>
+      <div id="theLightDef">
+        <div id="theLightDefInner"><p id="deviceLightTitle"></p></div>
+      </div>
+      <div id="lightsSettingsList">
+        <div>
+          <p>
+            <span class="titleP" data-lang-key="lightsMode">lightsMode</span>
+          </p>
+          <p>
+            <input type="radio" name="lightsType" id="lightsType0" value="0" />
+            <label for="lightsType0" data-lang-key="easeOut">easeOut</label>
+          </p>
+          <!-- <p>
+            <input type="radio" name="lightsType" id="lightsType1" value="1" />
+            <label for="lightsType1" data-lang-key="easeIn">easeIn</label>
+          </p> -->
+          <p>
+            <input type="radio" name="lightsType" id="lightsType2" value="2" />
+            <label for="lightsType2" data-lang-key="keepOn">keepOn</label>
+          </p>
+          <p>
+            <input type="radio" name="lightsType" id="lightsType5" value="5" />
+            <label for="lightsType5" data-lang-key="keyPress">keyPress</label>
+          </p>
+          <p>
+            <input type="radio" name="lightsType" id="lightsType8" value="8" />
+            <label for="lightsType8" data-lang-key="keySwitch"
+              >keySwitch</label
+            >
+          </p>
+          <p>
+            <input type="radio" name="lightsType" id="lightsType3" value="3" />
+            <label for="lightsType3" data-lang-key="keepOff">keepOff</label>
+          </p>
+          <p>
+            <input type="radio" name="lightsType" id="lightsType6" value="6" />
+            <label for="lightsType6" data-lang-key="rainbowColor"
+              >rainbowColor</label
+            >
+          </p>
+          <p>
+            <input type="radio" name="lightsType" id="lightsType7" value="7" />
+            <label for="lightsType7" data-lang-key="rainbowEaseOut"
+              >rainbowEaseOut</label
+            >
+          </p>
+          <p>
+            <input type="radio" name="lightsType" id="lightsType9" value="9" />
+            <label for="lightsType9" data-lang-key="rainbowSwitch"
+              >rainbowSwitch</label
+            >
+          </p>
+        </div>
+        <div>
+          <p>
+            <span class="titleP" data-lang-key="lightsDelay">lightsDelay</span>
+          </p>
+          <p>
+            <span class="titleP withAfter"
+              ><label for="easeLightDelayInput" data-lang-key="easeLightDelay"
+                >easeLightDelay</label
+              ></span
+            >
+            <span class="rightP">
+              <input
+                type="number"
+                id="easeLightDelayInput"
+                value="2560"
+                min="10"
+                max="65535"
+              />
+            </span>
+          </p>
+          <p>
+            <span class="titleP withAfter"
+              ><label
+                for="rainbowLightDelayInput"
+                data-lang-key="rainbowLightDelay"
+                >rainbowLightDelay</label
+              ></span
+            >
+            <span class="rightP">
+              <input
+                type="number"
+                id="rainbowLightDelayInput"
+                value="2560"
+                min="10"
+                max="65535"
+              />
+            </span>
+          </p>
+        </div>
+        <div>
+          <p>
+            <span class="titleP" data-lang-key="colorAndBrightness"
+              >colorAndBrightness</span
+            >
+          </p>
+          <div class="p">
+            <span class="titleP withAfter">LED1</span>
+            <span class="midP">
+              <div class="colorBox" id="setG1ColorBox">
+                <span id="setG1Color" class="pointer">
+                  <input type="color" value="" id="G1Color" />
+                </span>
+                <span id="setG1ColorPicker"></span>
+              </div>
+              <span class="lightLevel" id="G1Brightness">100%</span>
+            </span>
+            <span
+              class="rightP"
+              data-lang-key="setBrightness"
+              id="G1BrightnessBtn"
+              >setBrightness</span
+            >
+          </div>
+          <div class="p">
+            <span class="titleP withAfter">LED2</span>
+            <span class="midP">
+              <div class="colorBox" id="setG2ColorBox">
+                <span id="setG2Color" class="pointer">
+                  <input type="color" value="" id="G2Color" />
+                </span>
+                <span id="setG2ColorPicker"></span>
+              </div>
+              <span class="lightLevel" id="G2Brightness">100%</span>
+            </span>
+            <span
+              class="rightP"
+              data-lang-key="setBrightness"
+              id="G2BrightnessBtn"
+              >setBrightness</span
+            >
+          </div>
+        </div>
+      </div>
+      <div>
+        <p>
+          <span class="titleP" data-lang-key="nightLights">nightLights</span>
+        </p>
+        <p>
+          <input
+            type="radio"
+            name="nightLightsType"
+            id="nightLightsType0"
+            value="0"
+          />
+          <label for="nightLightsType0" data-lang-key="nightLightsOn"
+            >nightLightsOn</label
+          >
+        </p>
+        <p>
+          <input
+            type="radio"
+            name="nightLightsType"
+            id="nightLightsType1"
+            value="1"
+          />
+          <label for="nightLightsType1" data-lang-key="nightLightsOff"
+            >nightLightsOff</label
+          >
+        </p>
+      </div>
+    </section>
+    <section id="delaySettings">
+      <h4 data-lang-key="keyDelay">keyDelay</h4>
+      <p data-lang-key="keyDelayInfo">keyDelayInfo</p>
+      <p class="aBitM-Top">
+        <span class="titleP withAfter" data-lang-key="delay">delay</span>
+        <span class="midP">
+          <input
+            type="number"
+            id="delayInput"
+            value="512"
+            min="16"
+            max="65535"
+          />
+        </span>
+      </p>
+    </section>
+    <section id="hiLevelSettings">
+      <h4 data-lang-key="advancedOptions">advancedOptions</h4>
+      <p data-lang-key="advancedOptionsInfo">advancedOptionsInfo</p>
+      <span id="sendDataPackGroup">
+        <p>
+          <span class="titleP" data-lang-key="sendDataPack">sendDataPack</span>
+        </p>
+        <p data-lang-key="sendDataPackInfo">sendDataPackInfo</p>
+        <p class="aBitM-Top">
+          <span class="titleP">
+            <input type="text" id="toSend" value="00 00 00 00 00 00" />
+          </span>
+        </p>
+        <p class="aBitM-Top">
+          <button id="sendBtn" data-lang-key="sendDataPackBtn">
+            sendDataPackBtn
+          </button>
+        </p>
+      </span>
+      <span id="hiSpeedMode">
+        <p class="aLittleM-Top">
+          <span class="titleP" data-lang-key="superSpeedMode"
+            >superSpeedMode</span
+          >
+        </p>
+        <p data-lang-key="superSpeedModeInfo">superSpeedModeInfo</p>
+        <p class="aBitM-Top">
+          <button id="superSpeedOn" data-lang-key="superSpeedModeeBtnOn">
+            superSpeedModeeBtnOn
+          </button>
+          <button id="superSpeedOff" data-lang-key="superSpeedModeeBtnOff">
+            superSpeedModeeBtnOff
+          </button>
+        </p>
+      </span>
+      <p class="aLittleM-Top">
+        <span class="titleP" data-lang-key="resetDevice">resetDevice</span>
+      </p>
+      <p data-lang-key="resetDeviceInfo">resetDeviceInfo</p>
+      <p class="aBitM-Top">
+        <button id="sendNewDev" data-lang-key="resetDeviceBtn">
+          resetDeviceBtn
+        </button>
+        <button id="sendAllNewDev" data-lang-key="resetAllDevicesBtn">
+          resetAllDevicesBtn
+        </button>
+        <button id="lightTest" data-lang-key="lightTest">
+          resetAllDevicesBtn
+        </button>
+      </p>
+    </section>
+    <section id="about">
+      <h4 data-lang-key="about">about</h4>
+      <p>
+        <span data-lang-key="title">versionInfoText</span>
+        <span data-lang-key="version">version</span>
+      </p>
+      <p class="aBitM-Top">
+        <button id="checkSoftwareUpdate" data-lang-key="checkUpdate">
+          checkUpdate
+        </button>
+      </p>
+      <p>
+        <span data-lang-key="chipID">chipID</span>
+        <span id="chipIDNum">chipIDNum</span>
+      </p>
+      <p>
+        <span data-lang-key="firmwareVersion">firmwareVersion</span>
+        <span id="firmwareVersionNum">firmwareVersionNum</span>
+      </p>
+      <p class="aBitM-Top">
+        <!-- <button id="installDriver" data-lang-key="installDriver">
+          installDriver
+        </button> -->
+        <button id="checkROMUpdate" data-lang-key="checkUpdate">
+          checkUpdate
+        </button>
+        <button id="jumpToBootMode" data-lang-key="jumpToBootMode">
+          jumpToBootMode
+        </button>
+      </p>
+      <p></p>
+      <div id="aboutText" data-lang-key="aboutText">aboutText</div>
+    </section>
+  </div>
+</div>
