@@ -1,6 +1,6 @@
 {
   "name": "SimPad_Settings",
-  "version": "0.165.0",
+  "version": "0.163.0",
   "main": "main.js",
   "package": "electron-packager ./ SimPad_Settings --all --out ./OutApp --version 2.0.0 --overwrite",
   "dependencies": {
