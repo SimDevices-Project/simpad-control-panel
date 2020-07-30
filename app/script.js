@@ -6,7 +6,7 @@ var app = require('electron').app
 const path = require('path')
 var AdmZip = require('adm-zip')
 
-const APP_VERSION = 'v0.163'
+const APP_VERSION = 'v0.165'
 
 var clearAllTimeout = () => {
   for (var i = setTimeout(() => {}, 0); i; i--) {
