@@ -1,29 +1,29 @@
 var lang = {
-  title: 'SimPad Control Panel',
-  selectDevice: 'Select Devices',
+  title: 'SimPad 컨트롤 패널',
+  selectDevice: '장치 선택',
   selectOperation: 'Select Operation',
-  detailedSettings: 'Detailed Settings',
-  apply: 'Apply',
-  conInfo: 'Please connect and select your device',
-  refresh: 'Refresh',
-  confirmAndNext: 'Connect',
+  detailedSettings: '세부 설정',
+  apply: '적용',
+  conInfo: '장치를 연결하고 선택해주세요',
+  refresh: '새로고침',
+  confirmAndNext: '연결',
   chooseInfo: 'Select the operation you want to perform',
-  changeKeyCodeBT: 'Modify Shortcuts',
-  changeLightsBT: 'Modify Lighting',
+  changeKeyCodeBT: '바로가기 수정',
+  changeLightsBT: '라이트닝 수정',
   otherSettingsBT: 'Others',
-  pleaseWait: 'Please wait...',
-  successToApply: 'Success!',
-  returnToContinue: 'Return',
-  exitProgram: 'Exit',
+  pleaseWait: '잠시만 기다려주세요...',
+  successToApply: '적용되었습니다',
+  returnToContinue: '돌아가기',
+  exitProgram: '종료',
 
-  edit: 'Edit',
+  edit: '수정',
 
-  changeKeyCode: 'Edit Shortcuts',
+  changeKeyCode: '바로가기 수정',
   changeKeyCodeInfo:
-    'Shortcuts can be set separatly, supports basic key combination',
-  viewKeyMap: 'View shortcuts for device',
+    '바로가기를 분리 설정할 수 있고 기본 키 조합을 지원합니다',
+  viewKeyMap: '장치 바로가기 보기',
 
-  changeLights: 'Lights Mode & Color',
+  changeLights: '라이트 모드 & 색',
   changeLightsInfo:
     'You can adjust lights mode or set colours for each lights of groups',
   viewLightsMap: 'View lighting configuration',
@@ -33,25 +33,25 @@ var lang = {
   keepOn: 'Always on',
   keepOff: 'Off',
   keyPress: 'Key Press',
-  rainbowColor: 'Rainbow',
+  rainbowColor: '무지개',
 
-  colorAndBrightness: 'Color', // & Brightness
-  setBrightness: 'Set brightness',
+  colorAndBrightness: '색 설정', // & Brightness
+  setBrightness: '밝기 설정',
 
-  keyDelay: 'Input Debounce',
+  keyDelay: '인풋 디바운스',
   keyDelayInfo: `SimPad uses an advanced ID (input debounce) technology that is different from other keyboard, which can significantly control the delay caused by ID function
   <br>But you can still adjust the delay  for the ID function to be triggered, which will affect the experience when the keys are raised`,
-  delay: 'Delay',
+  delay: '딜레이',
 
-  advancedOptions: 'Advanced Options',
+  advancedOptions: '고급 설정',
   advancedOptionsInfo: `You can fine tune some settings here, recommended for pro users，
   <br>All changes made in Advanced Options are applied immediately`,
-  sendDataPack: 'Send Data Packets',
+  sendDataPack: '데이터 패킷 전송',
   sendDataPackInfo: `If you are familiar with SimPad data format，you can send data directly to the device，
   <br>Your text input will be treated as raw hex data, separated by space`,
-  sendDataPackBtn: 'Send',
+  sendDataPackBtn: '전송',
 
-  superSpeedMode: 'Full Speed Mode',
+  superSpeedMode: '풀스피드 모드',
   superSpeedModeInfo:
     'You can enable "full speed mode" to disable all lights to get the fastest speed, reboot device to apply.',
   superSpeedModeeBtnOn: 'On',
