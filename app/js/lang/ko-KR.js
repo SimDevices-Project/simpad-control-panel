@@ -325,9 +325,9 @@ var lang = {
   keyN_mouseMiddle: 'Mouse Middle',
   keyN_mouseRight: 'Mouse Right',
 
-  firmwareVersion: 'Firmware Version',
-  lightTest: 'Lights Test',
-  checkUpdateFailed: 'Check Update Failed',
+  firmwareVersion: '펌웨어 버전',
+  lightTest: '라이트 테스트',
+  checkUpdateFailed: '업데이트 확인 ',
 
   egg_1:'Good morning, and in case I don\'t see ya, good afternoon, good evening, and good night!'
 }
