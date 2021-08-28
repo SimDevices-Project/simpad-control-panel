@@ -25,14 +25,14 @@ var lang = {
 
   changeLights: '라이트 모드 & 색',
   changeLightsInfo:
-    'You can adjust lights mode or set colours for each lights of groups',
-  viewLightsMap: 'View lighting configuration',
-  lightsMode: 'Mode',
-  easeOut: 'Fade out',
-  easeIn: 'Fade in',
-  keepOn: 'Always on',
-  keepOff: 'Off',
-  keyPress: 'Key Press',
+    '각 라이트에 대한 라이트 모드를 그룹별로 조정하거나 색상을 설정할 수 있습니다',
+  viewLightsMap: '라이트닝 구성 모기',
+  lightsMode: '모드',
+  easeOut: '페이드 아웃',
+  easeIn: '페이드 인',
+  keepOn: '항상 켜짐',
+  keepOff: '꺼짐',
+  keyPress: '키 누름',
   rainbowColor: '무지개',
 
   colorAndBrightness: '색 설정', // & Brightness
@@ -53,21 +53,22 @@ var lang = {
 
   superSpeedMode: '풀스피드 모드',
   superSpeedModeInfo:
-    'You can enable "full speed mode" to disable all lights to get the fastest speed, reboot device to apply.',
-  superSpeedModeeBtnOn: 'On',
-  superSpeedModeeBtnOff: 'Off',
+    '"풀스피드 모드"를 활성화하여 가장 빠른 속도를 위해 모든 라이트를 비활성화할 수 있습니다, 적용을 위해 장치를 재시작해야합니다.',
+  superSpeedModeeBtnOn: '켜짐',
+  superSpeedModeeBtnOff: '꺼짐',
 
-  resetDevice: 'Reset Device',
-  resetDeviceInfo: 'Device can be reset to default settings',
-  resetDeviceBtn: 'Reset',
-  resetAllDevicesBtn: 'Reset All',
+  resetDevice: '장치 초기화',
+  resetDeviceInfo: '장치는 기본 설정으로 초기화 될 수 있습니다',
+  resetDeviceBtn: '초기화',
+  resetAllDevicesBtn: '초기화',
 
-  about: 'About SimPad',
-  checkUpdate: 'Check Update',
-  jumpToBootMode: 'Enter Boot Mode',
-  aboutText: `<p>Thank you for using SimPad!</p>
-  <p>SimPad is a custom keyboard based on 8051 realize, gets its name from the Simple and Pad, indicates that the equipment is Simple and practical, in the process of the development of the keyboard by the following people for help,</p>
-  <p> Thank you very much.</p>
+  about: 'SimPad에 대하여',
+  checkUpdate: '업데이트 확인',
+  jumpToBootMode: '부트 모드 진입',
+  aboutText: `<p>\SimPad를 사용해주셔서 감사합니다!</p>
+  <p>SimPad는 8051 칩을 기반으로 한 커스텀 키보드로, 심플과 패드에서 이름을 붙여 간편하고 실용적인 것을 의미합니다.</p>
+  <p>SSimPad의 개발 동안 아래에 있는 분들의 지원을 받았습니다.</p>
+  <p> 정말로 감사합니다.</p>
   <p></p>
   <p class="nameBefore">Sayobot小夜</p>
   <p class="nameBefore">noodlefighter</p>
@@ -76,8 +77,8 @@ var lang = {
   <p class="nameBefore">晨旭</p>
   <p class="nameBefore">Antecer</p>
   <p></p>
-  <p>Special thanks</p>
-  <p>English interpreter</p>
+  <p>특별히 감사를 전합니다</p>
+  <p>영어 해석</p>
   <p class="nameBefore">Jeff - Source Localization Team</p>
   <p class="nameBefore">HDY</p>
   <p></p>
@@ -91,13 +92,13 @@ var lang = {
   <p>By Handle</p>
   <p>Last Update At 2018.7.4</p>`,
 
-  changesCount: 'Changes to apply',
-  abandonsChanges: 'Discard all changes',
-  applyToDevice: 'Apply To Device',
+  changesCount: '변경 적용',
+  abandonsChanges: '모든 변경 취소',
+  applyToDevice: '장치에 적용',
 
-  selectedDevice: 'Current Device',
-  noDevice: 'Awaiting selection',
-  reselectDevice: 'Select another device',
+  selectedDevice: '현재 장치',
+  noDevice: '선택 대기 중',
+  reselectDevice: '다른 장치 선택',
 
   //DevicesNames
   simpadv2: 'SimPad v2',
