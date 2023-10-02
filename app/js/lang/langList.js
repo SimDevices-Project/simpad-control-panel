@@ -5,6 +5,7 @@ var langList = [
   { description: 'en-US', title: 'English' },
   { description: 'ja-JP', title: '日本語' },
   { description: 'de-DE', title: 'Deutsch (Deutschland)' },
-  { description: 'ru-RU', title: 'Русский Язык' }
+  { description: 'ru-RU', title: 'Русский Язык' },
+  { description: 'ko-KR', title: '한국어' }
 ]
 exports.langList = langList
